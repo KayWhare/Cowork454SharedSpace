@@ -310,34 +310,42 @@ input[type=checkbox]:checked + .navToggleLabel > .diagonal.part-2 {
     align-items: center;
     align-content: center;
     flex-direction: column;
-    width:70%;
+    width:90%;
+    max-width: 300px;
     border: 4px solid steelblue;
     border-radius: 4px;
-    height:200px;
     margin-bottom: 20px;;
     text-align:center;
-    height:250px;
+    height:270px;
+    box-shadow: 5px 5px 10px #b1b1b2;
 }
-
 
 .package-box>h5{
     font-size: 25px;
     padding-bottom: 20px;
 }
 
+.cost{
+    margin: 0 10px;
+    padding-top:10px
+}
+
+.package-box>p{
+    margin: 0 20px;
+}
+
 .package-box>button{
     margin-top: 10px;
-    width:75px;
-    height:30px;
+    width:70%;;
+    height:40px;
     border:none;
     border-radius: 4px;
     background-color: steelblue;
     color:white;
+    font-size:1em;
 }
 
-.cost{
-    padding-top:10px
-}
+
 /*
 ####################################################
 M E D I A  Q U E R I E S
@@ -357,7 +365,9 @@ No media query since this is the default in Bootstrap because it is "mobile firs
  
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {  
- 
+    .package-box{
+        margin:10px;
+    }
 }
  
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
@@ -400,20 +410,23 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         display: none;
     }
 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+    .cost{
+        margin-top: 10px;
+
+ 
+    }
     .package-box{
         flex-wrap:wrap;
         width:27%;
-        height:100%;
-        margin:0px 10px;
         max-width: 300px;
+        height:300px;
+        margin:0px 10px;
+        
     }
 
-    
-}
- 
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
- 
 }
  
 /* Extra large devices (large desktops, 1200px and up) */
