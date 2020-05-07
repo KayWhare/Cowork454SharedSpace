@@ -10,7 +10,7 @@ body {
     padding: 0;
     margin: 0 auto;
     background-color: whitesmoke;
-    height:200vh;
+    height: 200vh;
     font-family: 'Oxygen', sans-serif;
 
 }
@@ -23,14 +23,16 @@ body {
     background-color: whitesmoke;
     z-index: 40;
 }
-.logo{
+
+.logo {
     position: absolute;
     width: 300px;
     top: 32px;
     left: 50%;
-    margin-left:-150px;
+    margin-left: -150px;
 }
-.members-login{
+
+.members-login {
     display: none;
     align-items: center;
     top: 90px;
@@ -38,23 +40,28 @@ body {
     right: 50%;
     margin-right: -98px;
 }
-#loginMobileView{
+
+#loginMobileView {
     display: flex;
     position: absolute;
     top: 0px;
     right: 0%;
     margin-right: 66px;
 }
-#loginMobileView>:first-child{
+
+#loginMobileView>:first-child {
     border: none;
 }
-#loginMobileView>:last-child{
+
+#loginMobileView>:last-child {
     border-radius: 15px;
 }
-#loginMobileView>:first-child:hover{
+
+#loginMobileView>:first-child:hover {
     color: crimson;
     background: none;
 }
+
 .members-login>:first-child {
     padding: 11px 20px 11px 24px;
     color: steelblue;
@@ -64,9 +71,10 @@ body {
     border: 2px solid steelblue;
     border-radius: 15px 0px 0px 15px;
 }
+
 .members-login>:last-child {
     margin: 10px 0px;
-    background-image: linear-gradient( steelblue, rgb(43, 81, 112));
+    background-image: linear-gradient(steelblue, rgb(43, 81, 112));
     padding: 11px 20px 11px 20px;
     color: white;
     font-size: 14px;
@@ -75,15 +83,17 @@ body {
     border: 2px solid steelblue;
     border-radius: 0px 15px 15px 0px;
 }
-.members-login>:first-child:hover{
+
+.members-login>:first-child:hover {
     color: white;
-    background-image: linear-gradient( rgb(43, 81, 112),steelblue);
-}
-.members-login>:last-child:hover{
-    background-image: linear-gradient( rgb(43, 81, 112),steelblue);
+    background-image: linear-gradient(rgb(43, 81, 112), steelblue);
 }
 
-.fullwidth-nav{
+.members-login>:last-child:hover {
+    background-image: linear-gradient(rgb(43, 81, 112), steelblue);
+}
+
+.fullwidth-nav {
     position: sticky;
     top: 0;
     display: flex;
@@ -93,13 +103,14 @@ body {
     height: 60px;
     transition: all 0.3s;
     z-index: 40;
-    border-top: 1px solid lightgrey; 
-    border-bottom: 1px solid lightgrey; 
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
     box-shadow: 0px 5px 7px gray;
     background-color: whitesmoke;
 
 }
-.fullwidth-nav>ul{
+
+.fullwidth-nav>ul {
     position: relative;
     display: none;
     list-style-type: none;
@@ -110,15 +121,18 @@ body {
     max-width: 800px;
 
 }
-.fullwidth-nav>ul>a, 
-.slide-nav>a{
+
+.fullwidth-nav>ul>a,
+.slide-nav>a {
     color: rgb(99, 98, 98);
     font-size: 16px;
     text-decoration: none;
 }
-.fullwidth-nav>ul>a:hover{
+
+.fullwidth-nav>ul>a:hover {
     color: steelblue;
 }
+
 .slide-nav {
     position: sticky;
     top: 60px;
@@ -133,36 +147,42 @@ body {
     transition: all 380ms;
     text-align: left;
 }
-.slide-nav>a{
+
+.slide-nav>a {
     width: 100%;
     margin: 20px 20px 20px 30px;
     color: white;
     font-weight: 700;
     font-size: 18px;
 }
-.slide-nav>a:hover{
+
+.slide-nav>a:hover {
     color: crimson;
 }
-.nav-logo{
+
+.nav-logo {
     display: none;
     position: absolute;
     left: 10px;
     color: rgb(41, 74, 102);
     width: 140px;
 }
-.nav-logo>h3{
+
+.nav-logo>h3 {
     margin: 8px 3px;
 }
-#hamburger{
+
+#hamburger {
     position: absolute;
     top: 20px;
     right: -10px;
     display: flex;
     color: white;
     margin-right: 20px;
-    
+
 }
-#hamburger>label{
+
+#hamburger>label {
     margin-right: 10px;
     transition: all 0.3s;
     font-size: 16px;
@@ -171,7 +191,8 @@ body {
     font-family: Roboto, sans-serif;
     font-weight: 900;
 }
-#hamburger>label:hover{
+
+#hamburger>label:hover {
     transition: all 200ms;
     cursor: pointer;
     z-index: 9;
@@ -182,6 +203,7 @@ input[type=checkbox] {
     box-sizing: border-box;
     display: none;
 }
+
 .navToggleLabel {
     transition: all 0.3s;
     cursor: pointer;
@@ -189,9 +211,11 @@ input[type=checkbox] {
     height: 22px;
     width: 22px;
 }
-.navToggleLabel:hover >.spinner{
+
+.navToggleLabel:hover>.spinner {
     background-color: crimson;
 }
+
 .spinner {
     transition: all 0.3s;
     box-sizing: border-box;
@@ -199,20 +223,23 @@ input[type=checkbox] {
     width: 100%;
     background-color: rgb(41, 57, 112);
 }
+
 .horizontal {
     transition: all 0.3s;
     box-sizing: border-box;
     position: relative;
     float: left;
     margin-top: 4px;
-    
+
 }
+
 .diagonal.part-1 {
     position: relative;
     transition: all 0.3s;
     box-sizing: border-box;
     float: left;
 }
+
 .diagonal.part-2 {
     transition: all 0.3s;
     box-sizing: border-box;
@@ -220,32 +247,37 @@ input[type=checkbox] {
     float: left;
     margin-top: 4px;
 }
-input[type=checkbox]:checked + .navToggleLabel > .horizontal {
+
+input[type=checkbox]:checked+.navToggleLabel>.horizontal {
     transition: all 0.3s;
     box-sizing: border-box;
     opacity: 0;
 }
-input[type=checkbox]:checked + .navToggleLabel > .diagonal.part-1 {
+
+input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-1 {
     transition: all 0.3s;
     box-sizing: border-box;
     transform: rotate(135deg);
     margin-top: 8px;
 }
-input[type=checkbox]:checked + .navToggleLabel > .diagonal.part-2 {
+
+input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
     transition: all 0.3s;
     box-sizing: border-box;
     transform: rotate(-135deg);
     margin-top: -10px;
 }
-.hero-outer{
+
+.hero-outer {
     position: relative;
-    height:500px;
+    height: 500px;
     background-image: url(/images/image_07.jpg);
     background-size: cover;
     background-position: bottom;
     background-attachment: fixed;
 }
-.hero{
+
+.hero {
     position: absolute;
     height: 500px;
     background-color: rgba(0, 0, 0, 0.15);
@@ -255,43 +287,53 @@ input[type=checkbox]:checked + .navToggleLabel > .diagonal.part-2 {
     justify-content: center;
     width: 100%;
 }
-.hero>h1,span{
+
+.hero>h1,
+.hero>span {
     color: whitesmoke;
     text-align: center;
     margin-bottom: 30px;
     text-shadow: 0px 1px 2px rgb(0, 0, 0);
 }
-.hero>h1{
+
+.hero>h1 {
     font-size: 50px;
     font-weight: 400;
 }
-.hero>span{
+
+.hero>span {
     font-size: 24px;
     font-weight: 400;
 }
-.our-space,.packages-space{
+
+.our-space,
+.packages-space {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 1200px;
     margin: 20px auto;
 }
-.our-space>:last-child{
+
+.our-space>:last-child {
     border-bottom: none;
 }
-.space-box{
+
+.space-box {
     border-bottom: 1px solid lightgray;
     width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.space-box>:first-child{
+
+.space-box>:first-child {
     width: 20%;
     margin: 20px;
 }
-.space-box>:last-child{
-    width:66%;
+
+.space-box>:last-child {
+    width: 66%;
     font-size: 12px;
     padding: 10px;
     border-bottom: none;
@@ -303,138 +345,258 @@ input[type=checkbox]:checked + .navToggleLabel > .diagonal.part-2 {
 /* ------------Packages-------------- */
 
 
+.sm-img {
+    width: 90%;
+    height:200px;
+    border-radius: 2px;
+    background-size: cover;
+    background-repeat: none;
+    margin-bottom: 20px;
+}
 
-.package-box{
-    display:flex;
-    justify-content: center;
+.sm-img.single {
+    background-image: url(/images/image_10.jpg);
+}
+
+.sm-img.double {
+    background-image: url(/images/image_04.jpg);
+}
+
+.sm-img.area {
+    background-image: url(/images/image_08.jpg);
+}
+
+.package-box {
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
     align-content: center;
     flex-direction: column;
-    width:90%;
+    width: 90%;
     max-width: 300px;
     border: 4px solid steelblue;
     border-radius: 4px;
     margin-bottom: 20px;;
-    text-align:center;
-    height:270px;
+    text-align: center;
+    height: 450px;
     box-shadow: 5px 5px 10px #b1b1b2;
 }
 
-.package-box>h5{
+.package-box>h5 {
     font-size: 25px;
     padding-bottom: 20px;
 }
 
-.cost{
-    margin: 0 10px;
-    padding-top:10px
-}
-
-.package-box>p{
+.package-box>p {
     margin: 0 20px;
 }
 
-.package-box>button{
+.package-box>button {
+    margin:0;
+    padding:0;
     margin-top: 10px;
-    width:70%;;
-    height:40px;
-    border:none;
-    border-radius: 4px;
+    width: 100%;
+    height: 40px;
+    border: none;
     background-color: steelblue;
-    color:white;
-    font-size:1em;
+    color: white;
+    font-size: 1em;
+
 }
 
+
+
+
+/* ------------Footer-------------- */
+
+.lg-footer {
+
+    display: none;
+}
 
 /*
 ####################################################
 M E D I A  Q U E R I E S
 ####################################################
 */
- 
+
 /*
 ::::::::::::::::::::::::::::::::::::::::::::::::::::
 Bootstrap 4 breakpoints
 */
- 
+
 /* 
 Extra small devices (portrait phones, less than 576px) 
 No media query since this is the default in Bootstrap because it is "mobile first"
 */
- 
- 
+
+
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {  
-    .package-box{
-        margin:10px;
+@media (min-width: 576px) {
+    .package-box {
+        margin: 10px;
     }
 }
- 
+
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
-@media (min-width: 768px) {  
-    .space-box{
+@media (min-width: 768px) {
+    .space-box {
         width: 45%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
     .our-space>:nth-child(1),
-    .our-space>:nth-child(3){
+    .our-space>:nth-child(3) {
         border-right: 1px solid lightgray;
     }
+
     .our-space>:nth-child(3),
-    .our-space>:nth-child(4){
+    .our-space>:nth-child(4) {
         border-bottom: none;
     }
-    .members-login{
+
+    .members-login {
         display: flex;
         top: 55px;
         position: absolute;
         right: 20px;
         margin-right: 0px;
     }
-    #loginMobileView{
+
+    #loginMobileView {
         display: none;
         margin-right: 10px;
     }
-    .fullwidth-nav>ul{
+
+    .fullwidth-nav>ul {
         display: flex;
     }
-    .slide-nav{
-        display: none;
-    }
-    #hamburger{
-        display: none;
-    }
-    .nav-logo{
+
+    .slide-nav {
         display: none;
     }
 
+    #hamburger {
+        display: none;
+    }
+
+    .nav-logo {
+        display: none;
+    }
+
+
+    .lg-footer {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+    }
+
+    .lg-footer>div {
+        width: 30%;
+        padding: 10px;
+    }
+
+    .lg-footer>div:first-child {
+        border-right: 1px solid grey;
+    }
+
+    .lg-footer>div:last-child {
+        border-left: 1px solid grey;
+    }
+
+    .sitemap-footer-links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about-footer>img {
+        width: 100px;
+
+    }
+
+    .foot-heading {
+        padding-bottom: 20px;
+    }
+
+    .newsletter-input {
+        border-color: rgb(41, 57, 112);
+        border-radius: 4px;
+        height: 30px;
+        margin: 5px;
+    }
+
+    .newsletter-input::placeholder {
+        color: rgb(41, 57, 112);
+    }
+
+    #submit {
+        border-radius: 4px;
+        margin: 5px;
+        width: 80px;
+        height: 30px;
+        background-color: steelblue;
+        color: white;
+        border: none;
+    }
 }
- 
+
 /* Large devices (desktops, 992px and up) */
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
 
-    .cost{
-        margin-top: 10px;
+    .cost {
+        padding-top: 40px;
+        font-size: 1.5em;
     }
-    .package-box{
-        flex-wrap:wrap;
-        width:27%;
-        max-width: 300px;
-        height:300px;
-        margin:0px 10px;
-        
+
+    .sm-img {
+        display: none;
+    }
+
+    .lg-img {
+        width: 400px;
+        height: 300px;
+        border-radius: 2px;
+        background-size: cover;
+        background-repeat: none;
+    }
+
+    .lg-img.single {
+        background-image: url(/images/image_10.jpg);
+    }
+
+    .lg-img.double {
+        background-image: url(/images/image_04.jpg);
+    }
+
+    .lg-img.area {
+        background-image: url(/images/image_08.jpg);
+    }
+
+    .packages-lg {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }   
+
+    .package-box>button {
+        margin-top: 40px;
+        width:85%;
+        border-radius: 3px;
+    }
+
+    .package-box {
+        height: 330px;
+        justify-content: space-around;
     }
 
 }
- 
+
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  
-    
-}
- 
- 
- 
+@media (min-width: 1200px) {}
+
+
+
 /*
