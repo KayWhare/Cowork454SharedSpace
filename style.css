@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
     /* border: 1px solid red; */
 }
 
@@ -15,79 +16,239 @@ body {
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: relative;
     width: 100%;
     height: 150px;
     transition: all 0.3s;
+    background-color: whitesmoke;
     z-index: 40;
 }
 .logo{
-    justify-self: center;
+    position: absolute;
+    width: 300px;
+    top: 32px;
+    left: 50%;
+    margin-left:-150px;
 }
 .members-login{
-    display: flex;
+    display: none;
     align-items: center;
-    height: 38px;
-    margin-right: 20px;
-    border: 2px solid steelblue;
-    border-radius: 40px;
-    overflow: hidden;
+    top: 90px;
+    position: absolute;
+    right: 50%;
+    margin-right: -98px;
+}
+#loginMobileView{
+    display: flex;
+    position: absolute;
+    top: 0px;
+    right: 0%;
+    margin-right: 66px;
+}
+#loginMobileView>:first-child{
+    border: none;
+}
+#loginMobileView>:last-child{
+    border-radius: 15px;
+}
+#loginMobileView>:first-child:hover{
+    color: crimson;
+    background: none;
 }
 .members-login>:first-child {
-    font-size: 15px;
-    margin: 10px 15px 10px 30px;
-    text-decoration: none;
+    padding: 11px 20px 11px 24px;
     color: steelblue;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid steelblue;
+    border-radius: 15px 0px 0px 15px;
 }
 .members-login>:last-child {
-    font-size: 15px;
-    margin: 10px 0px 10px 0px;
-    text-decoration: none;
-    background-color: steelblue;
-    padding: 20px 30px 20px 15px;
+    margin: 10px 0px;
+    background-image: linear-gradient( steelblue, rgb(43, 81, 112));
+    padding: 11px 20px 11px 20px;
     color: white;
-
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid steelblue;
+    border-radius: 0px 15px 15px 0px;
+}
+.members-login>:first-child:hover{
+    color: white;
+    background-image: linear-gradient( rgb(43, 81, 112),steelblue);
+}
+.members-login>:last-child:hover{
+    background-image: linear-gradient( rgb(43, 81, 112),steelblue);
 }
 
-.nav{
-    position: relative;
+.fullwidth-nav{
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 70px;
+    height: 60px;
     transition: all 0.3s;
     z-index: 40;
     border-top: 1px solid lightgrey; 
-    border-bottom: 2px solid lightgrey; 
-    box-shadow: 0px 5px 10px gray;
+    border-bottom: 1px solid lightgrey; 
+    box-shadow: 0px 5px 7px gray;
+    background-color: whitesmoke;
+
 }
-.nav>ul{
+.fullwidth-nav>ul{
+    position: relative;
+    display: none;
     list-style-type: none;
     margin: 0 auto;
-    display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 80%;
     max-width: 800px;
 
 }
-.nav>ul>a{
+.fullwidth-nav>ul>a, 
+.slide-nav>a{
     color: rgb(99, 98, 98);
     font-size: 16px;
     text-decoration: none;
 }
-.nav>ul>a:hover{
-    color: orangered;
+.fullwidth-nav>ul>a:hover{
+    color: steelblue;
 }
-.hero{
+.slide-nav {
+    position: sticky;
+    top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 0px;
+    margin: 0 auto;
+    z-index: 30;
+    background-color: rgb(41, 70, 88);
+    overflow: hidden;
+    transition: all 380ms;
+    text-align: left;
+}
+.slide-nav>a{
+    width: 100%;
+    margin: 20px 20px 20px 30px;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+.slide-nav>a:hover{
+    color: crimson;
+}
+.nav-logo{
+    display: none;
+    position: absolute;
+    left: 10px;
+    color: rgb(41, 74, 102);
+    width: 140px;
+}
+.nav-logo>h3{
+    margin: 8px 3px;
+}
+#hamburger{
+    position: absolute;
+    top: 20px;
+    right: -10px;
+    display: flex;
+    color: white;
+    margin-right: 20px;
+    
+}
+#hamburger>label{
+    margin-right: 10px;
+    transition: all 0.3s;
+    font-size: 16px;
+    letter-spacing: 1.9px;
+    text-transform: uppercase;
+    font-family: Roboto, sans-serif;
+    font-weight: 900;
+}
+#hamburger>label:hover{
+    transition: all 200ms;
+    cursor: pointer;
+    z-index: 9;
+}
+
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+.navToggleLabel {
+    transition: all 0.3s;
+    cursor: pointer;
+    z-index: 99;
+    height: 22px;
+    width: 22px;
+}
+.navToggleLabel:hover >.spinner{
+    background-color: crimson;
+}
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    height: 3px;
+    width: 100%;
+    background-color: rgb(41, 57, 112);
+}
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 4px;
+    
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 4px;
+}
+input[type=checkbox]:checked + .navToggleLabel > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+input[type=checkbox]:checked + .navToggleLabel > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+input[type=checkbox]:checked + .navToggleLabel > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -10px;
+}
+.hero-outer{
+    position: relative;
     height:500px;
-    background-image: url(/images/image_03.jpg);
+    background-image: url(/images/image_07.jpg);
     background-size: cover;
     background-position: bottom;
     background-attachment: fixed;
+}
+.hero{
+    position: absolute;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,6 +338,29 @@ No media query since this is the default in Bootstrap because it is "mobile firs
     .our-space>:nth-child(3),
     .our-space>:nth-child(4){
         border-bottom: none;
+    }
+    .members-login{
+        display: flex;
+        top: 55px;
+        position: absolute;
+        right: 20px;
+        margin-right: 0px;
+    }
+    #loginMobileView{
+        display: none;
+        margin-right: 10px;
+    }
+    .fullwidth-nav>ul{
+        display: flex;
+    }
+    .slide-nav{
+        display: none;
+    }
+    #hamburger{
+        display: none;
+    }
+    .nav-logo{
+        display: none;
     }
 }
  
