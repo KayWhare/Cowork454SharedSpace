@@ -410,13 +410,14 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         display: none;
     }
 
+}
+ 
 /* Large devices (desktops, 992px and up) */
+
 @media (min-width: 992px) { 
 
     .cost{
         margin-top: 10px;
-
- 
     }
     .package-box{
         flex-wrap:wrap;
