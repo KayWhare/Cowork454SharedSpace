@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CoWork454.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoWork454
 {
@@ -24,6 +26,10 @@ namespace CoWork454
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<CoWork454Context>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("CoWork454Context")));
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
