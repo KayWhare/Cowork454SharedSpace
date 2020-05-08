@@ -1,0 +1,227 @@
+﻿
+@{
+    ViewData["Title"] = "User";
+}
+
+<h1>User</h1>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+    </style>
+</head>
+
+<body>
+
+    <main>
+
+        <div class="container">
+            <table class="striped" id="users-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>PasswordHash</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody></tbody>
+            </table>
+
+            <div class="row">
+                <form class="col s12">
+                    <input type="hidden" name="Id" id="Id" />
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="First Name" name="FirstName" id="FirstName" type="text">
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Last Name" name="LastName" id="LastName" type="text">
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Email" name="Email" id="Email" type="text">
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Phone" name="Phone" id="Phone" type="text">
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="PasswordHash" name="PasswordHash" id="PasswordHash" type="text">
+                        </div>
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit">Save</button>
+                    <button class="btn waves-effect" id="clearButton">Clear</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+    @section Scripts{
+        <script  type="text/javascript">
+
+            const userData = document.querySelector('#users-table tbody');
+            const saveButton = document.querySelector('button[type="submit"]');
+            const clearButton = document.querySelector('#clearButton');
+            const idElem = document.getElementById('Id');
+            const firstNameElem = document.getElementById('FirstName');
+            const lastNameElem = document.getElementById('LastName');
+            const EmailElem = document.getElementById('Email');
+            const PhoneElem = document.getElementById('Phone');
+            const PassElem = document.getElementById('PasswordHash');
+
+            const onSave = evt => {
+                evt.preventDefault();
+                console.log("save");
+
+                const userId = idElem.value;
+
+                const model = {
+                    firstName: firstNameElem.value,
+                    lastName: lastNameElem.value,
+                    email: EmailElem.value,
+                    phone: PhoneElem.value,
+                    passwordhash: PassElem.value
+
+                }
+                console.log(model);
+
+                let apiPath = '/api/Users';
+                let apiMethod = 'post';
+
+                if (!!userId) {
+                    model.id = parseInt(userId);
+                    apiPath = `/api/Users/${userId}`;
+                    apiMethod = 'put';
+                }
+
+                fetch(apiPath, {
+                    body: JSON.stringify(model),
+                    method: apiMethod,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => {
+                    refreshList();
+                    clearList();
+                }).catch(err => {
+                    alert('Submit failed');
+                });
+            };
+
+            const onSelect = evt => {
+                evt.preventDefault();
+
+                const selectBtn = evt.currentTarget;
+                const userId = selectBtn.getAttribute('data-user-id');
+
+                fetch(`/api/Users/${userId}`)
+                    .then(res => res.json())
+                    .then(user => {
+                        idElem.value = user.id;
+                        firstNameElem.value = user.firstName;
+                        lastNameElem.value = user.lastName;
+                        EmailElem.value = user.email;
+                        PhoneElem.value = user.phone;
+                        passElem.value = user.passwordhash;
+                    });
+            }
+
+            const onDelete = evt => {
+                evt.preventDefault();
+
+                const deleteBtn = evt.currentTarget;
+                const userId = deleteBtn.getAttribute('data-user-id');
+
+                fetch(`/api/Users/${userId}`, { method: 'delete' })
+                    .then(() => {
+                        refreshList();
+                    });
+            }
+
+            const onClear = evt => {
+                evt.preventDefault();
+
+                clearList();
+            }
+
+            const clearList = () => {
+                idElem.value = null;
+                firstNameElem.value = null;
+                lastNameElem.value = null;
+                EmailElem.value = null;
+                PhoneElem.value = null;
+                PassElem.value = null;
+            }
+
+            const refreshList = () => {
+                userData.innerHTML = '';
+
+                fetch('/api/Users')
+                    .then(res => res.json())
+                    .then(users => {
+                        users.forEach(user => {
+                            const userIdCell = document.createElement('td');
+                            const firstNameCell = document.createElement('td');
+                            const lastNameCell = document.createElement('td');
+                            const emailCell = document.createElement('td');
+                            const phoneCell = document.createElement('td');
+                            const passCell = document.createElement('td');
+                            const action1Cell = document.createElement('td');
+                            const action2Cell = document.createElement('td');
+
+                            userIdCell.innerText = user.id;
+                            firstNameCell.innerText = user.firstName;
+                            lastNameCell.innerText = user.lastName;
+                            emailCell.innerText = user.email;
+                            phoneCell.innerText = user.phone;
+                            passCell.innerText = user.passwordhash;
+
+                            const deleteBtn = document.createElement('button');
+                            const selectBtn = document.createElement('button');
+
+                            deleteBtn.innerText = 'Delete';
+                            deleteBtn.setAttribute('data-user-id', user.id);
+                            deleteBtn.className = 'waves-effect waves-light btn';
+                            deleteBtn.addEventListener('click', onDelete);
+                            selectBtn.innerText = 'Select';
+                            selectBtn.setAttribute('data-user-id', user.id);
+                            selectBtn.className = 'waves-effect waves-light btn';
+                            selectBtn.addEventListener('click', onSelect);
+
+                            action1Cell.appendChild(deleteBtn);
+                            action2Cell.appendChild(selectBtn);
+
+                            const row = document.createElement('tr');
+
+                            row.appendChild(userIdCell);
+                            row.appendChild(firstNameCell);
+                            row.appendChild(lastNameCell);
+                            row.appendChild(emailCell);
+                            row.appendChild(phoneCell);
+                            row.appendChild(passCell);
+                            row.appendChild(action1Cell);
+                            row.appendChild(action2Cell);
+
+                            userData.appendChild(row);
+                        });
+                    })
+            }
+
+            saveButton.addEventListener('click', onSave);
+            clearButton.addEventListener('click', onClear);
+
+            refreshList();
+
+        </script>
+    }
+    </body>
+
+</html>
