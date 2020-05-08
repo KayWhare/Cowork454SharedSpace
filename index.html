@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -13,19 +14,17 @@
 
     <div class="header">
 
-        <div></div>
-
-        <img class="logo" src="" alt="logo">
+        <img class="logo" src="images/CoWork454 Logo esign.png" alt="logo">
 
 
         <div class="members-login">
-            <a href="">Members Login</a>
+            <a href="">Login</a>
             <a href="">Sign-up</a>
         </div>
     </div>
 
 
-    <div class="nav">
+    <div class="fullwidth-nav">
         <ul>
             <a href="">Membership</a>
             <a href="">Events</a>
@@ -34,11 +33,38 @@
             <a href="">Blog</a>
             <a href="">Contact</a>
         </ul>
+
+        <img class="nav-logo" src="/images/CoWork454 Logo esign.png">
+
+        <div id="loginMobileView" class="members-login">
+            <a href="">Login</a>
+            <a href="">Sign-up</a>
+        </div>
+
+        <div id='hamburger'>
+            <input type="checkbox" class="openSidebarMenu" id="slideNavToggle">
+            <label for="slideNavToggle" class="navToggleLabel">
+                <div class="spinner diagonal part-1"></div>
+                <div class="spinner horizontal"></div>
+                <div class="spinner diagonal part-2"></div>
+            </label>
+        </div>
     </div>
 
-    <div class="hero">
-        <h1>Join the FlexiWork Community</h1>
-        <span>We're a Covid-Safe workspace</span>
+    <ul class="slide-nav">
+        <a href="">Membership</a>
+        <a href="">Events</a>
+        <a href="">Spaces</a>
+        <a href="">Bookings</a>
+        <a href="">Blog</a>
+        <a href="">Contact</a>
+    </ul>
+
+    <div class="hero-outer">
+        <div class="hero">
+            <h1>Join the CoWork Community</h1>
+            <span>We're a Covid-Safe workspace</span>
+        </div>
     </div>
 
     <div class="our-space">
@@ -73,34 +99,90 @@
 
 
     <div class="packages-space">
-
-        <div class="package-box">
-            <h5> Single Desk</h5>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis distinctio!
-                Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
-            <p class="cost">$120</p>
-            <button>Select</button>
+        <div class="packages-lg">
+            <div class="package-box">
+                <h5> Single Desk</h5>
+                <div class="sm-img single"></div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis distinctio!
+                    Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
+                <button>Enquire</button>
+            </div>
+            <div class="lg-img single"></div>
         </div>
 
-
-        <div class="package-box">
-            <h5> Large Desk</h5>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis distinctio!
-                Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
-            <p class="cost">$220</p>
-            <button>Select</button>
+        <div class="packages-lg">
+            <div class="lg-img double "></div>
+            <div class="package-box">
+                <h5> Large Desk</h5>
+                <div class="sm-img double"></div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis distinctio!
+                    Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
+                <button>Enquire</button>
+            </div>
         </div>
 
-        <div class="package-box">
-            <h5> Area </h5>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis distinctio!
-                Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
-            <p class="cost">$320</p>
-            <button>Select</button>
+        <div class="packages-lg">
+            <div class="package-box">
+                <h5> Area </h5>
+                <div class="sm-img area"></div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis distinctio!
+                    Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
+                <button>Enquire</button>
+            </div>
+            <div class="lg-img area"></div>
         </div>
+
     </div>
 
 
+    <footer>
+        <div class="lg-footer">
+            <div class="about-footer">
+                <img src="/images/CoWork454 Logo esign.png" alt="">
+                <p>454 Scarborough Beach rd, <br> Osborne Park, <br>
+                    WA 6017</p>
+
+                <span>
+                    <a href="">
+                        <p>TERMS AND CONDITIONS</p>
+                    </a>
+                    <a href="">
+                        <p>OUR TEAM</p>
+                    </a>
+                    <a href="">
+                        <p>CONTACT US</p>
+                    </a>
+                </span>
+            </div>
+
+            <div class="sitemap-footer">
+                <h6 class="foot-heading">Sitemap</h6>
+                <ul class="sitemap-footer-links">
+                    <a href="">Home</a>
+                    <a href="">Membership</a>
+                    <a href="">Events</a>
+                    <a href="">Spaces</a>
+                    <a href="">Bookings</a>
+                    <a href="">Blog</a>
+                    <a href="">Contact</a>
+                </ul>
+
+            </div>
+
+            <div class="newsletter-footer">
+
+                <h6 class="foot-heading">Subscribe to our newsletter</h6>
+                <form action="">
+                    <input type="text" name="firstName" class="newsletter-input" id="firstName"
+                        placeholder="First Name">
+                    <input type="text" name="lastName" class="newsletter-input" id="firstName" placeholder="Last Name">
+                    <input type="email" name="Email" class="newsletter-input" id="firstName" placeholder="Email">
+                    <input type="submit" name="submit" id="submit">
+                </form>
+
+            </div>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 

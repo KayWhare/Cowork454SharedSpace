@@ -1,38 +1,35 @@
-// // -----------TOGGLE FOR SIDEMENU & Cart-Quickview-------------------
+// // -----------NAV TOGGLE-------------------
 
-// var checkbox = document.getElementById('openSidebarMenu');
+const hamburger = document.getElementById('slideNavToggle');
+let slideNav = document.querySelector('.slide-nav');
 
-// checkbox.addEventListener('click', function(){
-//    let sidebarMenu = document.getElementById('sidebarMenu');
+hamburger.addEventListener('click', function(){
+   if (hamburger.checked == true){
+      return slideNav.style.height = '380px';
+   }else{
+    slideNav.style.height = '0px';
+   }
+});
 
-//    if (checkbox.checked == true){
-//       return sidebarMenu.style.transform = 'translateX(0)';
-//    }else{
-//       sidebarMenu.style.transform = 'translateX(-250px)';
-//    }
-// });
+let loginBtn = document.getElementById('loginMobileView');
+let fullNav = document.querySelector('.fullwidth-nav');
+let topLogin = document.querySelectorAll('.members-login')[0];
+let navLogo = document.querySelector('.nav-logo');
 
-// window.addEventListener("scroll", function (event) {
-//     let headerDiv = document.getElementById('nav');
-//     let spinner = document.querySelectorAll('.spinner');
- 
-//     if (window.pageYOffset > 0){
-//        headerDiv.style.backgroundColor="rgba(0, 0, 0, 0.8)";
-//        headerDiv.children[0].style.color = 'white';
-//        headerDiv.children[3].style.color = 'white';
-//        headerDiv.children[4].style.color = 'white';
-//        for (i=0; i < spinner.length; i++){
-//           spinner[i].style.backgroundColor='white'
-//        };
-//        // logo.src = 'images/newlogoWhite.png';
-//     }else{
-//        headerDiv.style.backgroundColor="rgba(255, 255, 255, 0.0)";
-//        headerDiv.children[0].style.color = 'black';
-//        headerDiv.children[3].style.color = 'black';
-//        headerDiv.children[4].style.color = 'black';
-//        for (i=0; i < spinner.length; i++){
-//           spinner[i].style.backgroundColor='black'
-//        };
-//        // logo.src = 'images/newlogoDark.png';
-//     }
-//  });
+// window.addEventListener('scroll', ()=>{
+//    var fullnavTop = fullNav.scrollTop = 150;
+//    if(window.pageYOffset > fullnavTop ){
+//       loginBtn.style.display = 'flex';
+//       navLogo.style.display = 'flex';
+//    }else if(window.pageYOffset < 120 &&
+//       window.innerWidth > 992){
+//       loginBtn.style.display = 'none';
+//    // }else if(topLogin.style.display = 'flex' &&
+//    //    window.innerWidth > 768) {
+//    //    loginBtn.style.display = 'none';
+//    // }else if(window.innerWidth < 768){
+//    //    loginBtn.style.display = 'flex';
+//    //    loginBtn.style.marginRight = '60px'
+   //       }
+   // });
+
