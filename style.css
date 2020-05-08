@@ -10,7 +10,6 @@ body {
     padding: 0;
     margin: 0 auto;
     background-color: whitesmoke;
-    height: 200vh;
     font-family: 'Oxygen', sans-serif;
 
 }
@@ -39,25 +38,22 @@ body {
     position: absolute;
     right: 50%;
     margin-right: -98px;
+    font-weight: 700;
 }
-
-#loginMobileView {
+#loginMobileBtn{
     display: flex;
     position: absolute;
     top: 0px;
     right: 0%;
-    margin-right: 66px;
+    margin-right: 10px;
 }
-
-#loginMobileView>:first-child {
+#loginMobileBtn>:first-child{
     border: none;
 }
-
-#loginMobileView>:last-child {
+#loginMobileBtn>:last-child{
     border-radius: 15px;
 }
-
-#loginMobileView>:first-child:hover {
+#loginMobileBtn>:first-child:hover{
     color: crimson;
     background: none;
 }
@@ -70,6 +66,7 @@ body {
     text-decoration: none;
     border: 2px solid steelblue;
     border-radius: 15px 0px 0px 15px;
+    cursor: pointer;
 }
 
 .members-login>:last-child {
@@ -82,6 +79,8 @@ body {
     text-decoration: none;
     border: 2px solid steelblue;
     border-radius: 0px 15px 15px 0px;
+    cursor: pointer;
+
 }
 
 .members-login>:first-child:hover {
@@ -119,7 +118,6 @@ body {
     align-items: center;
     width: 80%;
     max-width: 800px;
-
 }
 
 .fullwidth-nav>ul>a,
@@ -127,10 +125,20 @@ body {
     color: rgb(99, 98, 98);
     font-size: 16px;
     text-decoration: none;
+    cursor: pointer;
 }
-
-.fullwidth-nav>ul>a:hover {
-    color: steelblue;
+.fullwidth-nav>ul>a{
+    padding: 10px 18px;
+    font-weight: 700;
+}
+.fullwidth-nav>ul>a:hover{
+    color: white;
+    border: inset 2px solid darkred;
+    border-color: crimson, rgb(80, 1, 1),rgb(80, 1, 1),crimson;
+    border-radius: 12px;
+    background-image: linear-gradient(crimson, rgb(80, 1, 1));
+    box-shadow: 0px 0px 5px rgb(85, 34, 34) ;
+    font-weight: 700;
 }
 
 .slide-nav {
@@ -175,11 +183,11 @@ body {
 #hamburger {
     position: absolute;
     top: 20px;
-    right: -10px;
+    left: 10px;
     display: flex;
     color: white;
-    margin-right: 20px;
-
+    margin-left: 10px;
+    
 }
 
 #hamburger>label {
@@ -280,7 +288,8 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
 .hero {
     position: absolute;
     height: 500px;
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(2px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -298,7 +307,7 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
 
 .hero>h1 {
     font-size: 50px;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .hero>span {
@@ -341,7 +350,6 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
 
 
 
-
 /* ------------Packages-------------- */
 
 
@@ -367,19 +375,22 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
 }
 
 .package-box {
+    position: relative;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     align-content: center;
     flex-direction: column;
     width: 90%;
-    max-width: 300px;
     border: 4px solid steelblue;
     border-radius: 4px;
-    margin-bottom: 20px;;
+    margin: 20px auto;
     text-align: center;
-    height: 450px;
     box-shadow: 5px 5px 10px #b1b1b2;
+}
+.packages-lg{
+    width: 90%;
+    max-width: 350px;
 }
 
 .package-box>h5 {
@@ -414,6 +425,108 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
     display: none;
 }
 
+
+
+#contactForm{
+    height: 0px;
+    width: 100%;
+    position: sticky;
+    top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 30;
+    background-color: rgb(41, 70, 88);
+    overflow: hidden;
+    transition: all 380ms;
+    text-align: left;
+    border-bottom: rgb(13, 23, 29);
+}
+#contactForm>h2{
+    color: whitesmoke;
+    margin-top: 10px;
+}
+#contactForm>input{
+    height: 40px;
+    width: 95%;
+    max-width: 376px;
+    margin: 10px 5px;
+    border-radius: 4px;
+    border: 2px solid rgb(52, 97, 134);
+    background-color: whitesmoke;
+    color: rgb(71, 71, 71);
+    font-size: 14px;
+    padding-left: 10px;
+}
+#contactForm>:last-child{
+    width: 100px;
+    background-image: linear-gradient( rgb(151, 14, 42),crimson);
+    border: 2px solid crimson;
+    font-weight: 700;
+    color: white;
+    padding-left: 0px;
+    margin-bottom: 20px;
+}
+#contactForm>#comments{
+    height: 300px;
+    margin-top: 10px;
+    border: 2px solid rgb(52, 97, 134);
+    border-radius: 4px;
+    font-size: 14px;
+    width: 98%;
+    max-width: 386px;
+}
+#comments::placeholder{
+    padding: 10px;
+}
+#contactForm>:last-child:hover{
+    background-image: linear-gradient( crimson,rgb(88, 8, 24));
+}
+#login{
+    position: sticky;
+    top: 60px;
+    height: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 30;
+    background-color: rgb(41, 70, 88);
+    overflow: hidden;
+    transition: all 380ms;
+    text-align: left;
+    border-bottom: rgb(13, 23, 29);
+}
+#login>input{
+    height: 40px;
+    width: 90%;
+    margin-top: 12px;
+    border-radius: 4px;
+    border: 2px solid rgb(52, 97, 134);
+    background-color: whitesmoke;
+    color: rgb(71, 71, 71);
+    font-size: 14px;
+    padding: 0 10px;
+}
+
+#login>:last-child{
+    width: 95%;
+    background-image: linear-gradient( rgb(151, 14, 42),crimson);
+    border: 2px solid crimson;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+}
+#login>:last-child:hover{
+    background-image: linear-gradient( crimson,rgb(88, 8, 24));
+}
+#login input::placeholder{
+    color: steelblue;
+}
 /*
 ####################################################
 M E D I A  Q U E R I E S
@@ -432,10 +545,19 @@ No media query since this is the default in Bootstrap because it is "mobile firs
 
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-    .package-box {
-        margin: 10px;
+@media (min-width: 576px) {  
+    #login{
+        flex-wrap: nowrap;
     }
+    #login>input{
+        width: 250px;
+        margin: 0px 5px;
+    }
+    #login>:last-child{
+        width: 100px;
+        margin-top: 20px;
+    }
+
 }
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
@@ -464,8 +586,7 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         right: 20px;
         margin-right: 0px;
     }
-
-    #loginMobileView {
+    #loginMobileBtn{
         display: none;
         margin-right: 10px;
     }
@@ -530,6 +651,9 @@ No media query since this is the default in Bootstrap because it is "mobile firs
     .newsletter-input::placeholder {
         color: rgb(41, 57, 112);
     }
+    #login{
+        justify-content: flex-end;
+    }
 
     #submit {
         border-radius: 4px;
@@ -556,7 +680,8 @@ No media query since this is the default in Bootstrap because it is "mobile firs
     }
 
     .lg-img {
-        width: 400px;
+        width: 60%;
+        max-width: 1000px;
         height: 300px;
         border-radius: 2px;
         background-size: cover;
@@ -574,11 +699,14 @@ No media query since this is the default in Bootstrap because it is "mobile firs
     .lg-img.area {
         background-image: url(/images/image_08.jpg);
     }
-
+    .packages-space{
+    }
     .packages-lg {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+        width: 90%;
+
     }   
 
     .package-box>button {
@@ -587,10 +715,6 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         border-radius: 3px;
     }
 
-    .package-box {
-        height: 330px;
-        justify-content: space-around;
-    }
 
 }
 

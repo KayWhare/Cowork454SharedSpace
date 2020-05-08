@@ -18,7 +18,7 @@
 
 
         <div class="members-login">
-            <a href="">Login</a>
+            <a onclick="loginToggle()">Login</a>
             <a href="">Sign-up</a>
         </div>
     </div>
@@ -31,13 +31,13 @@
             <a href="">Spaces</a>
             <a href="">Bookings</a>
             <a href="">Blog</a>
-            <a href="">Contact</a>
+            <a onclick="contactToggle()">Contact</a>
         </ul>
 
-        <img class="nav-logo" src="/images/CoWork454 Logo esign.png">
+        <!-- <img class="nav-logo" src="/images/CoWork454 Logo esign.png"> -->
 
-        <div id="loginMobileView" class="members-login">
-            <a href="">Login</a>
+        <div id="loginMobileBtn" class="members-login">
+            <a onclick="loginToggle()" >Login</a>
             <a href="">Sign-up</a>
         </div>
 
@@ -51,14 +51,31 @@
         </div>
     </div>
 
-    <ul class="slide-nav">
-        <a href="">Membership</a>
-        <a href="">Events</a>
-        <a href="">Spaces</a>
-        <a href="">Bookings</a>
-        <a href="">Blog</a>
-        <a href="">Contact</a>
-    </ul>
+    <form id="login" action="">
+        <input type="email" name="Email" id="Email" placeholder="E-mail">
+        <input type="password" name="Password" id="Password" placeholder="Password">
+        <input type="submit" value="Login" id='loginSubmit'>
+    </form>
+
+        <ul class="slide-nav">
+            <a href="">Membership</a>
+            <a href="">Events</a>
+            <a href="">Spaces</a>
+            <a href="">Bookings</a>
+            <a href="">Blog</a>
+            <a onclick="contactToggle()">Contact</a>
+        </ul>
+
+        <form id="contactForm" action="">
+            <h2>How can we help you?</h2>
+            <input type="text" id="fname" name="fullname" placeholder="Full Name" required>
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
+            <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>
+            <textarea name="comments" id="comments" cols="53" rows="10" placeholder="Comments"></textarea>            
+            <input type="submit" id="contact-submit" value="Enquire now">
+        </form>
+
+
 
     <div class="hero-outer">
         <div class="hero">
@@ -95,8 +112,10 @@
 
     </div>
 
+  
 
 
+    <div class="package-box">
 
     <div class="packages-space">
         <div class="packages-lg">
@@ -175,8 +194,8 @@
                 <form action="">
                     <input type="text" name="firstName" class="newsletter-input" id="firstName"
                         placeholder="First Name">
-                    <input type="text" name="lastName" class="newsletter-input" id="firstName" placeholder="Last Name">
-                    <input type="email" name="Email" class="newsletter-input" id="firstName" placeholder="Email">
+                    <input type="text" name="lastName" class="newsletter-input" id="LastName" placeholder="Last Name">
+                    <input type="email" name="Email" class="newsletter-input" id="Email" placeholder="Email">
                     <input type="submit" name="submit" id="submit">
                 </form>
 
