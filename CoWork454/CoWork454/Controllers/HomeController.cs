@@ -17,4 +17,10 @@ namespace CoWork454.Controllers
             return View();
         }
 
+        public IActionResult User()
+        {
+            return View();
+        }
+    }
+
 }
