@@ -3,6 +3,7 @@
     padding: 0;
     scroll-behavior: smooth;
     /* border: 1px solid red; */
+
 }
 
 body {
@@ -352,11 +353,13 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
     background-size: cover;
     background-repeat: none;
     margin-bottom: 20px;
+    position:relative;
 }
 
 .sm-img.single {
     background-image: url(/images/image_10.jpg);
 }
+
 
 .sm-img.double {
     background-image: url(/images/image_04.jpg);
@@ -380,7 +383,40 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
     text-align: center;
     height: 450px;
     box-shadow: 5px 5px 10px #b1b1b2;
+    position:relative;
 }
+
+#mid-box, #top-img, #bot-img {
+    right:-100%;
+}
+
+#top-box, #bot-box, #mid-img{
+    left:-100%;
+}
+
+.left-affect{
+    animation: slideLeft .8s forwards linear;
+    animation-timing-function: ease-in;
+}
+
+.right-affect{
+    animation: slideRight .8s forwards linear;
+    animation-timing-function: ease-in;
+}
+
+
+
+@keyframes slideLeft{
+    0% { left: -100%;}
+    100%{ left: 0%;}
+}
+
+
+@keyframes slideRight{
+    0% { right: -100%;}
+    100%{ right: 0%;}
+}
+
 
 .package-box>h5 {
     font-size: 25px;
@@ -403,7 +439,6 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
     font-size: 1em;
 
 }
-
 
 
 
@@ -486,9 +521,8 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         display: none;
     }
 
-
     .lg-footer {
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
         display: flex;
     }
@@ -496,6 +530,11 @@ No media query since this is the default in Bootstrap because it is "mobile firs
     .lg-footer>div {
         width: 30%;
         padding: 10px;
+        max-width: 250px;
+        margin:0 auto;
+    }
+    .lg-footer>div:nth-child(2){
+        margin:0;
     }
 
     .lg-footer>div:first-child {
@@ -513,6 +552,7 @@ No media query since this is the default in Bootstrap because it is "mobile firs
 
     .about-footer>img {
         width: 100px;
+        padding-bottom: 20px;
 
     }
 
@@ -534,11 +574,21 @@ No media query since this is the default in Bootstrap because it is "mobile firs
     #submit {
         border-radius: 4px;
         margin: 5px;
-        width: 80px;
+        width: 90px;
         height: 30px;
         background-color: steelblue;
         color: white;
         border: none;
+    
+    }
+
+    .sitemap-footer, .newsletter-footer{
+        display:flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 }
 
@@ -561,6 +611,7 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         border-radius: 2px;
         background-size: cover;
         background-repeat: none;
+        position: relative;
     }
 
     .lg-img.single {
