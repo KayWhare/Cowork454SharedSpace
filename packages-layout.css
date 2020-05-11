@@ -1,0 +1,150 @@
+.inner-left,
+.inner-right{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width:1100px;
+    height: 340px;
+    margin: 150px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.inner-left{
+    left: 0;
+}
+.inner-right{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0;
+    margin-left: auto;
+}
+.inner-content{
+    position: absolute;
+    top: -70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 240px;
+    width: 300px;
+    background-color: white;
+    box-shadow: 0px 5px 15px rgb(102, 102, 102);
+    opacity: 0.9;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.inner-content>h3{
+    text-align: center;
+    font-size: 26px;
+    padding: 5px 0px;
+}
+.inner-content>p{
+    font-size: 14px;
+    padding: 10px;
+}
+.inner-content>a{
+    position: relative;
+    bottom: -8px;
+    margin: 0px auto;
+    background-image: linear-gradient(steelblue, rgb(43, 81, 112));
+    padding: 20px 100px;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid steelblue;
+    width: 100%;
+    cursor: pointer;
+}
+.inner-content>a:hover {
+    color: whitesmoke;
+    background-image: linear-gradient(rgb(43, 81, 112), steelblue);
+    transition: all 0.4s;
+}
+.inner-left>h4{
+    color: white;
+    font-family: Roboto Slab;
+    font-size: 22px;
+    position: absolute;
+    bottom:20px;
+    right:30px;
+    text-shadow: 1px 1px 2px grey;
+}
+.inner-right>h4{
+    color: white;
+    font-family: Roboto Slab;
+    font-size: 22px;
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    text-shadow: 1px 1px 2px grey;
+}
+#teaser1 {
+    background-image: url(/images/image_10.jpg);
+}
+#teaser2{
+    background-image: url(/images/image_06.jpg);
+}
+#teaser3 {
+    background-image: url(/images/image_03.jpg);
+}
+
+.left-affect{
+    animation: slideLeft 1.5s forwards linear;
+    animation-timing-function: ease-in;
+}
+
+.right-affect{
+    animation: slideRight 1.5s forwards linear;
+    animation-timing-function: ease-in;
+}
+
+@keyframes slideLeft{
+    0% { left: -100%; ;}
+    90% {opacity: 0.1;}
+    100%{ left: 0%; opacity: 1;}
+}
+
+@keyframes slideRight{
+    0% { right: -100%;}
+    90% {opacity: 0.1;}
+    100%{ right: 0%;opacity: 1;}
+}
+
+@media (min-width: 768px) {
+
+.inner-content{
+    height: 480px;
+}
+.inner-content>h3{
+    font-size: 30px;
+    padding: 20px 0px;
+}
+.inner-content>p{
+    font-size: 18px;
+    padding: 30px;
+}
+.inner-content>a{
+    bottom: -22px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+}
+@media (min-width: 992px) {
+
+
+    .package-box>button {
+        margin-top: 40px;
+        width:85%;
+        border-radius: 3px;
+    }
+    .inner-left>h4,
+    .inner-right>h4{
+        font-size: 28px;
+    }
+
+}

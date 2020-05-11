@@ -1,9 +1,8 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-    /* border: 1px solid red; */
-
+    border: 1px solid red;
 }
 
 body {
@@ -12,10 +11,18 @@ body {
     margin: 0 auto;
     background-color: whitesmoke;
     font-family: 'Oxygen', sans-serif;
-
 }
 
-.header {
+.container{
+    display: block;
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto;
+} */
+
+
+
+/* .header {
     position: relative;
     width: 100%;
     height: 150px;
@@ -40,7 +47,9 @@ body {
     right: 50%;
     margin-right: -98px;
     font-weight: 700;
-}
+} */
+
+/* 
 #loginMobileBtn{
     display: flex;
     position: absolute;
@@ -278,9 +287,9 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
     box-sizing: border-box;
     transform: rotate(-135deg);
     margin-top: -10px;
-}
+} */
 
-.hero-outer {
+/* .hero-outer {
     position: relative;
     height: 500px;
     background-image: url(/images/image_07.jpg);
@@ -319,9 +328,9 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
 .hero>span {
     font-size: 24px;
     font-weight: 400;
-}
+} */
 
-.our-space,
+/* .our-space,
 .packages-space {
     display: flex;
     flex-wrap: wrap;
@@ -352,122 +361,13 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
     font-size: 12px;
     padding: 10px;
     border-bottom: none;
-}
+} */
 
 
-
-/* ------------Packages-------------- */
-
-
-.sm-img {
-    width: 90%;
-    height:200px;
-    border-radius: 2px;
-    background-size: cover;
-    background-repeat: none;
-    margin-bottom: 20px;
-    position:relative;
-}
-
-.sm-img.single {
-    background-image: url(/images/image_10.jpg);
-}
+/* ----------contact form-------------- */
 
 
-.sm-img.double {
-    background-image: url(/images/image_04.jpg);
-}
-
-.sm-img.area {
-    background-image: url(/images/image_08.jpg);
-}
-
-.package-box {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    flex-direction: column;
-    width: 90%;
-    border: 4px solid steelblue;
-    border-radius: 4px;
-    margin: 20px auto;
-    text-align: center;
-    box-shadow: 5px 5px 10px #b1b1b2;
-    position:relative;
-}
-
-#mid-box, #top-img, #bot-img {
-    right:-100%;
-}
-
-#top-box, #bot-box, #mid-img{
-    left:-100%;
-}
-
-.left-affect{
-    animation: slideLeft .8s forwards linear;
-    animation-timing-function: ease-in;
-}
-
-.right-affect{
-    animation: slideRight .8s forwards linear;
-    animation-timing-function: ease-in;
-}
-
-
-
-@keyframes slideLeft{
-    0% { left: -100%;}
-    100%{ left: 0%;}
-}
-.packages-lg{
-    width: 90%;
-    max-width: 350px;
-}
-
-
-@keyframes slideRight{
-    0% { right: -100%;}
-    100%{ right: 0%;}
-}
-
-
-.package-box>h5 {
-    font-size: 25px;
-    padding-bottom: 20px;
-}
-
-.package-box>p {
-    margin: 0 20px;
-}
-
-.package-box>button {
-    margin:0;
-    padding:0;
-    margin-top: 10px;
-    width: 100%;
-    height: 40px;
-    border: none;
-    background-color: steelblue;
-    color: white;
-    font-size: 1em;
-
-}
-
-
-
-/* ------------Footer-------------- */
-
-.lg-footer {
-
-    display: none;
-}
-
-
-/* contact form */
-.formStyles{
+/* .formStyles{
     height: 0px;
     width: 100%;
     position: sticky;
@@ -571,13 +471,19 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
     color: steelblue;
 }
 
-.container{
-    display: block;
-    width: 90%;
-    max-width: 1300px;
-    margin: 0 auto;
-}
-.inner-left,
+ */
+
+
+
+
+
+
+
+
+/* ------------Packages-------------- */
+
+
+/* .inner-left,
 .inner-right{
     position: relative;
     top: 0;
@@ -670,25 +576,50 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
 #teaser3 {
     background-image: url(/images/image_03.jpg);
 }
+
+.left-affect{
+    animation: slideLeft 1.5s forwards linear;
+    animation-timing-function: ease-in;
+}
+
+.right-affect{
+    animation: slideRight 1.5s forwards linear;
+    animation-timing-function: ease-in;
+}
+
+@keyframes slideLeft{
+    0% { left: -100%; ;}
+    90% {opacity: 0.1;}
+    100%{ left: 0%; opacity: 1;}
+}
+
+@keyframes slideRight{
+    0% { right: -100%;}
+    90% {opacity: 0.1;}
+    100%{ right: 0%;opacity: 1;}
+} */
+
+/* 
+
+------------Footer--------------
+
+.lg-footer {
+    display: none;
+} */
+
+
+
 /*
 ####################################################
 M E D I A  Q U E R I E S
 ####################################################
 */
 
-/*
-::::::::::::::::::::::::::::::::::::::::::::::::::::
-Bootstrap 4 breakpoints
-*/
-
-/* 
-Extra small devices (portrait phones, less than 576px) 
-No media query since this is the default in Bootstrap because it is "mobile first"
-*/
 
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {  
+
+/* @media (min-width: 576px) {  
+
     #login{
         flex-wrap: nowrap;
     }
@@ -701,10 +632,11 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         margin-top: 20px;
     }
 
-}
+} */
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
+
     .space-box {
         width: 45%;
         display: flex;
@@ -720,9 +652,9 @@ No media query since this is the default in Bootstrap because it is "mobile firs
     .our-space>:nth-child(3),
     .our-space>:nth-child(4) {
         border-bottom: none;
-    }
+    } */
 
-    .members-login {
+    /* .members-login {
         display: flex;
         top: 55px;
         position: absolute;
@@ -748,8 +680,13 @@ No media query since this is the default in Bootstrap because it is "mobile firs
 
     .nav-logo {
         display: none;
-    }
-    footer{
+    } */
+
+
+
+    /* --------- Footer Media ------------- */
+    
+    /* footer{
         position: relative;
         bottom: 0px;
         width: 100%;
@@ -842,53 +779,13 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         bottom: -22px;
         font-weight: 700;
         font-size: 16px;
-    }
-}
+    } */
+/* } */
 
 /* Large devices (desktops, 992px and up) */
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
 
-    .cost {
-        padding-top: 40px;
-        font-size: 1.5em;
-    }
-
-    .sm-img {
-        display: none;
-    }
-
-    .lg-img {
-        width: 60%;
-        max-width: 1000px;
-        height: 300px;
-        border-radius: 2px;
-        background-size: cover;
-        background-repeat: none;
-        position: relative;
-    }
-
-    .lg-img.single {
-        background-image: url(/images/image_10.jpg);
-    }
-
-    .lg-img.double {
-        background-image: url(/images/image_04.jpg);
-    }
-
-    .lg-img.area {
-        background-image: url(/images/image_08.jpg);
-    }
-    .packages-space{
-    }
-    .packages-lg {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 90%;
-        max-width: 1000px;
-
-    }   
 
     .package-box>button {
         margin-top: 40px;
@@ -900,10 +797,10 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         font-size: 28px;
     }
 
-}
+} */
 
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {}
+/* @media (min-width: 1200px) {} */
 
 
 

@@ -71,37 +71,31 @@ let topLogin = document.querySelectorAll('.members-login')[0];
 let navLogo = document.querySelector('.nav-logo');
 
 
-// window.onscroll = function() { scollFunc()};
+window.onscroll = function() { scollFunc()};
 
-// function scollFunc() {
+function scollFunc() {
 
-//    const yTop = document.documentElement.scrollTop;
+   const yTop = document.documentElement.scrollTop;
 
-//    const topimg = document.getElementById("top-img");
-//    const topbox = document.getElementById("top-box");
+   const topbox = document.getElementById("inner-top");
 
-//    const midimg = document.getElementById("mid-img");
-//    const midbox = document.getElementById("mid-box");
+   const midbox = document.getElementById("inner-mid");
 
-//    const botimg = document.getElementById("bot-img");
-//    const botbox = document.getElementById("bot-box");
+   const botbox = document.getElementById("inner-bot");
 
-//  if (yTop > 600) {
-//     topimg.classList.add("right-affect");
-//     topbox.classList.add("left-affect");
-//  }
+ if (yTop > 600) {
+    topbox.classList.add("left-affect");
+ }
 
-//  if (yTop>1000){
-//    midimg.classList.add("left-affect");
-//    midbox.classList.add("right-affect");
-//  }
+ if (yTop>1200){
+   midbox.classList.add("right-affect");
+ }
 
-//  if(yTop>1400){
-//    botimg.classList.add("right-affect");
-//    botbox.classList.add("left-affect");
-//  }
+ if(yTop>1600){
+   botbox.classList.add("left-affect");
+ }
 
-// }
+}
 
 
 

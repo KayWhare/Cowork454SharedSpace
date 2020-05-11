@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    /* border: 1px solid red; */
+}
+
+body {
+    background: #fff;
+    padding: 0;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.container{
+    display: block;
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
