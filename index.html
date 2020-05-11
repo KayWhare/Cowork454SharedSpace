@@ -21,7 +21,7 @@
 
         <div class="members-login">
             <a onclick="loginToggle()">Login</a>
-            <a href="">Sign-up</a>
+            <a onclick="signUpToggle()">Sign-up</a>
         </div>
     </div>
 
@@ -40,7 +40,7 @@
 
         <div id="loginMobileBtn" class="members-login">
             <a onclick="loginToggle()" >Login</a>
-            <a href="">Sign-up</a>
+            <a onclick="signUpToggle()">Sign-up</a>
         </div>
 
         <div id='hamburger'>
@@ -68,13 +68,24 @@
             <a onclick="contactToggle()">Contact</a>
         </ul>
 
-        <form id="contactForm" action="">
+        <form id="contactForm" class="formStyles"action="">
             <h2>How can we help you?</h2>
-            <input type="text" id="fname" name="fullname" placeholder="Full Name" required>
+            <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
             <input type="email" id="email" name="email" placeholder="E-mail" required>
             <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>
             <textarea name="comments" id="comments" cols="53" rows="10" placeholder="Comments"></textarea>            
             <input type="submit" id="contact-submit" value="Enquire now">
+        </form>
+
+        <form id="signUpForm" class="formStyles" action="">
+            <h2>Sign Up</h2>
+            <input type="text" id="fname" name="firstname" placeholder="First Name" required>
+            <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
+            <input type="text" id="company" name="company" placeholder="Company Name" optional>
+            <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>           
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="submit" id="contact-submit" value="Join us">
         </form>
 
 

@@ -5,6 +5,7 @@ let slideNav = document.querySelector('.slide-nav');
 let loginSlide = document.getElementById('login');
 let loginBtns = document.querySelectorAll('.members-login');
 var contactForm = document.getElementById('contactForm');
+var signUpForm = document.getElementById('signUpForm');
 
 hamburger.addEventListener('click', function(){
    if (hamburger.checked == true){
@@ -38,10 +39,11 @@ function loginToggle(){
    });
 
    function zeroOutHeights(){
+      signUpForm.style.height = '0px';
       slideNav.style.height = '0px'
       hamburger.checked = false;
       contactForm.style.height = '0px';
-      loginSlide.style.height = '0px'
+      loginSlide.style.height = '0px';
    }
    
 function contactToggle(){
@@ -51,6 +53,14 @@ function contactToggle(){
    }else{
       zeroOutHeights();
       contactForm.style.height = '600px';
+   }
+}
+function signUpToggle(){
+   if(signUpForm.style.height > '0px'){
+      signUpForm.style.height = '0px';
+   }else{
+      zeroOutHeights();
+      signUpForm.style.height = '600px';
    }
 }
 
