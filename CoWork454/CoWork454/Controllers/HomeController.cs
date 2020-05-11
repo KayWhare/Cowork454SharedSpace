@@ -7,10 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CoWork454.Models;
 
+
 namespace CoWork454.Controllers
 {
     public class HomeController : Controller
     {
+
+       
 
         public IActionResult Index()
         {
@@ -21,6 +24,13 @@ namespace CoWork454.Controllers
         {
             return View();
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+
     }
 
 }

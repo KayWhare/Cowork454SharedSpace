@@ -18,6 +18,8 @@ namespace CoWork454.Models
         public string Date_registered { get; set; }
         public string PasswordHash { get; set; }
 
+        public UserRole UserRole { get; set; }
+
         public virtual ICollection<Order> UserOrders { get; set; }
     }
 }

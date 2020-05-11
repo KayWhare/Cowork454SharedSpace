@@ -23,14 +23,14 @@ namespace CoWork454.Controllers.api
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUser()
+        public async Task<ActionResult<IEnumerable<Json>>> GetUser()
         {
             return await _context.User.ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<Json>> GetUser(int id)
         {
             var user = await _context.User.FindAsync(id);
 
@@ -42,11 +42,29 @@ namespace CoWork454.Controllers.api
             return user;
         }
 
+        [HttpGet("{email}")]
+        public async Task<ActionResult<Json>> LoginUser(string email, string pass)
+        {
+            var user = await _context.User.FindAsync(email);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            if (user.PasswordHash != pass)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
+
+
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutUser(int id, Json user)
         {
             if (id != user.Id)
             {
@@ -78,7 +96,7 @@ namespace CoWork454.Controllers.api
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<Json>> PostUser(Json user)
         {
             _context.User.Add(user);
             await _context.SaveChangesAsync();
@@ -88,7 +106,7 @@ namespace CoWork454.Controllers.api
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<User>> DeleteUser(int id)
+        public async Task<ActionResult<Json>> DeleteUser(int id)
         {
             var user = await _context.User.FindAsync(id);
             if (user == null)

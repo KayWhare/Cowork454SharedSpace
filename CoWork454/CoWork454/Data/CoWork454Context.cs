@@ -12,7 +12,7 @@ namespace CoWork454.Data
         {
         }
 
-        public DbSet<User> User { get; set; }
+        public DbSet<Json> User { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Booking> Booking { get; set; }
         public DbSet<Product> Product { get; set; }
@@ -44,7 +44,7 @@ namespace CoWork454.Data
                 .WithOne(e => e.Item);
 
             //definining one:many relationship between User and Order
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<Json>()
                 .HasMany(u => u.UserOrders)
                 .WithOne(o => o.User);
 
