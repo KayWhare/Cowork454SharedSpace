@@ -57,6 +57,7 @@ body {
 #loginMobileBtn>:first-child:hover{
     color: crimson;
     background: none;
+    transition: all 0.4s;
 }
 
 .members-login>:first-child {
@@ -87,10 +88,12 @@ body {
 .members-login>:first-child:hover {
     color: white;
     background-image: linear-gradient(rgb(43, 81, 112), steelblue);
+    transition: all 0.4s;
 }
 
 .members-login>:last-child:hover {
     background-image: linear-gradient(rgb(43, 81, 112), steelblue);
+    transition: all 0.4s;
 }
 
 .fullwidth-nav {
@@ -131,15 +134,14 @@ body {
 .fullwidth-nav>ul>a{
     padding: 10px 18px;
     font-weight: 700;
+    border-radius: 12px;
 }
 .fullwidth-nav>ul>a:hover{
     color: white;
-    border: inset 2px solid darkred;
-    border-color: crimson, rgb(80, 1, 1),rgb(80, 1, 1),crimson;
-    border-radius: 12px;
-    background-image: linear-gradient(crimson, rgb(80, 1, 1));
-    box-shadow: 0px 0px 5px rgb(85, 34, 34) ;
+    background-color: crimson;
+    box-shadow: inset 2px 2px 5px rgb(121, 16, 16) ;
     font-weight: 700;
+    transition: all 0.4s;
 }
 
 .slide-nav {
@@ -167,6 +169,7 @@ body {
 
 .slide-nav>a:hover {
     color: crimson;
+    transition: all 0.4s;
 }
 
 .nav-logo {
@@ -282,7 +285,7 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
     height: 500px;
     background-image: url(/images/image_07.jpg);
     background-size: cover;
-    background-position: bottom;
+    background-position: center -200px;
     background-attachment: fixed;
 }
 
@@ -304,6 +307,8 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
     text-align: center;
     margin-bottom: 30px;
     text-shadow: 0px 1px 2px rgb(0, 0, 0);
+    font-family: 'Roboto Slab', serif;
+
 }
 
 .hero>h1 {
@@ -461,6 +466,7 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
 }
 
 
+/* contact form */
 
 #contactForm{
     height: 0px;
@@ -478,6 +484,7 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
     transition: all 380ms;
     text-align: left;
     border-bottom: rgb(13, 23, 29);
+    box-shadow: 0px 5px 20px rgb(49, 49, 49);
 }
 #contactForm>h2{
     color: whitesmoke;
@@ -518,6 +525,7 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
 }
 #contactForm>:last-child:hover{
     background-image: linear-gradient( crimson,rgb(88, 8, 24));
+    transition: all 0.4s;
 }
 #login{
     position: sticky;
@@ -558,9 +566,110 @@ input[type=checkbox]:checked+.navToggleLabel>.diagonal.part-2 {
 }
 #login>:last-child:hover{
     background-image: linear-gradient( crimson,rgb(88, 8, 24));
+    transition: all 0.4s;
 }
 #login input::placeholder{
     color: steelblue;
+}
+
+.container{
+    display: block;
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.inner-left,
+.inner-right{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width:1100px;
+    height: 340px;
+    margin: 150px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.inner-left{
+    left: 0;
+}
+.inner-right{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0;
+    margin-left: auto;
+}
+.inner-content{
+    position: absolute;
+    top: -70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 240px;
+    width: 300px;
+    background-color: white;
+    box-shadow: 0px 5px 15px rgb(102, 102, 102);
+    opacity: 0.9;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.inner-content>h3{
+    text-align: center;
+    font-size: 26px;
+    padding: 5px 0px;
+}
+.inner-content>p{
+    font-size: 14px;
+    padding: 10px;
+}
+.inner-content>a{
+    position: relative;
+    bottom: -8px;
+    margin: 0px auto;
+    background-image: linear-gradient(steelblue, rgb(43, 81, 112));
+    padding: 20px 100px;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid steelblue;
+    width: 100%;
+    cursor: pointer;
+}
+.inner-content>a:hover {
+    color: whitesmoke;
+    background-image: linear-gradient(rgb(43, 81, 112), steelblue);
+    transition: all 0.4s;
+}
+.inner-left>h4{
+    color: white;
+    font-family: Roboto Slab;
+    font-size: 22px;
+    position: absolute;
+    bottom:20px;
+    right:30px;
+    text-shadow: 1px 1px 2px grey;
+}
+.inner-right>h4{
+    color: white;
+    font-family: Roboto Slab;
+    font-size: 22px;
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    text-shadow: 1px 1px 2px grey;
+}
+#teaser1 {
+    background-image: url(/images/image_10.jpg);
+}
+#teaser2{
+    background-image: url(/images/image_06.jpg);
+}
+#teaser3 {
+    background-image: url(/images/image_03.jpg);
 }
 /*
 ####################################################
@@ -641,8 +750,13 @@ No media query since this is the default in Bootstrap because it is "mobile firs
     .nav-logo {
         display: none;
     }
-
+    footer{
+        position: relative;
+        bottom: 0px;
+        width: 100%;
+    }
     .lg-footer {
+
         width: 90%;
         margin: 0 auto;
         display: flex;
@@ -714,6 +828,22 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         align-items: center;
         text-align: center;
     }
+    .inner-content{
+        height: 480px;
+    }
+    .inner-content>h3{
+        font-size: 30px;
+        padding: 20px 0px;
+    }
+    .inner-content>p{
+        font-size: 18px;
+        padding: 30px;
+    }
+    .inner-content>a{
+        bottom: -22px;
+        font-weight: 700;
+        font-size: 16px;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -757,6 +887,7 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         align-items: center;
         justify-content: space-evenly;
         width: 90%;
+        max-width: 1000px;
 
     }   
 
@@ -765,7 +896,10 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         width:85%;
         border-radius: 3px;
     }
-
+    .inner-left>h4,
+    .inner-right>h4{
+        font-size: 28px;
+    }
 
 }
 
