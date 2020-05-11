@@ -92,6 +92,14 @@
     background-image: url(/images/image_03.jpg);
 }
 
+/* #inner-top{
+}
+#inner-mid{
+    left:-300%;
+}
+#inner-bot{
+} */
+
 .left-affect{
     animation: slideLeft 1.5s forwards linear;
     animation-timing-function: ease-in;
@@ -103,16 +111,24 @@
 }
 
 @keyframes slideLeft{
-    0% { left: -100%; ;}
-    90% {opacity: 0.1;}
-    100%{ left: 0%; opacity: 1;}
+    0% { left: -70%; ;}
+    80% {opacity: 0.1;}
+    85% {opacity: 0.4;}
+    90% {opacity: 0.6;}
+    100%{ left:0%; opacity: 1;}
 }
 
 @keyframes slideRight{
-    0% { right: -100%;}
-    90% {opacity: 0.1;}
-    100%{ right: 0%;opacity: 1;}
+    0% { right: -70%;}
+    80% {opacity: 0.1;}
+    85% {opacity: 0.4;}
+    90% {opacity: 0.6;}
+    100%{ right:0%; opacity: 1;}
 }
+
+
+/*---------- Media -----------*/
+
 
 @media (min-width: 768px) {
 
