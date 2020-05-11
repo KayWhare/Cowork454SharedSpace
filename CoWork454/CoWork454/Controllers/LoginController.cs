@@ -49,16 +49,21 @@ namespace CoWork454.Controllers
                 return View();
             }
 
-            if (existingUser.UserRole == 1)
+            if (existingUser.UserRole == UserRole.Admin)
             {
                 //return admin page
+                //set admin cookie
+            }
+            else {
+                // if it matches, set a cookie with the userId
+                //SetEncryptedMemberCookie("USER_ID", existingUser.Id.ToString());
             }
 
-            // if it matches, set a cookie with the userId
-            //SetEncryptedMemberCookie("USER_ID", existingUser.Id.ToString());
+                // if it matches, set a cookie with the userId
+                //SetEncryptedMemberCookie("USER_ID", existingUser.Id.ToString());
 
-            // redirect to admin panel
-            return RedirectToAction("Index", "Home");
+                // redirect to admin panel
+                return RedirectToAction("Index", "Home");
 
         }
 
