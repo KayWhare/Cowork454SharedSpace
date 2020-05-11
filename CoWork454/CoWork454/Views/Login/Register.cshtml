@@ -1,0 +1,34 @@
+﻿@page
+@{
+}
+
+
+<section class="register-section">
+    <div class="validation-summary">
+        @Html.ValidationSummary()
+    </div>
+
+    <p><a href="/Login/Index">Click here to login</a></p>
+    <form action="/Login/Register" method="POST">
+
+        <label for="FirstName">First Name</label>
+        <input type="text" name="FirstName" id="FirstName" required />
+
+        <label for="LastName">Last Name</label>
+        <input type="text" name="LastName" id="LastName" required />
+
+        <label for="Email">Email</label>
+        <input type="text" name="Email" id="Email" required />
+
+        <label for="Phone">Phone</label>
+        <input type="text" name="Phone" id="Phone" required />
+
+        <label for="Password">Password</label>
+        <input type="password" name="Password" id="Password" required />
+
+        <label for="CompanyName">Company</label>
+        <input type="text" name="CompanyName" id="CompanyName" />
+
+        <input type="submit" value="Register" />
+    </form>
+</section>
