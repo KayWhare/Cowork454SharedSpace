@@ -28,10 +28,7 @@
         <img class="logo" src="images/CoWork454 Logo esign.png" alt="logo">
 
 
-        <div class="members-login">
-            <a onclick="loginToggle()">Login</a>
-            <a onclick="signUpToggle()">Sign-up</a>
-        </div>
+@Html.Partial("_LoginView");
     </div>
 
 
@@ -61,7 +58,7 @@
         </div>
     </div>
 
-    <form id="login" action="/Login/Login">
+    <form id="login" action="/Login/Login"  method="POST">
         <input type="email" name="Email" id="Email" placeholder="E-mail">
         <input type="password" name="Password" id="Password" placeholder="Password">
         <input type="submit" value="Login" id='loginSubmit'>
@@ -85,12 +82,12 @@
         <input type="submit" id="contact-submit" value="Enquire now">
     </form>
 
-    <form id="signUpForm" class="formStyles" action="/">
+    <form id="signUpForm" class="formStyles" action="/Login/Register" method="POST"> 
         <h2>Sign Up</h2>
         <input type="text" id="fname" name="firstname" placeholder="First Name" required>
         <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
-        <input type="text" id="company" name="company" placeholder="Company Name" optional>
-        <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>
+        <input type="text" id="company" name="CompanyName" placeholder="Company Name" optional>
+        <input type="number" id="phone-number" name="Phone" placeholder="Mobile" required>
         <input type="email" id="email" name="email" placeholder="E-mail" required>
         <input type="password" id="password" name="password" placeholder="Password" required>
         <input type="submit" id="contact-submit" value="Join us">

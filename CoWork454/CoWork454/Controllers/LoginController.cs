@@ -24,7 +24,8 @@ namespace CoWork454.Controllers
         // GET: Login
         public ActionResult Login()
         {
-            return View();
+            //return View();
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -37,7 +38,8 @@ namespace CoWork454.Controllers
             if (existingUser == null)
             {
                 ModelState.AddModelError("Email", "Either the email or password was incorrect");
-                return View();
+                //return View();
+                return RedirectToAction("Index", "Home");
             }
 
             // validate the incoming password with the password hash in the database
@@ -45,7 +47,8 @@ namespace CoWork454.Controllers
             if (!passwordVerified)
             {
                 ModelState.AddModelError("Email", "Either the email or password was incorrect");
-                return View();
+                //return View();
+                return RedirectToAction("Index", "Home");
             }
 
             if (existingUser.UserRole == UserRole.Admin)
@@ -57,10 +60,11 @@ namespace CoWork454.Controllers
             else {
                 // if it matches, set a cookie with the userId
                 SetEncryptedUserCookie("USER_ID", existingUser.Id.ToString());
+                ViewData["User"] = existingUser;
             }
 
                 // redirect to admin panel
-                return RedirectToAction("Index", "Home");
+                return View("Members");
 
         }
 
@@ -74,7 +78,7 @@ namespace CoWork454.Controllers
 
             if (userIdCookie != null)
             {
-                return RedirectToAction("Login", "Login");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -89,7 +93,7 @@ namespace CoWork454.Controllers
             var userIdCookie = GetEncryptedUserCookie("USER_ID");
             if (userIdCookie != null)
             {
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("Index", "Home");
             }
 
             // check if email already exists in database (if so throw exception)
@@ -98,7 +102,8 @@ namespace CoWork454.Controllers
             if (existingUser != null)
             {
                 ModelState.AddModelError("Email", "Email already in use");
-                return View();
+                //return View();
+                return RedirectToAction("Index", "Home");
             }
 
             // hash the incoming password
@@ -122,7 +127,8 @@ namespace CoWork454.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("", ex.Message);
-                return View();
+                //return View();
+                return RedirectToAction("Index", "Home");
             }
 
             // redirect to the login
