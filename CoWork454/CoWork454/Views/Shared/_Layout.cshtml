@@ -1,48 +1,154 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CoWork454</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="~/css/contact-layout.css" class="style">
+    <link rel="stylesheet" href="~/css/footer-layout.css" class="style">
+    <link rel="stylesheet" href="~/css/head-layout.css" class="style">
+    <link rel="stylesheet" href="~/css/hero-layout.css" class="style">
+    <link rel="stylesheet" href="~/css/nav-layout.css" class="style">
+    <link rel="stylesheet" href="~/css/ourspace-layout.css" class="style">
+    <link rel="stylesheet" href="~/css/packages-layout.css" class="style">
+    <link rel="stylesheet" href="~/css/page-layout.css" class="style">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+
+    <title>CoWork 454</title>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CoWork454</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <div class="header">
+
+        <img class="logo" src="images/CoWork454 Logo esign.png" alt="logo">
+
+
+        <div class="members-login">
+            <a onclick="loginToggle()">Login</a>
+            <a onclick="signUpToggle()">Sign-up</a>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - CoWork454 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+    <div class="fullwidth-nav">
+        <ul>
+            <a href="">Membership</a>
+            <a href="">Events</a>
+            <a href="">Spaces</a>
+            <a href="">Bookings</a>
+            <a href="">Blog</a>
+            <a onclick="contactToggle()">Contact</a>
+        </ul>
+
+
+        <div id="loginMobileBtn" class="members-login">
+            <a onclick="loginToggle()">Login</a>
+            <a onclick="signUpToggle()">Sign-up</a>
+        </div>
+
+        <div id='hamburger'>
+            <input type="checkbox" class="openSidebarMenu" id="slideNavToggle">
+            <label for="slideNavToggle" class="navToggleLabel">
+                <div class="spinner diagonal part-1"></div>
+                <div class="spinner horizontal"></div>
+                <div class="spinner diagonal part-2"></div>
+            </label>
+        </div>
+    </div>
+
+    <form id="login" action="/Login/Login">
+        <input type="email" name="Email" id="Email" placeholder="E-mail">
+        <input type="password" name="Password" id="Password" placeholder="Password">
+        <input type="submit" value="Login" id='loginSubmit'>
+    </form>
+
+    <ul class="slide-nav">
+        <a href="">Membership</a>
+        <a href="">Events</a>
+        <a href="">Spaces</a>
+        <a href="">Bookings</a>
+        <a href="">Blog</a>
+        <a onclick="contactToggle()">Contact</a>
+    </ul>
+
+    <form id="contactForm" class="formStyles" action="">
+        <h2>How can we help you?</h2>
+        <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+        <input type="email" id="email" name="email" placeholder="E-mail" required>
+        <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>
+        <textarea name="comments" id="comments" cols="53" rows="10" placeholder="Comments"></textarea>
+        <input type="submit" id="contact-submit" value="Enquire now">
+    </form>
+
+    <form id="signUpForm" class="formStyles" action="/">
+        <h2>Sign Up</h2>
+        <input type="text" id="fname" name="firstname" placeholder="First Name" required>
+        <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
+        <input type="text" id="company" name="company" placeholder="Company Name" optional>
+        <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>
+        <input type="email" id="email" name="email" placeholder="E-mail" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="submit" id="contact-submit" value="Join us">
+    </form>
+
+    @RenderBody()
+
+    <footer>
+        <div class="lg-footer">
+            <div class="about-footer">
+                <img src="/images/CoWork454 Logo esign.png" alt="">
+                <p>
+                    454 Scarborough Beach rd, <br> Osborne Park, <br>
+                    WA 6017
+                </p>
+
+                <span>
+                    <a href="">
+                        <p>TERMS AND CONDITIONS</p>
+                    </a>
+                    <a href="">
+                        <p>OUR TEAM</p>
+                    </a>
+                    <a href="">
+                        <p>CONTACT US</p>
+                    </a>
+                </span>
+            </div>
+
+            <div class="sitemap-footer">
+                <h6 class="foot-heading">Sitemap</h6>
+                <ul class="sitemap-footer-links">
+                    <a href="">Home</a>
+                    <a href="">Membership</a>
+                    <a href="">Events</a>
+                    <a href="">Spaces</a>
+                    <a href="">Bookings</a>
+                    <a href="">Blog</a>
+                    <a href="">Contact</a>
+                </ul>
+
+            </div>
+
+            <div class="newsletter-footer">
+
+                <h6 class="foot-heading">Subscribe to our newsletter</h6>
+                <form action="">
+                    <input type="text" name="firstName" class="newsletter-input" id="firstName"
+                           placeholder="First Name">
+                    <input type="text" name="lastName" class="newsletter-input" id="LastName" placeholder="Last Name">
+                    <input type="email" name="Email" class="newsletter-input" id="Email" placeholder="Email">
+                    <input type="submit" name="submit" id="submit">
+                </form>
+
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>

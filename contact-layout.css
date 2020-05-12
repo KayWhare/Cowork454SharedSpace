@@ -41,7 +41,7 @@
     padding-left: 0px;
     margin-bottom: 20px;
 }
-#contactForm>#comments{
+#contactForm >#comments{
     height: 300px;
     margin-top: 10px;
     border: 2px solid rgb(52, 97, 134);
