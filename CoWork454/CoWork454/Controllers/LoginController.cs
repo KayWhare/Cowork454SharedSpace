@@ -36,7 +36,7 @@ namespace CoWork454.Controllers
             var existingUser = _CoWork454Context.User.SingleOrDefault(l => l.Email == model.Email);
             if (existingUser == null)
             {
-                ModelState.AddModelError("UserName", "Either the user name or password was incorrect");
+                ModelState.AddModelError("Email", "Either the email or password was incorrect");
                 return View();
             }
 
@@ -44,12 +44,13 @@ namespace CoWork454.Controllers
             var passwordVerified = BCrypt.Net.BCrypt.Verify(model.Password, existingUser.PasswordHash);
             if (!passwordVerified)
             {
-                ModelState.AddModelError("UserName", "Either the user name or password was incorrect");
+                ModelState.AddModelError("Email", "Either the email or password was incorrect");
                 return View();
             }
 
             if (existingUser.UserRole == UserRole.Admin)
             {
+                SetEncryptedUserCookie("ADMIN", existingUser.Id.ToString());
                 //return admin page
                 //set admin cookie
             }
@@ -96,7 +97,7 @@ namespace CoWork454.Controllers
 
             if (existingUser != null)
             {
-                ModelState.AddModelError("UserName", "UserName already exists in database");
+                ModelState.AddModelError("Email", "Email already in use");
                 return View();
             }
 
