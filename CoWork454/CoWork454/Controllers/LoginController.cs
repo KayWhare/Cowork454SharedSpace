@@ -55,11 +55,8 @@ namespace CoWork454.Controllers
             }
             else {
                 // if it matches, set a cookie with the userId
-                //SetEncryptedMemberCookie("USER_ID", existingUser.Id.ToString());
+                SetEncryptedUserCookie("USER_ID", existingUser.Id.ToString());
             }
-
-                // if it matches, set a cookie with the userId
-                //SetEncryptedMemberCookie("USER_ID", existingUser.Id.ToString());
 
                 // redirect to admin panel
                 return RedirectToAction("Index", "Home");
@@ -74,9 +71,9 @@ namespace CoWork454.Controllers
             //gets user cookie if already logged in
             var userIdCookie = GetEncryptedUserCookie("USER_ID");
 
-            if (userIdCookie == null)
+            if (userIdCookie != null)
             {
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("Login", "Login");
             }
             return View();
         }
@@ -89,7 +86,7 @@ namespace CoWork454.Controllers
 
             //only available if logged in
             var userIdCookie = GetEncryptedUserCookie("USER_ID");
-            if (userIdCookie == null)
+            if (userIdCookie != null)
             {
                 return RedirectToAction("Index", "Login");
             }
@@ -128,7 +125,7 @@ namespace CoWork454.Controllers
             }
 
             // redirect to the login
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         // /User/Logout
@@ -151,5 +148,20 @@ namespace CoWork454.Controllers
 
             return cookieContent;
         }
+
+        protected void SetEncryptedUserCookie(string cookieKey, string cookieValue)
+        {
+            var cookieOptions = new CookieOptions();
+
+            if (cookieValue != "GUEST")
+            {
+                cookieOptions.Expires = DateTimeOffset.MaxValue;
+            }
+
+            var encryptedCookieContent = EncryptionHelper.EncryptString(cookieValue, EncryptionHelper.EncryptionKey);
+
+            HttpContext.Response.Cookies.Append(cookieKey, encryptedCookieContent, cookieOptions);
+        }
+
     }
 }
