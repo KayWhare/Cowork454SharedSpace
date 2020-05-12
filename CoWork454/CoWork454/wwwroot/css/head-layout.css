@@ -1,0 +1,26 @@
+.header {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    transition: all 0.3s;
+    background-color: whitesmoke;
+    z-index: 40;
+}
+
+.logo {
+    position: absolute;
+    width: 300px;
+    top: 32px;
+    left: 50%;
+    margin-left: -150px;
+}
+
+.members-login {
+    display: none;
+    align-items: center;
+    top: 90px;
+    position: absolute;
+    right: 50%;
+    margin-right: -98px;
+    font-weight: 700;
+}
