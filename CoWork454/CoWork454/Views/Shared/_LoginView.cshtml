@@ -1,15 +1,19 @@
 ﻿@using CoWork454.Models
 @{
-    var user =  (User) ViewData["User"];
+    var user = (User)ViewData["User"];
 }
 
-@if (user == null) { 
+@if (user == null)
+{
     <div class="members-login">
         <a onclick="loginToggle()">Login</a>
         <a onclick="signUpToggle()">Sign-up</a>
     </div>
-    }
+}
 else
 {
-    <div><p>User Is logged in</p></div>
+    <div class="members-login">
+        <a onclick="loginToggle()">Hi @user.FirstName </a>
+        <a onclick="signUpToggle()">Log Off</a>
+    </div>
 }
