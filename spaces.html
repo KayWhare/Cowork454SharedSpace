@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spaces</title>
+    <link rel="stylesheet" href="contact-layout.css" class="style">
+    <link rel="stylesheet" href="footer-layout.css" class="style">
+    <link rel="stylesheet" href="head-layout.css" class="style">
+    <link rel="stylesheet" href="nav-layout.css" class="style">
+    <link rel="stylesheet" href="page-layout.css" class="style">
+    <link rel="stylesheet" href="spaces-layout.css" class="style">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+
+        <img class="logo" src="images/CoWork454 Logo esign.png" alt="logo">
+
+        <div class="members-login">
+            <a onclick="loginToggle()">Login</a>
+            <a onclick="signUpToggle()">Sign-up</a>
+        </div>
+    </div>
+
+
+    <div class="fullwidth-nav">
+        <ul>
+            <a href="">Membership</a>
+            <a href="">Events</a>
+            <a href="">Spaces</a>
+            <a href="">Bookings</a>
+            <a href="">Blog</a>
+            <a onclick="contactToggle()">Contact</a>
+        </ul>
+
+        <!-- <img class="nav-logo" src="/images/CoWork454 Logo esign.png"> -->
+
+        <div id="loginMobileBtn" class="members-login">
+            <a onclick="loginToggle()">Login</a>
+            <a onclick="signUpToggle()">Sign-up</a>
+        </div>
+
+        <div id='hamburger'>
+            <input type="checkbox" class="openSidebarMenu" id="slideNavToggle">
+            <label for="slideNavToggle" class="navToggleLabel">
+                <div class="spinner diagonal part-1"></div>
+                <div class="spinner horizontal"></div>
+                <div class="spinner diagonal part-2"></div>
+            </label>
+        </div>
+    </div>
+
+    <form id="login" action="">
+        <input type="email" name="Email" id="Email" placeholder="E-mail">
+        <input type="password" name="Password" id="Password" placeholder="Password">
+        <input type="submit" value="Login" id='loginSubmit'>
+    </form>
+
+    <ul class="slide-nav">
+        <a href="">Membership</a>
+        <a href="">Events</a>
+        <a href="">Spaces</a>
+        <a href="">Bookings</a>
+        <a href="">Blog</a>
+        <a onclick="contactToggle()">Contact</a>
+    </ul>
+
+    <form id="contactForm" class="formStyles" action="">
+        <h2>How can we help you?</h2>
+        <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+        <input type="email" id="email" name="email" placeholder="E-mail" required>
+        <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>
+        <textarea name="comments" id="comments" cols="53" rows="10" placeholder="Comments"></textarea>
+        <input type="submit" id="contact-submit" value="Enquire now">
+    </form>
+
+    <form id="signUpForm" class="formStyles" action="">
+        <h2>Sign Up</h2>
+        <input type="text" id="fname" name="firstname" placeholder="First Name" required>
+        <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
+        <input type="text" id="company" name="company" placeholder="Company Name" optional>
+        <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>
+        <input type="email" id="email" name="email" placeholder="E-mail" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="submit" id="contact-submit" value="Join us">
+    </form>
+
+
+
+
+
+
+
+    <!--========== Spaces Page  ===========-->
+    <div class="container">
+        <h2>Single Desk</h2>
+        <div class="outter-section">
+            <img src="images/image_01.jpg" alt="" id="dedicated">
+            <div class="small-img-section">
+
+                <img src="images/image_09.jpg" alt="" class='small-img'>
+                <img src="images/image_03.jpg" alt="" class='small-img'>
+                <img src="images/image_04.jpg" alt="" class='small-img'>
+                <img src="images/image_05.jpg" alt="" class='small-img'>
+
+            </div>
+            <div class="inner-section">
+                <ul class="inner-text">
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                </ul>
+
+                <ul class="inner-text">
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <h2>Double Desk</h2>
+        <div class="outter-section">
+            <img src="images/image_01.jpg" alt="" id="dedicated">
+            <img src="images/image_02.jpg" alt="" class='small-img'>
+            <img src="images/image_03.jpg" alt="" class='small-img'>
+            <img src="images/image_04.jpg" alt="" class='small-img'>
+            <img src="images/image_05.jpg" alt="" class='small-img'>
+            <div class="inner-section">
+                <ul class="inner-text">
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                </ul>
+
+                <ul class="inner-text">
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Area</h2>
+        <div class="outter-section">
+            <img src="images/image_01.jpg" alt="" id="dedicated">
+            <img src="images/image_02.jpg" alt="" class='small-img'>
+            <img src="images/image_03.jpg" alt="" class='small-img'>
+            <img src="images/image_04.jpg" alt="" class='small-img'>
+            <img src="images/image_05.jpg" alt="" class='small-img'>
+            <div class="inner-section">
+                <ul class="inner-text">
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                </ul>
+
+                <ul class="inner-text">
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                    <li>- Lorem ipsum dolor sit amet</li>
+                </ul>
+
+
+            </div>
+        </div>
+
+        <h2>Amenaties</h2>
+
+        <div class="our-space">
+
+            
+            <div class="space-box">
+                <img src="icons/icons8-meeting-room-100.png">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nobis, praesentium quae labore
+                    similique ipsa natus minus consequatur nihil maxime</p>
+            </div>
+
+            <div class="space-box">
+                <img src="icons/icons8-room-finder-160.png">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nobis, praesentium quae labore
+                    similique ipsa natus minus consequatur nihil maxime</p>
+            </div>
+
+            <div class="space-box">
+                <img src="icons/icons8-check-lock-100.png">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nobis, praesentium quae labore
+                    similique ipsa natus minus consequatur nihil maxime</p>
+            </div>
+
+            <div class="space-box">
+                <img src="icons/icons8-wi-fi-52.png">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nobis, praesentium quae labore
+                    similique ipsa natus minus consequatur nihil maxime</p>
+            </div>
+
+            <div class="space-box">
+                <img src="icons/icons8-dining-room-128.png">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nobis, praesentium quae labore
+                    similique ipsa natus minus consequatur nihil maxime</p>
+            </div>
+
+            <div class="space-box">
+                <img src="icons/icons8-sea-waves-100.png">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nobis, praesentium quae labore
+                    similique ipsa natus minus consequatur nihil maxime</p>
+            </div>
+            <div class="space-box">
+                <img src="icons/icons8-housekeeping-100.png">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nobis, praesentium quae labore
+                    similique ipsa natus minus consequatur nihil maxime</p>
+            </div>
+
+            <div class="space-box">
+                <img src="icons/icons8-garage-door-100.png">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nobis, praesentium quae labore
+                    similique ipsa natus minus consequatur nihil maxime</p>
+            </div>
+
+            <div class="space-box">
+                <img src="icons/icons8-home-office-100.png">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nobis, praesentium quae labore
+                    similique ipsa natus minus consequatur nihil maxime</p>
+            </div>
+
+            <div class="space-box">
+                <img src="icons/icons8-last-24-hours-100.png">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nobis, praesentium quae labore
+                    similique ipsa natus minus consequatur nihil maxime</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
