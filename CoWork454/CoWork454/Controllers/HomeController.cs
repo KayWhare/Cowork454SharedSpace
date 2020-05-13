@@ -20,7 +20,7 @@ namespace CoWork454.Controllers
             return View();
         }
 
-        public IActionResult User()
+        public IActionResult Users()
         {
             return View();
         }
@@ -30,6 +30,10 @@ namespace CoWork454.Controllers
             return View();
         }
 
+        public IActionResult Contact()
+        {
+            return View();
+        }
 
     }
 

@@ -1,0 +1,28 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CoWork454.Models.ContactForm
+
+<h3>Basic Contact Form</h3>
+<form asp-action="SendEmail" asp-controller="ContactSMTP" method="post">
+    <div>
+        <label asp-for="Name">Please enter your name:</label>
+        <input type="text" asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Company">Please enter Company name:</label>
+        <input type="text" asp-for="Company" />
+    </div>
+
+    <div>
+        <label asp-for="Email">Please enter your email:</label>
+        <input type="text" asp-for="Email" />
+    </div>
+    <div>
+        <label asp-for="ContactNo">Enter Contact Number:</label>
+        <input type="text" asp-for="ContactNo" />
+    </div>
+    <div>
+        <label asp-for="Message">Please enter your message:</label>
+        <textarea asp-for="Message"></textarea>
+    </div>
+    <input type="submit" value="Send Message!" />
+</form>

@@ -3,14 +3,16 @@ using System;
 using CoWork454.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoWork454.Migrations
 {
     [DbContext(typeof(CoWork454Context))]
-    partial class CoWork454ContextModelSnapshot : ModelSnapshot
+    [Migration("20200512015112_macMigration")]
+    partial class macMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
