@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="contact-layout.css" class="style">
+    <link rel="stylesheet" href="footer-layout.css" class="style">
+    <link rel="stylesheet" href="head-layout.css" class="style">
+    <link rel="stylesheet" href="hero-layout.css" class="style">
+    <link rel="stylesheet" href="nav-layout.css" class="style">
+    <link rel="stylesheet" href="ourspace-layout.css" class="style">
+    <link rel="stylesheet" href="packages-layout.css" class="style">
+    <link rel="stylesheet" href="page-layout.css" class="style">
+    <link rel="stylesheet" href="members.css" class="style">
+    <title>CoWork 454</title>
+</head>
+
+<body>
+
+    <div class="header">
+
+        <img class="logo" src="images/CoWork454 Logo esign.png" alt="logo">
+
+
+        <div class="members-login">
+            <a onclick="loginToggle()">Login</a>
+            <a onclick="signUpToggle()">Sign-up</a>
+        </div>
+    </div>
+
+
+    <div class="fullwidth-nav">
+        <ul>
+            <a href="">Membership</a>
+            <a href="">Events</a>
+            <a href="">Spaces</a>
+            <a href="">Bookings</a>
+            <a href="">Blog</a>
+            <a onclick="contactToggle()">Contact</a>
+        </ul>
+
+        <!-- <img class="nav-logo" src="/images/CoWork454 Logo esign.png"> -->
+
+        <div id="loginMobileBtn" class="members-login">
+            <a onclick="loginToggle()" >Login</a>
+            <a onclick="signUpToggle()">Sign-up</a>
+        </div>
+
+        <div id='hamburger'>
+            <input type="checkbox" class="openSidebarMenu" id="slideNavToggle">
+            <label for="slideNavToggle" class="navToggleLabel">
+                <div class="spinner diagonal part-1"></div>
+                <div class="spinner horizontal"></div>
+                <div class="spinner diagonal part-2"></div>
+            </label>
+        </div>
+    </div>
+
+    <form id="login" action="">
+        <input type="email" name="Email" id="login-email" placeholder="E-mail">
+        <input type="password" name="Password" id="login-password" placeholder="Password">
+        <input type="submit" value="Login" id='login-submit'>
+    </form>
+
+        <ul class="slide-nav">
+            <a href="">Membership</a>
+            <a href="">Events</a>
+            <a href="">Spaces</a>
+            <a href="">Bookings</a>
+            <a href="">Blog</a>
+            <a onclick="contactToggle()">Contact</a>
+        </ul>
+
+        <form id="contactForm" class="formStyles"action="">
+            <h2>How can we help you?</h2>
+            <input type="text" id="contact-fullname" name="fullname" placeholder="Full Name" required>
+            <input type="email" id="contact-email" name="email" placeholder="E-mail" required>
+            <input type="number" id="contact-phone-number" name="phone-number" placeholder="Mobile" required>
+            <textarea name="comments" id="comments" cols="53" rows="10" placeholder="Comments"></textarea>            
+            <input type="submit" id="contact-submit" value="Enquire now">
+        </form>
+
+        <form id="signUpForm" class="formStyles" action="">
+            <h2>Sign Up</h2>
+            <input type="text" id="signup-fname" name="firstname" placeholder="First Name" required>
+            <input type="text" id="signup-lname" name="lastname" placeholder="Last Name" required>
+            <input type="text" id="signup-company" name="company" placeholder="Company Name" optional>
+            <input type="number" id="signup-phone-number" name="phone-number" placeholder="Mobile" required>           
+            <input type="email" id="signup-email" name="email" placeholder="E-mail" required>
+            <input type="password" id="signup-password" name="password" placeholder="Password" required>
+            <input type="submit" id="signup-submit" value="Join us">
+        </form>
+
+        <div class="hero-members">
+            <div class="hero">
+            </div>
+ 
+        </div>
+        <h1 id="members-header">Welcome, David </h1>
+
+            <div class="members-page">
+
+                <form id="make-booking" action="">
+                    <div class="members-details">
+                        <h3>Your Details</h3>
+                        <span><i>Name: </i><br>David French</span>
+                        <span><i>Company: </i><br>MyCar</span>
+                        <span><i>Mobile: </i><br>0456793244</span>
+                        <span><i>E-mail: </i><br>d_french@gmail.com</span>
+                    </div>
+                    <h3>Make a booking</h3>
+                    <label for="date">Space required: </label>
+                    <input type="text" id="space" name="booking-space" placeholder="Conference Room, Meeting Room etc." required>
+                    <label for="date">Date: </label>
+                    <input type="date" id="date" name="booking-date" placeholder="Date" required>
+                    <label for="time-from">From: </label>
+                    <input type="time" id="time-from" name="booking-from" placeholder="From am/pm" required>
+                    <label for="time-to">To: </label>
+                    <input type="time" id="time-to" name="booking-to" placeholder="To am/pm" required>
+                    <input type="submit" id="booking-submit" value="Confirm Booking">
+                </form>
+
+            <!-- <div class="members-booking"> -->
+                <div id="current-bookings">
+                    <h3>Current Bookings</h3>
+
+                        <div class="booking-box">
+                            <img src="/images/image_03.jpg" alt="space image">
+                            <div class="booking-info">
+                                <span>Board Room 3</span>
+                                <span><strong>Date: </strong>01/10/2021</span>
+                                <span><strong>From: </strong>10:00am</span>
+                                <span><strong>To: </strong>12:00pm</span>
+                            </div>
+                            <a href="">Edit Booking</a>
+                        </div>
+
+                        <div class="booking-box">
+                            <img src="/images/image_09.jpg" alt="space image">
+                            <div class="booking-info">
+                                <span>Dedicated Desk 19</span>
+                                <span><strong>Date: </strong>01/10/2021</span>
+                                <span><strong>From: </strong>10:00am</span>
+                                <span><strong>To: </strong>12:00pm</span>
+                            </div>
+                            <a href="">Edit Booking</a>
+                        </div>
+                        <div class="booking-box">
+                            <img src="/images/image_04.jpg" alt="space image">
+                            <div class="booking-info">
+                                <span>Dedicated Desk 20</span>
+                                <span><strong>Date: </strong>01/10/2021</span>
+                                <span><strong>From: </strong>10:00am</span>
+                                <span><strong>To: </strong>12:00pm</span>
+                            </div>
+                            <a href="">Edit Booking</a>
+                        </div>
+
+                        <div class="booking-box">
+                            <img src="/images/image_06.jpg" alt="space image">
+                            <div class="booking-info">
+                                <span>Meeting Room 3</span>
+                                <span><strong>Date: </strong>01/10/2021</span>
+                                <span><strong>From: </strong>10:00am</span>
+                                <span><strong>To: </strong>12:00pm</span>
+                            </div>
+                            <a href="">Edit Booking</a>
+                        </div>
+                    </div>
+
+
+                </div>
+           
+
+
+<!-- 
+            </div> -->
+
+            
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

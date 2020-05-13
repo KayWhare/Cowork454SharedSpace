@@ -4,9 +4,8 @@ const hamburger = document.getElementById('slideNavToggle');
 let slideNav = document.querySelector('.slide-nav');
 let loginSlide = document.getElementById('login');
 let loginBtns = document.querySelectorAll('.members-login');
-let contactForm = document.getElementById('contactForm');
-let signUpForm = document.getElementById('signUpForm');
-const hamburgerLabel = document.querySelector('.navToggleLabel'); 
+var contactForm = document.getElementById('contactForm');
+var signUpForm = document.getElementById('signUpForm');
 
 hamburger.addEventListener('click', function(){
    if (hamburger.checked == true){
@@ -14,16 +13,15 @@ hamburger.addEventListener('click', function(){
       slideNav.style.height = '380px';
       hamburger.checked = true
    }else{
-      zeroOutHeights()
+      slideNav.style.height = '0px';
    }
 });
 function loginToggle(){
       if (loginSlide.style.height > '0px'){
-         zeroOutHeights();
+         loginSlide.style.height = '0px'
       }else{
          zeroOutHeights();
          navHeight();
-         addExitButton();
       }
    };
       function navHeight(){
@@ -40,46 +38,29 @@ function loginToggle(){
       }
    });
 
-   window.addEventListener('resize', ()=>{
-      if(window.innerWidth >= 768){
-         hamburger.parentElement.style.display = 'none';
-      }else{
-         hamburger.parentElement.style.display = 'flex';
-      }
-   });
-
    function zeroOutHeights(){
       signUpForm.style.height = '0px';
       slideNav.style.height = '0px'
       hamburger.checked = false;
       contactForm.style.height = '0px';
       loginSlide.style.height = '0px';
-      if(window.innerWidth >= 768){
-         hamburger.parentElement.style.display = 'none';
-      }
-   }
-   function addExitButton(){
-      hamburger.parentElement.style.display = 'flex';
-      hamburger.checked = true;
    }
    
 function contactToggle(){
    var contactForm = document.getElementById('contactForm');
    if(contactForm.style.height > '0px'){
-      zeroOutHeights()
+      contactForm.style.height = '0px';
    }else{
       zeroOutHeights();
       contactForm.style.height = '600px';
-      addExitButton();
    }
 }
 function signUpToggle(){
    if(signUpForm.style.height > '0px'){
-      zeroOutHeights();
+      signUpForm.style.height = '0px';
    }else{
       zeroOutHeights();
       signUpForm.style.height = '600px';
-      addExitButton();
    }
 }
 

@@ -24,7 +24,8 @@ namespace CoWork454.Controllers
         // GET: Login
         public ActionResult Login()
         {
-            return View();
+            //return View();
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -36,33 +37,34 @@ namespace CoWork454.Controllers
             var existingUser = _CoWork454Context.User.SingleOrDefault(l => l.Email == model.Email);
             if (existingUser == null)
             {
-                ModelState.AddModelError("UserName", "Either the user name or password was incorrect");
-                return View();
+                ModelState.AddModelError("Email", "Either the email or password was incorrect");
+                //return View();
+                return RedirectToAction("Index", "Home");
             }
 
             // validate the incoming password with the password hash in the database
             var passwordVerified = BCrypt.Net.BCrypt.Verify(model.Password, existingUser.PasswordHash);
             if (!passwordVerified)
             {
-                ModelState.AddModelError("UserName", "Either the user name or password was incorrect");
-                return View();
+                ModelState.AddModelError("Email", "Either the email or password was incorrect");
+                //return View();
+                return RedirectToAction("Index", "Home");
             }
 
             if (existingUser.UserRole == UserRole.Admin)
             {
+                SetEncryptedUserCookie("ADMIN", existingUser.Id.ToString());
                 //return admin page
                 //set admin cookie
             }
             else {
                 // if it matches, set a cookie with the userId
-                //SetEncryptedMemberCookie("USER_ID", existingUser.Id.ToString());
+                SetEncryptedUserCookie("USER_ID", existingUser.Id.ToString());
+                ViewData["User"] = existingUser;
             }
 
-                // if it matches, set a cookie with the userId
-                //SetEncryptedMemberCookie("USER_ID", existingUser.Id.ToString());
-
                 // redirect to admin panel
-                return RedirectToAction("Index", "Home");
+                return View("Members");
 
         }
 
@@ -74,9 +76,9 @@ namespace CoWork454.Controllers
             //gets user cookie if already logged in
             var userIdCookie = GetEncryptedUserCookie("USER_ID");
 
-            if (userIdCookie == null)
+            if (userIdCookie != null)
             {
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -89,9 +91,9 @@ namespace CoWork454.Controllers
 
             //only available if logged in
             var userIdCookie = GetEncryptedUserCookie("USER_ID");
-            if (userIdCookie == null)
+            if (userIdCookie != null)
             {
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("Index", "Home");
             }
 
             // check if email already exists in database (if so throw exception)
@@ -99,8 +101,9 @@ namespace CoWork454.Controllers
 
             if (existingUser != null)
             {
-                ModelState.AddModelError("UserName", "UserName already exists in database");
-                return View();
+                ModelState.AddModelError("Email", "Email already in use");
+                //return View();
+                return RedirectToAction("Index", "Home");
             }
 
             // hash the incoming password
@@ -124,11 +127,12 @@ namespace CoWork454.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("", ex.Message);
-                return View();
+                //return View();
+                return RedirectToAction("Index", "Home");
             }
 
             // redirect to the login
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         // /User/Logout
@@ -151,5 +155,20 @@ namespace CoWork454.Controllers
 
             return cookieContent;
         }
+
+        protected void SetEncryptedUserCookie(string cookieKey, string cookieValue)
+        {
+            var cookieOptions = new CookieOptions();
+
+            if (cookieValue != "GUEST")
+            {
+                cookieOptions.Expires = DateTimeOffset.MaxValue;
+            }
+
+            var encryptedCookieContent = EncryptionHelper.EncryptString(cookieValue, EncryptionHelper.EncryptionKey);
+
+            HttpContext.Response.Cookies.Append(cookieKey, encryptedCookieContent, cookieOptions);
+        }
+
     }
 }

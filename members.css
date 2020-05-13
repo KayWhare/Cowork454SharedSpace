@@ -1,0 +1,435 @@
+main{
+
+}
+.hero-members {
+    position: relative;
+    height: 300px;
+    background-image: url(/images/image_05.jpg);
+    background-size: cover;
+    background-position: center -300px;
+    background-attachment: fixed;
+}
+
+.hero {
+    position: absolute;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.40);
+    backdrop-filter: blur(2px);
+    width: 100%;
+    text-align: left;
+}
+
+.members-page{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+
+}
+.members-details {
+    color: white;
+    position: relative;
+    text-align: right;
+    right: 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.members-details>h3{
+    font-size: 20px;
+    color: mintcream;
+    text-align: right;
+
+}
+.members-details>span{
+    font-size: 16px;
+    margin-top: 5px;
+    width: 100%;
+}
+.members-details>span>i{
+    font-size: 12px;
+    color: mintcream;
+        margin-top: 10px;
+    width: 100%;
+}
+.members-booking {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    border-left: lightgray;
+}
+#current-bookings {
+    position: relative;
+    top: 530px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+#current-bookings>h3{
+    font-size: 22px;
+    width: 80%;
+    margin: 10px 0px;
+    color: black;
+    text-align: center;
+    display: flex;
+
+}
+.booking-box{
+    display: flex;
+    max-width: 230px;
+    flex-wrap: wrap;
+    margin: 20px 20px;
+    border-radius: 3px;
+    box-shadow: 0px 10px 20px gray;
+    background: whitesmoke;
+    overflow: hidden;
+}
+.booking-box:hover{
+    transform: scale(1.03);
+    transition: all 0.3s;
+    box-shadow: 0px 20px 35px gray;
+}
+.booking-info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+}
+.booking-info>:first-child{
+    position: relative;
+    top: -35px;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0px 3px 4px darkslategray;
+}
+.booking-info>span {
+    font-size: 18px;
+    width: 100%;
+    padding: 5px;
+    position: relative;
+    top: -22px;
+}
+.booking-info>span>strong {
+    font-size: 13px;
+    color: grey;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+}
+.booking-box>:last-child {
+    position: relative;
+    bottom: 0px;
+    text-decoration: none;
+    width: 100%;
+    background-image: linear-gradient(steelblue, rgb(43, 81, 112));
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    padding: 20px 0px;
+
+}
+.booking-box>:last-child:hover{
+    background-image: linear-gradient(steelblue, rgb(21, 41, 58));
+    transition: all 0.4s;
+}
+.booking-box>img{
+    width:100%;
+    max-height: 160px;
+    opacity: 0.8;
+}
+.booking-box:hover>img{
+    transform: scale(1.05);
+    transition: all 0.3s;
+    opacity: 1;
+}
+.booking-info>span{
+    font-size: 18px;
+    width: 100%;
+
+}
+#make-booking {
+    position: absolute;
+    top: 280px;
+    width: 75%;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(41, 70, 88);
+    padding: 30px;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+#make-booking>h3{
+    width: 100%;
+    margin: 20px 0px;
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    border-top: 1px solid rgb(50, 95, 129);
+    padding-top: 20px;
+}
+
+#make-booking>input{
+    height: 40px;
+    width: 100%;
+    max-width: 376px;
+    margin: 10px 5px;
+    border-radius: 4px;
+    border: 2px solid rgb(52, 97, 134);
+    background-color: white;
+    color: rgb(71, 71, 71);
+    font-size: 14px;
+}
+#make-booking>input::placeholder{
+    padding: 0px 10px;
+}
+#make-booking>label{
+    font-size: 13px;
+    color: rgb(145, 145, 145);
+}
+
+#make-booking>:last-child{
+    width: 95.8%;
+    background-image: linear-gradient(steelblue, rgb(43, 81, 112));
+    border: 2px solid steelblue;
+    font-weight: 700;
+    color: white;
+    padding-left: 0px;
+    margin-top: 20px;
+}
+#members-header{
+    position: absolute;
+    top: 240px;
+    left: 40px;
+    color: whitesmoke;
+    font-family: Roboto Slab, sans-serif;
+    font-size: 26px;
+}
+#contactForm>#comments{
+    height: 300px;
+    margin-top: 10px;
+    border: 2px solid rgb(52, 97, 134);
+    border-radius: 4px;
+    font-size: 14px;
+    width: 98%;
+    max-width: 386px;
+}
+#comments::placeholder{
+    padding: 10px;
+}
+
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+    #make-booking{
+        widows: 350px;
+    }
+    #current-bookings{
+        width: 70%;
+        margin: 20px;
+        justify-content: flex-start;
+    }
+
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    .members-page{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        width: 100%;
+        justify-content: space-between;
+    
+    }
+    .members-details {
+        color: white;
+        position: relative;
+        text-align: right;
+        right: 0px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .members-details>h3{
+        font-size: 20px;
+        color: mintcream;
+        text-align: right;
+    
+    }
+    .members-details>span{
+        font-size: 16px;
+        margin-top: 5px;
+        width: 100%;
+    }
+    .members-details>span>i{
+        font-size: 12px;
+        color: mintcream;
+            margin-top: 10px;
+        width: 100%;
+    }
+    .members-booking {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 auto;
+        width: 100%;
+        border-left: lightgray;
+    }
+    #current-bookings {
+        position: absolute;
+        top: 400px;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px auto;
+    }
+    #current-bookings>h3{
+        font-size: 22px;
+        width: 100%;
+        margin: 10px 35px;
+        color: whitesmoke;
+        text-shadow: 0px 3px 10px black;
+    }
+    .booking-box{
+        display: flex;
+        max-width: 230px;
+        flex-wrap: wrap;
+        margin: 20px 20px;
+        border-radius: 3px;
+        box-shadow: 0px 10px 20px gray;
+        background: whitesmoke;
+        overflow: hidden;
+    }
+    .booking-box:hover{
+        transform: scale(1.03);
+        transition: all 0.3s;
+        box-shadow: 0px 20px 35px gray;
+    }
+    .booking-info {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        text-align: center;
+    }
+    .booking-info>:first-child{
+        position: relative;
+        top: -35px;
+        font-size: 20px;
+        font-weight: 700;
+        color: white;
+        text-shadow: 0px 3px 4px darkslategray;
+    }
+    .booking-info>span {
+        font-size: 18px;
+        width: 100%;
+        padding: 5px;
+    }
+    .booking-info>span>strong {
+        font-size: 13px;
+        color: grey;
+        width: 100%;
+        padding: 10px 0px 10px 0px;
+    }
+    .booking-box>:last-child {
+        position: relative;
+        bottom: 0px;
+        text-decoration: none;
+        width: 100%;
+        background-image: linear-gradient(steelblue, rgb(43, 81, 112));
+        font-weight: 700;
+        color: white;
+        text-align: center;
+        padding: 20px 0px;
+    
+    }
+    .booking-box>:last-child:hover{
+        background-image: linear-gradient(steelblue, rgb(21, 41, 58));
+        transition: all 0.4s;
+    }
+    .booking-box>img{
+        width:100%;
+        max-height: 160px;
+        opacity: 0.8;
+    }
+    .booking-box:hover>img{
+        transform: scale(1.05);
+        transition: all 0.3s;
+        opacity: 1;
+    }
+    .booking-info>span{
+        font-size: 18px;
+        width: 100%;
+    
+    }
+    #make-booking {
+        position: absolute;
+        top: 230px;
+        right: 20px;
+        width: 90%;
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(41, 70, 88);
+        padding: 30px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    #make-booking>h3{
+        width: 100%;
+        margin: 20px 0px;
+        color: white;
+        font-size: 22px;
+    }
+    
+    #make-booking>input{
+        height: 40px;
+        width: 95%;
+        max-width: 376px;
+        margin: 10px 5px;
+        border-radius: 4px;
+        border: 2px solid rgb(52, 97, 134);
+        background-color: white;
+        color: rgb(71, 71, 71);
+        font-size: 14px;
+    }
+    #make-booking>input::placeholder{
+        padding: 0px 10px;
+    }
+    #make-booking>label{
+        font-size: 13px;
+        color: rgb(145, 145, 145);
+    }
+    #make-booking>:last-child{
+        width: 95.8%;
+        background-image: linear-gradient(steelblue, rgb(43, 81, 112));
+        border: 2px solid steelblue;
+        font-weight: 700;
+        color: white;
+        padding-left: 0px;
+        margin-top: 20px;
+    }
+    #members-header{
+        position: absolute;
+        top: 240px;
+        left: 40px;
+        color: whitesmoke;
+        font-family: Roboto Slab, sans-serif;
+        font-size: 40px;
+    }
+    
+ 
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+
+
+}
+
+/*
