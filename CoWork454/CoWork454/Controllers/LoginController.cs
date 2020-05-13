@@ -24,8 +24,19 @@ namespace CoWork454.Controllers
         // GET: Login
         public ActionResult Login()
         {
+            var userIdCookie = GetEncryptedUserCookie("USER_ID");
+
+            if(userIdCookie == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                var existingUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));
+                ViewData["User"] = existingUser;
+            }
             //return View();
-            return RedirectToAction("Index", "Home");
+            return View("Members");
         }
 
 
@@ -96,7 +107,7 @@ namespace CoWork454.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            // check if email already exists in database (if so throw exception)
+            // check if email already exists in database (if not throw exception)
             var existingUser = _CoWork454Context.User.SingleOrDefault(u => u.Email == model.Email);
 
             if (existingUser != null)

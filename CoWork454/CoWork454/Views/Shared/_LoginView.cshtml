@@ -13,7 +13,7 @@
 else
 {
     <div class="members-login">
-        <a onclick="loginToggle()">Hi @user.FirstName </a>
-        <a onclick="signUpToggle()">Log Off</a>
+        <a href="@Url.Action("Login","Login")" >My Account </a>
+        <a href="@Url.Action("Logout","Login")">Log Off</a>
     </div>
 }

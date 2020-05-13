@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="~/css/ourspace-layout.css" class="style">
     <link rel="stylesheet" href="~/css/packages-layout.css" class="style">
     <link rel="stylesheet" href="~/css/page-layout.css" class="style">
+    <link rel="stylesheet" href="~/css/members.css" class="style">
 
 
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
@@ -25,10 +26,10 @@
 
     <div class="header">
 
-        <img class="logo" src="images/CoWork454 Logo esign.png" alt="logo">
+        <img class="logo" src="/images/CoWork454 Logo esign.png" alt="logo">
 
 
-@Html.Partial("_LoginView");
+        @Html.Partial("_LoginView")
     </div>
 
 
@@ -42,11 +43,7 @@
             <a onclick="contactToggle()">Contact</a>
         </ul>
 
-
-        <div id="loginMobileBtn" class="members-login">
-            <a onclick="loginToggle()">Login</a>
-            <a onclick="signUpToggle()">Sign-up</a>
-        </div>
+        @Html.Partial("_LoginMobileView")
 
         <div id='hamburger'>
             <input type="checkbox" class="openSidebarMenu" id="slideNavToggle">
@@ -58,7 +55,7 @@
         </div>
     </div>
 
-    <form id="login" action="/Login/Login"  method="POST">
+    <form id="login" action="/Login/Login" method="POST">
         <input type="email" name="Email" id="Email" placeholder="E-mail">
         <input type="password" name="Password" id="Password" placeholder="Password">
         <input type="submit" value="Login" id='loginSubmit'>
@@ -82,7 +79,7 @@
         <input type="submit" id="contact-submit" value="Enquire now">
     </form>
 
-    <form id="signUpForm" class="formStyles" action="/Login/Register" method="POST"> 
+    <form id="signUpForm" class="formStyles" action="/Login/Register" method="POST">
         <h2>Sign Up</h2>
         <input type="text" id="fname" name="firstname" placeholder="First Name" required>
         <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
@@ -92,6 +89,8 @@
         <input type="password" id="password" name="password" placeholder="Password" required>
         <input type="submit" id="contact-submit" value="Join us">
     </form>
+
+    <div class="blackout-bg"></div>
 
     @RenderBody()
 

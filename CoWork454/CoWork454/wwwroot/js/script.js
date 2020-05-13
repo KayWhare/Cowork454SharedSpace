@@ -4,64 +4,86 @@ const hamburger = document.getElementById('slideNavToggle');
 let slideNav = document.querySelector('.slide-nav');
 let loginSlide = document.getElementById('login');
 let loginBtns = document.querySelectorAll('.members-login');
-var contactForm = document.getElementById('contactForm');
-var signUpForm = document.getElementById('signUpForm');
+let contactForm = document.getElementById('contactForm');
+let signUpForm = document.getElementById('signUpForm');
+const hamburgerLabel = document.querySelector('.navToggleLabel');
+let blackoutBG = document.querySelector(".blackout-bg");
 
-hamburger.addEventListener('click', function(){
-   if (hamburger.checked == true){
-      zeroOutHeights();
-      slideNav.style.height = '380px';
-      hamburger.checked = true
-   }else{
-      slideNav.style.height = '0px';
-   }
+hamburger.addEventListener('click', function () {
+    if (hamburger.checked == true) {
+        zeroOutHeights();
+        slideNav.style.height = '380px';
+        addExitButton();
+    } else {
+        zeroOutHeights()
+    }
 });
-function loginToggle(){
-      if (loginSlide.style.height > '0px'){
-         loginSlide.style.height = '0px'
-      }else{
-         zeroOutHeights();
-         navHeight();
-      }
-   };
-      function navHeight(){
-      if(window.innerWidth >= 576){
-         loginSlide.style.height = '60px';
-      }else{
-         loginSlide.style.height = '180px';
-      }
-      };
+function loginToggle() {
+    if (loginSlide.style.height > '0px') {
+        zeroOutHeights();
+    } else {
+        zeroOutHeights();
+        navHeight();
+        addExitButton();
+    }
+};
+function navHeight() {
+    if (window.innerWidth >= 576) {
+        loginSlide.style.height = '60px';
+    } else {
+        loginSlide.style.height = '180px';
+    }
+};
 
-   window.addEventListener('resize', ()=>{
-      if(loginSlide.style.height > '0px'){
-         navHeight();
-      }
-   });
+window.addEventListener('resize', () => {
+    if (loginSlide.style.height > '0px') {
+        navHeight();
+    }
+});
 
-   function zeroOutHeights(){
-      signUpForm.style.height = '0px';
-      slideNav.style.height = '0px'
-      hamburger.checked = false;
-      contactForm.style.height = '0px';
-      loginSlide.style.height = '0px';
-   }
-   
-function contactToggle(){
-   var contactForm = document.getElementById('contactForm');
-   if(contactForm.style.height > '0px'){
-      contactForm.style.height = '0px';
-   }else{
-      zeroOutHeights();
-      contactForm.style.height = '600px';
-   }
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+        hamburger.parentElement.style.display = 'none';
+    } else {
+        hamburger.parentElement.style.display = 'flex';
+    }
+});
+
+function zeroOutHeights() {
+    signUpForm.style.height = '0px';
+    slideNav.style.height = '0px'
+    hamburger.checked = false;
+    contactForm.style.height = '0px';
+    loginSlide.style.height = '0px';
+    blackoutBG.style.display = 'none';
+    if (window.innerWidth >= 768) {
+        hamburger.parentElement.style.display = 'none';
+    }
 }
-function signUpToggle(){
-   if(signUpForm.style.height > '0px'){
-      signUpForm.style.height = '0px';
-   }else{
-      zeroOutHeights();
-      signUpForm.style.height = '600px';
-   }
+function addExitButton() {
+    hamburger.parentElement.style.display = 'flex';
+    hamburger.checked = true;
+    blackoutBG.style.display = 'block';
+}
+
+function contactToggle() {
+    var contactForm = document.getElementById('contactForm');
+    if (contactForm.style.height > '0px') {
+        zeroOutHeights()
+    } else {
+        zeroOutHeights();
+        contactForm.style.height = '600px';
+        addExitButton();
+    }
+}
+function signUpToggle() {
+    if (signUpForm.style.height > '0px') {
+        zeroOutHeights();
+    } else {
+        zeroOutHeights();
+        signUpForm.style.height = '600px';
+        addExitButton();
+    }
 }
 
 
