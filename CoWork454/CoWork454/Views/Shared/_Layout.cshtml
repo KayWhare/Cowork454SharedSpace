@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- <link rel="stylesheet" href="style.css"> -->
+    
     <link rel="stylesheet" href="~/css/contact-layout.css" class="style">
     <link rel="stylesheet" href="~/css/footer-layout.css" class="style">
     <link rel="stylesheet" href="~/css/head-layout.css" class="style">
@@ -15,7 +17,7 @@
     <link rel="stylesheet" href="~/css/page-layout.css" class="style">
     <link rel="stylesheet" href="~/css/members.css" class="style">
 
-
+    
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
 
@@ -30,6 +32,7 @@
 
 
         @Html.Partial("_LoginView")
+
     </div>
 
 
@@ -37,7 +40,7 @@
         <ul>
             <a href="">Membership</a>
             <a href="">Events</a>
-            <a href="">Spaces</a>
+            <a href="@Url.Action("Index", "Spaces")">Spaces</a>
             <a href="">Bookings</a>
             <a href="">Blog</a>
             <a onclick="contactToggle()">Contact</a>
@@ -145,6 +148,7 @@
         </div>
     </footer>
     <script src="~/js/script.js"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 
