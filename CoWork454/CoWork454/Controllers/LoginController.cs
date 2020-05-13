@@ -24,8 +24,19 @@ namespace CoWork454.Controllers
         // GET: Login
         public ActionResult Login()
         {
+            var userIdCookie = GetEncryptedUserCookie("USER_ID");
+
+            if(userIdCookie == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                var existingUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));
+                ViewData["User"] = existingUser;
+            }
             //return View();
-            return RedirectToAction("Index", "Home");
+            return View("Members");
         }
 
 
@@ -54,8 +65,7 @@ namespace CoWork454.Controllers
             if (existingUser.UserRole == UserRole.Admin)
             {
                 SetEncryptedUserCookie("ADMIN", existingUser.Id.ToString());
-                //return admin page
-                //set admin cookie
+                return RedirectToAction("Index", "Admin");
             }
             else {
                 // if it matches, set a cookie with the userId
@@ -93,7 +103,9 @@ namespace CoWork454.Controllers
             var userIdCookie = GetEncryptedUserCookie("USER_ID");
             if (userIdCookie != null)
             {
-                return RedirectToAction("Index", "Home");
+                var LogginUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));
+                ViewData["User"] = LogginUser;
+                return View("Members");
             }
 
             // check if email already exists in database (if so throw exception)
@@ -140,6 +152,21 @@ namespace CoWork454.Controllers
         {
             HttpContext.Response.Cookies.Delete("USER_ID");
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Members()
+        {
+            var userIdCookie = GetEncryptedUserCookie("USER_ID");
+            if (userIdCookie == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                var existingUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));
+                ViewData["User"] = existingUser;
+                return View();
+            }
         }
 
         protected string GetEncryptedUserCookie(string cookieKey)

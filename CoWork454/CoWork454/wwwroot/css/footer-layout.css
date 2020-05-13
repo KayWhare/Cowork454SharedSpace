@@ -10,6 +10,7 @@
 
     
     footer{
+
         position: relative;
         bottom: 0px;
         width: 100%;
@@ -18,7 +19,7 @@
     .lg-footer {
         width: 90%;
         margin: 0 auto;
-        display: flex;
+        display: none;
     }
 
     .lg-footer>div {

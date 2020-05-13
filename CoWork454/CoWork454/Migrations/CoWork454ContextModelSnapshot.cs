@@ -61,42 +61,6 @@ namespace CoWork454.Migrations
                 b.ToTable("Item");
             });
 
-            modelBuilder.Entity("CoWork454.Models.Json", b =>
-            {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("int")
-                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                b.Property<string>("CompanyName")
-                    .HasColumnType("nvarchar(max)");
-
-                b.Property<string>("Date_registered")
-                    .HasColumnType("nvarchar(max)");
-
-                b.Property<string>("Email")
-                    .HasColumnType("nvarchar(max)");
-
-                b.Property<string>("FirstName")
-                    .HasColumnType("nvarchar(max)");
-
-                b.Property<string>("LastName")
-                    .HasColumnType("nvarchar(max)");
-
-                b.Property<string>("PasswordHash")
-                    .HasColumnType("nvarchar(max)");
-
-                b.Property<string>("Phone")
-                    .HasColumnType("nvarchar(max)");
-
-                b.Property<int>("UserRole")
-                    .HasColumnType("int");
-
-                b.HasKey("Id");
-
-                b.ToTable("User");
-            });
-
             modelBuilder.Entity("CoWork454.Models.Order", b =>
             {
                 b.Property<int>("Id")
@@ -140,6 +104,42 @@ namespace CoWork454.Migrations
                 b.ToTable("Product");
             });
 
+            modelBuilder.Entity("CoWork454.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Date_registered")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserRole")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("CoWork454.Models.Booking", b =>
             {
                 b.HasOne("CoWork454.Models.Order", "Order")
@@ -156,13 +156,13 @@ namespace CoWork454.Migrations
             });
 
             modelBuilder.Entity("CoWork454.Models.Order", b =>
-            {
-                b.HasOne("CoWork454.Models.Json", "User")
-                    .WithMany("UserOrders")
-                    .HasForeignKey("UserId")
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .IsRequired();
-            });
+                {
+                    b.HasOne("CoWork454.Models.User", "User")
+                        .WithMany("UserOrders")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
             modelBuilder.Entity("CoWork454.Models.Product", b =>
             {

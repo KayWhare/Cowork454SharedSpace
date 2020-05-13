@@ -1,7 +1,89 @@
-﻿
+﻿@using CoWork454.Models;
+
 @{
     ViewData["Title"] = "Members";
+    var user = (User)ViewData["User"];
+    var fullname = $"{user.FirstName} {user.LastName}";
+    //var bookings = (List<Booking>)ViewData["Booking"]; will use this later to loop over current bookings section below
 }
 
-<h1>Members</h1>
+<div class="hero-members">
+    <div class="hero-members-inner">
+    </div>
+
+</div>
+<h1 id="members-header">Welcome, @user.FirstName </h1>
+
+<div class="members-page">
+
+    <form id="make-booking" action="">
+        <div class="members-details">
+            <h3>Your Details</h3>
+            <span><i>Name: </i><br>@fullname</span>
+            <span><i>Company: </i><br>@user.CompanyName </span>
+            <span><i>Mobile: </i><br>@user.Phone </span>
+            <span><i>E-mail: </i><br>@user.Email </span>
+        </div>
+        <h3>Make a booking</h3>
+        <label for="date">Space required: </label>
+        <input type="text" id="space" name="booking-space" placeholder="Conference Room, Meeting Room etc." required>
+        <label for="date">Date: </label>
+        <input type="date" id="date" name="booking-date" placeholder="Date" required>
+        <label for="time-from">From: </label>
+        <input type="time" id="time-from" name="booking-from" placeholder="From am/pm" required>
+        <label for="time-to">To: </label>
+        <input type="time" id="time-to" name="booking-to" placeholder="To am/pm" required>
+        <input type="submit" id="booking-submit" value="Confirm Booking">
+    </form>
+
+    <!-- <div class="members-booking"> -->
+    <div id="current-bookings">
+        <h3>Current Bookings</h3>
+
+        <div class="booking-box">
+            <img src="/images/image_03.jpg" alt="space image">
+            <div class="booking-info">
+                <span>Board Room 3</span>
+                <span><strong>Date: </strong>01/10/2021</span>
+                <span><strong>From: </strong>10:00am</span>
+                <span><strong>To: </strong>12:00pm</span>
+            </div>
+            <a href="">Edit Booking</a>
+        </div>
+
+        <div class="booking-box">
+            <img src="/images/image_09.jpg" alt="space image">
+            <div class="booking-info">
+                <span>Dedicated Desk 19</span>
+                <span><strong>Date: </strong>01/10/2021</span>
+                <span><strong>From: </strong>10:00am</span>
+                <span><strong>To: </strong>12:00pm</span>
+            </div>
+            <a href="">Edit Booking</a>
+        </div>
+        <div class="booking-box">
+            <img src="/images/image_04.jpg" alt="space image">
+            <div class="booking-info">
+                <span>Dedicated Desk 20</span>
+                <span><strong>Date: </strong>01/10/2021</span>
+                <span><strong>From: </strong>10:00am</span>
+                <span><strong>To: </strong>12:00pm</span>
+            </div>
+            <a href="">Edit Booking</a>
+        </div>
+
+        <div class="booking-box">
+            <img src="/images/image_06.jpg" alt="space image">
+            <div class="booking-info">
+                <span>Meeting Room 3</span>
+                <span><strong>Date: </strong>01/10/2021</span>
+                <span><strong>From: </strong>10:00am</span>
+                <span><strong>To: </strong>12:00pm</span>
+            </div>
+            <a href="">Edit Booking</a>
+        </div>
+    </div>
+
+
+</div>
 

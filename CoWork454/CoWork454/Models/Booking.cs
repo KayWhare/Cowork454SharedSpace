@@ -11,9 +11,9 @@ namespace CoWork454.Models
 
         public int ProductId { get; set; }
 
-        public string Date_start { get; set; }
+        public DateTimeOffset Date_start { get; set; }
 
-        public string Date_end { get; set; }
+        public DateTimeOffset Date_end { get; set; }
 
 
         public virtual Order Order { get; set; }
