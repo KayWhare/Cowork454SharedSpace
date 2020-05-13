@@ -28,8 +28,9 @@ namespace CoWork454
             services.AddControllersWithViews();
 
             services.AddDbContext<CoWork454Context>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("CoWork454Context")));
-        
+            //options.UseSqlite(Configuration.GetConnectionString("CoWork454Context")));
+            options.UseSqlServer(Configuration.GetConnectionString("CoWork454Context")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

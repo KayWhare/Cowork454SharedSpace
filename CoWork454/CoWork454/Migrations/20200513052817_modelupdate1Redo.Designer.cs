@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoWork454.Migrations
 {
     [DbContext(typeof(CoWork454Context))]
-    [Migration("20200513033030_modelupdate1")]
-    partial class modelupdate1
+    [Migration("20200513052817_modelupdate1Redo")]
+    partial class modelupdate1Redo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

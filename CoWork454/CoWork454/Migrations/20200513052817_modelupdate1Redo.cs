@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CoWork454.Migrations
 {
-    public partial class modelupdate1 : Migration
+    public partial class modelupdate1Redo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
