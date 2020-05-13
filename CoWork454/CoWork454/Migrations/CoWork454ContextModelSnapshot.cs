@@ -20,89 +20,92 @@ namespace CoWork454.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("CoWork454.Models.Booking", b =>
-            {
-                b.Property<int>("OrderId")
-                    .HasColumnType("int");
+                {
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
 
-                b.Property<int>("ProductId")
-                    .HasColumnType("int");
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
-                b.Property<string>("Date_end")
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<DateTimeOffset>("Date_end")
+                        .HasColumnType("datetimeoffset");
 
-                b.Property<string>("Date_start")
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<DateTimeOffset>("Date_start")
+                        .HasColumnType("datetimeoffset");
 
-                b.HasKey("OrderId", "ProductId");
+                    b.HasKey("OrderId", "ProductId");
 
-                b.HasIndex("ProductId");
+                    b.HasIndex("ProductId");
 
-                b.ToTable("Booking");
-            });
+                    b.ToTable("Booking");
+                });
 
             modelBuilder.Entity("CoWork454.Models.Item", b =>
-            {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("int")
-                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                b.Property<string>("Details")
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Details")
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<string>("Name")
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<decimal>("Price")
-                    .HasColumnType("decimal(18,2)");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
-                b.HasKey("Id");
+                    b.HasKey("Id");
 
-                b.ToTable("Item");
-            });
+                    b.ToTable("Item");
+                });
 
             modelBuilder.Entity("CoWork454.Models.Order", b =>
-            {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("int")
-                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                b.Property<string>("TransactionNumber")
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<string>("TransactionNumber")
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<int>("UserId")
-                    .HasColumnType("int");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                b.HasKey("Id");
+                    b.HasKey("Id");
 
-                b.HasIndex("UserId");
+                    b.HasIndex("UserId");
 
-                b.ToTable("Order");
-            });
+                    b.ToTable("Order");
+                });
 
             modelBuilder.Entity("CoWork454.Models.Product", b =>
-            {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("int")
-                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                b.Property<string>("Date_available")
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Date_available")
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<int?>("ItemId")
-                    .HasColumnType("int");
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<bool>("isAvailable")
-                    .HasColumnType("bit");
+                    b.Property<int?>("ItemId")
+                        .HasColumnType("int");
 
-                b.HasKey("Id");
+                    b.Property<bool>("isAvailable")
+                        .HasColumnType("bit");
 
-                b.HasIndex("ItemId");
+                    b.HasKey("Id");
 
-                b.ToTable("Product");
-            });
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("Product");
+                });
 
             modelBuilder.Entity("CoWork454.Models.User", b =>
                 {
@@ -141,19 +144,19 @@ namespace CoWork454.Migrations
                 });
 
             modelBuilder.Entity("CoWork454.Models.Booking", b =>
-            {
-                b.HasOne("CoWork454.Models.Order", "Order")
-                    .WithMany("Bookings")
-                    .HasForeignKey("OrderId")
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .IsRequired();
+                {
+                    b.HasOne("CoWork454.Models.Order", "Order")
+                        .WithMany("Bookings")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                b.HasOne("CoWork454.Models.Product", "Product")
-                    .WithMany("Bookings")
-                    .HasForeignKey("ProductId")
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .IsRequired();
-            });
+                    b.HasOne("CoWork454.Models.Product", "Product")
+                        .WithMany("Bookings")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
             modelBuilder.Entity("CoWork454.Models.Order", b =>
                 {
@@ -165,11 +168,11 @@ namespace CoWork454.Migrations
                 });
 
             modelBuilder.Entity("CoWork454.Models.Product", b =>
-            {
-                b.HasOne("CoWork454.Models.Item", "Item")
-                    .WithMany("Products")
-                    .HasForeignKey("ItemId");
-            });
+                {
+                    b.HasOne("CoWork454.Models.Item", "Item")
+                        .WithMany("Products")
+                        .HasForeignKey("ItemId");
+                });
 #pragma warning restore 612, 618
         }
     }
