@@ -16,6 +16,8 @@ namespace CoWork454.Models
 
         public string Date_available { get; set; }
 
+        public string ImagePath { get; set; }
+
 
         [JsonIgnore]
         public virtual ICollection<Booking> Bookings { get; set; }
