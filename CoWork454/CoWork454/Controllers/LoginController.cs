@@ -65,8 +65,7 @@ namespace CoWork454.Controllers
             if (existingUser.UserRole == UserRole.Admin)
             {
                 SetEncryptedUserCookie("ADMIN", existingUser.Id.ToString());
-                //return admin page
-                //set admin cookie
+                return RedirectToAction("Index", "Admin");
             }
             else {
                 // if it matches, set a cookie with the userId
