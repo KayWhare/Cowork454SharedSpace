@@ -46,7 +46,7 @@ namespace CoWork454.Controllers
                 {
                     //mail.From = new MailAddress(fromAdd);
                     //mail.To = new MailAddress(fromAdd);
-                    mail.Subject = "Contact Enquiry";
+                    mail.Subject = "CoWork454: Contact Enquiry";
                     mail.Body = body;
                     mail.IsBodyHtml = true;
 
