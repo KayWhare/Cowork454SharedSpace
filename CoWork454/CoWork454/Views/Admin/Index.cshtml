@@ -13,7 +13,7 @@
         <div class="container" id="space-container">
             <div class="row">
                 <div class="col s12">
-                    <h3>CoWork Floor Space Table</h3>
+                    <h3>CoWork Floor Space</h3>
                     <p>....</p>
                 </div>
             </div>
@@ -32,11 +32,11 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
+                                <td>0</td>
                                 <td>Meeting Room</td>
                                 <td>Projector, Available for 1 hr bookings</td>
                                 <td>
-                                    <button data-user-id="1" class="waves-effect waves-light btn">Delete</button>
+                                    <input type="checkbox" class="filled-in" checked="checked"/><span>Available</span>
                                 </td>
                                 <td>
                                     <button data-user-id="1" class="waves-effect waves-light btn">Select</button>
@@ -74,8 +74,6 @@
         const nameElem = document.querySelector('input[name="Name"]');
         const detailsElem = document.querySelector('input[name="Details"]');
 
-
-
         const onDelete = (evt) => {
 
         }
@@ -92,30 +90,32 @@
         const getAll = () => {
             spacesData.innerHTML = '';
 
-            fetch('/api/Item')
+            fetch('/api/Products')
                 .then(res => res.json())
-                .then(items => {
+                .then(products => {
 
-                    items.forEach(item => {
+                    products.forEach(product => {
                         const spaceIdCell = document.createElement('td');
                         const nameCell = document.createElement('td');
                         const detailsCell = document.createElement('td');
                         const action1Cell = document.createElement('td');
                         const action2Cell = document.createElement('td');
-                        spaceIdCell.innerText = item.Id;
-                        nameCell.innerText = item.Name;
-                        detailsCell.innerText = item.Details;
-                        const deleteBtn = document.createElement('button');
+                        spaceIdCell.innerText = product.id;
+                        console.log(spaceIdCell);
+                        nameCell.innerText = product.name;
+                        detailsCell.innerText = product.details;
+                        const updateBox = document.createElement('input');
                         const selectBtn = document.createElement('button');
-                        deleteBtn.innerText = 'Delete';
-                        deleteBtn.setAttribute('data-space-id', item.Id);
-                        deleteBtn.className = 'waves-effect waves-light btn';
-                        deleteBtn.addEventListener('click', onDelete);
+                        //updateBox.innerText = 'Available';
+                        updateBox.setAttribute('data-space-id', product.id);
+                        updateBox.className = 'filled-in';
+                        updateBox.setAttribute('type', checkbox);
+                        updateBox.addEventListener('click', onUpdate);
                         selectBtn.innerText = 'Select';
-                        selectBtn.setAttribute('data-space-id', item.Id);
+                        selectBtn.setAttribute('data-space-id', product.id);
                         selectBtn.className = 'waves-effect waves-light btn';
                         selectBtn.addEventListener('click', onSelect);
-                        action1Cell.appendChild(deleteBtn);
+                        action1Cell.appendChild(updateBox);
                         action2Cell.appendChild(selectBtn);
                         const row = document.createElement('tr');
                         row.appendChild(spaceIdCell);
@@ -123,19 +123,19 @@
                         row.appendChild(detailsCell);
                         row.appendChild(action1Cell);
                         row.appendChild(action2Cell);
-                        vehicleData.appendChild(row);
+                        spacesData.appendChild(row);
                     })
                 })
                 .catch(err => {
-
+                    console.log("Error Loading Product table");
                 })
         }
 
-        const getDetails = (id) => {
-            fetch('/api/Item/${id}')
+        const getDetails = (prodId) => {
+            fetch('/api/Products/${prodId}')
                 .then(res => res.json())
-                .then(item => {
-                    console.log(item);
+                .then(product => {
+                    console.log(product);
                 })
                 .catch(err => {
 
@@ -143,11 +143,11 @@
 
         }
 
-        const addNew = (itemName,itemDetails) => {
+        const addNew = (prodName,prodDetails) => {
 
             const body = {
-                name = itemName,
-                details = itemDetails
+                name: prodName,
+                details: prodDetails
             }
 
             const fetchOpt =
@@ -159,7 +159,7 @@
                 }
             };
 
-            fetch('/api/item',fetchOpt)
+            fetch('/api/Products',fetchOpt)
                 .then(res => res.json())
                 .then(() => {
                     console.log('Space added');
@@ -170,12 +170,12 @@
 
         }
 
-        const updateExisting = (id,itemName,itemDetails) => {
+        const updateExisting = (prodId,prodName,prodDetails) => {
 
             const body = {
-                id: id,
-                name: itemName,
-                details = itemDetails
+                id: prodId,
+                name: prodName,
+                details: prodDetails
             }
 
             const fetchOpt =
@@ -187,7 +187,7 @@
                 }
             };
 
-            fetch('/api/item/${id}', fetchOpt)
+            fetch('/api/Products/${id}', fetchOpt)
                 .then(res => res.json())
                 .then(() => {
                     console.log('Spaces updated');
@@ -200,11 +200,12 @@
 
         const deleteExisting = (id) => {
 
-            const fetchOpt = {
-                method: delete
-            }
+            const fetchOpt =
+            {
+                method: 'DELETE'
+            };
 
-            fetch('/api/item/${id}', fetchOpt)
+            fetch('/api/Products/${id}', fetchOpt)
                 .then(res => res.json())
                 .then(() => {
                     console.log('Space deleted');
@@ -216,8 +217,8 @@
 
         const clearForm = () => {
             idElem = "";
-            makeElem = "";
-            modelElem = "";
+            nameElem = "";
+            detailsElem = "";
         }
 
         getAll();
