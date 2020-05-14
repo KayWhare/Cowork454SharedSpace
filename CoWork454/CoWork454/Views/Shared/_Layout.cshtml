@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -74,6 +76,10 @@
 
     @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
     @model CoWork454.Models.ContactForm
+    @if (ViewData["SuccessMessage"] != null)
+    {
+        <span class="alert">@ViewData["SuccessMessage"]</span>
+    }
 
     <form id="contactForm" class="formStyles" asp-action="SendEmail" asp-controller="ContactSMTP" method="post">
         <h2>How can we help you?</h2>

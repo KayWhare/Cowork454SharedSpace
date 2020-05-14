@@ -63,13 +63,18 @@ namespace CoWork454.Controllers
                     }
                 }
 
+
+                ViewData["SuccessMessage"] = "Your Enquiry has been sent successfully. We will get in contact as soon as possible.";
+
             }
             catch (Exception e)
             {
                 return BadRequest();
                 //Response.StatusCode = 400;
             }
-            return RedirectToAction("Index","Home");
+
+            //return RedirectToAction("Index", "Home");
+            return View("~/Views/Home/Index.cshtml");
         }
     }
 }
