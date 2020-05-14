@@ -9,6 +9,7 @@ using CoWork454.Models;
 using CoWork454.Controler;
 using CoWork454.Common;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -41,7 +42,7 @@ namespace CoWork454.Models
         }
 
         [HttpPost]
-        public IActionResult Index(Booking booking)
+        public IActionResult Index(MakeBooking makeBooking)
         {
             var orderIdCookie = GetEncryptedUserCookie("ORDER_ID");
 
@@ -61,6 +62,14 @@ namespace CoWork454.Models
                 }
                 return View("Members", "Login");
             }
+            Booking booking = new Booking()
+            {
+                Date_start = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture),
+
+                Date_end = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeFinish}", "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture)
+
+
+            };
 
             if (orderIdCookie == null)
             {
