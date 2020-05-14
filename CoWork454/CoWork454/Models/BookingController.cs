@@ -32,8 +32,9 @@ namespace CoWork454.Models
             }
             else
             {
-                var existingOrder = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(orderIdCookie));
-                ViewData["User"] = existingOrder;
+                var existingOrder = _CoWork454Context.Booking.SingleOrDefault(b => b.OrderId == Convert.ToInt32(orderIdCookie));
+                ViewData["Bookings"] = existingOrder;
+                ViewData["Products"] = _CoWork454Context.Product.ToList();
             }
             //return View();
             return View("Members");
@@ -53,10 +54,12 @@ namespace CoWork454.Models
                 }
                 else
                 {
-                    var existingOrder = _CoWork454Context.Order.SingleOrDefault(o => o.Id == Convert.ToInt32(orderIdCookie));
-                    ViewData["Order"] = existingOrder;
+                    
+                    var existingOrder = _CoWork454Context.Booking.SingleOrDefault(b => b.OrderId == Convert.ToInt32(orderIdCookie));
+                    ViewData["Bookings"] = existingOrder;
+                    ViewData["Products"] = _CoWork454Context.Product.ToList();
                 }
-                return View();
+                return View("Members", "Login");
             }
 
             if (orderIdCookie == null)
@@ -91,7 +94,6 @@ namespace CoWork454.Models
 
                 // get the order from the database
                 var order = _CoWork454Context.Order
-                    .Include(o => o.Bookings)
                     .SingleOrDefault(o => o.Id == orderId);
 
                 if (order == null)
@@ -111,27 +113,21 @@ namespace CoWork454.Models
                 }
                 else
                 {
-                    // update existing item
-                    if (booking.Date_start != existingBooking.Date_start)
-                    {
-                        // delete
-                        _CoWork454Context.Remove(existingBooking);
-                    }
-                    else
-                    {
-                        // update
-                        existingBooking.Date_start = booking.Date_start;
-                        existingBooking.Date_start = booking.Date_end;
-                        _CoWork454Context.Update(existingBooking);
-                    }
+                    existingBooking.Date_start = booking.Date_start;
+                    existingBooking.Date_end = booking.Date_end;
+                    _CoWork454Context.Update(existingBooking);
                 }
 
                 _CoWork454Context.SaveChanges();
 
-                ViewData["Bookings"] = _CoWork454Context.Booking.Where(b => b.OrderId == Convert.ToInt32(orderIdCookie));
+
+                //update viewdata
+                var existingOrder = _CoWork454Context.Booking.SingleOrDefault(b => b.OrderId == Convert.ToInt32(orderIdCookie));
+                ViewData["Bookings"] = existingOrder;
+                ViewData["Products"] = _CoWork454Context.Product.ToList();
             }
 
-            return View("Members");
+            return View("Members","Login");
         }
 
 

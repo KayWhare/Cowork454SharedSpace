@@ -16,7 +16,6 @@ namespace CoWork454.Data
         public DbSet<Order> Order { get; set; }
         public DbSet<Booking> Booking { get; set; }
         public DbSet<Product> Product { get; set; }
-        public DbSet<Item> Item { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,12 +35,6 @@ namespace CoWork454.Data
             modelBuilder.Entity<Booking>()
                 .HasKey(o => new { o.OrderId, o.ProductId });
                 
-
-
-            //defines one:many relationship between Item and Product
-            modelBuilder.Entity<Item>()
-                .HasMany(c => c.Products)
-                .WithOne(e => e.Item);
 
             //definining one:many relationship between User and Order
             modelBuilder.Entity<User>()
