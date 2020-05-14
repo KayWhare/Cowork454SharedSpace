@@ -45,17 +45,6 @@
         color: white;
     }
 
-.single-icon {
-    background-image: url(/icons/Desk-1.png);
-}
-
-.double-icon {
-    background-image: url(/icons/Desk-2.png);
-}
-
-.triple-icon {
-    background-image: url(/icons/Desk-3.png);
-}
 
 .package-heading {
     width: 80%;
