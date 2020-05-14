@@ -12,6 +12,8 @@ namespace CoWork454.Models
 
         public string Name { get; set; }
 
+        public ProductClass ProductClass { get; set; }
+
         public bool isAvailable { get; set; }
 
         public string Date_available { get; set; }
