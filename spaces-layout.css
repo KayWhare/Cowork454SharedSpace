@@ -115,6 +115,7 @@
     margin: 40px 0;
 }
 
+
 .enquire>a {
     position: relative;
     bottom: -8px;
@@ -139,6 +140,13 @@
 }
 
 
+#reverse-card{
+    flex-direction: row-reverse;
+}
+#middle-margin{
+    margin-left:0px;
+    margin-right:20px;
+}
 
 
 /* --------------------------------- */
