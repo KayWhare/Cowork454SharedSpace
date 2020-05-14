@@ -10,13 +10,15 @@ namespace CoWork454.Models
     {
         public int Id { get; set; }
 
-        public virtual Item Item { get; set; }
+        public string Name { get; set; }
 
         public bool isAvailable { get; set; }
 
         public string Date_available { get; set; }
 
         public string ImagePath { get; set; }
+
+        public string Details { get; set; }
 
 
         [JsonIgnore]
