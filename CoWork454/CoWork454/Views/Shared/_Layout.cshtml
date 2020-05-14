@@ -75,14 +75,7 @@
     @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
     @model CoWork454.Models.ContactForm
 
-    <form id="contactForm" class="formStyles" asp-action="SendEmail" asp-controller="ContactSMTP" method="post">
-        <h2>How can we help you?</h2>
-        <input type="text" id="fullname" asp-for="Name" placeholder="Full Name" required>
-        <input type="email" id="email" asp-for="Email" placeholder="E-mail" required>
-        <input type="number" id="phone-number" asp-for="ContactNo" placeholder="Mobile" required>
-        <textarea asp-for="Message" id="comments" cols="53" rows="10" placeholder="Comments"></textarea>
-        <input type="submit" id="contact-submit" value="Enquire now">
-    </form>
+    @Html.Partial("_ContactTabPartial")
 
     <form id="signUpForm" class="formStyles" action="/Login/Register" method="POST">
         <h2>Sign Up</h2>
@@ -150,6 +143,8 @@
         </div>
     </footer>
     <script src="~/js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCMa4Fmut-ORXO-BjK_6Gz2pNDUscai-g&callback=myMap"></script>
+
 
     @RenderSection("Scripts", required: false)
 </body>

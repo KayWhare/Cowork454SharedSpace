@@ -20,13 +20,24 @@
         <div class="members-details">
             <h3>Your Details</h3>
             <span><i>Name: </i><br>@fullname</span>
-            <span><i>Company: </i><br>@user.CompanyName </span>
-            <span><i>Mobile: </i><br>@user.Phone </span>
-            <span><i>E-mail: </i><br>@user.Email </span>
-        </div>
+            @{ if (user.CompanyName != null)
+                {
+                <span><i>Company: </i><br>@user.CompanyName </span>
+                }
+            }
+                <span><i>Mobile: </i><br>@user.Phone </span>
+                <span><i>E-mail: </i><br>@user.Email </span>
+            </div>
         <h3>Make a booking</h3>
-        <label for="date">Space required: </label>
-        <input type="text" id="space" name="booking-space" placeholder="Conference Room, Meeting Room etc." required>
+        <label>Space required:</label>
+        <select id="spaceDropDown">
+            <option value="Workstation">Workstation</option>
+            <option value="Office">Office</option>
+            <option value="Meeting Room">Meeting Room</option>
+            <option value="Board Room">Board Room</option>
+            <option value="Training Room">Training Room</option>
+            <option value="Quiet Room">Quiet Room</option>
+        </select>
         <label for="date">Date: </label>
         <input type="date" id="date" name="booking-date" placeholder="Date" required>
         <label for="time-from">From: </label>

@@ -1,4 +1,75 @@
-.formStyles{
+#contact-tab {
+    z-index: 30;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 60px;
+    height: 0px;
+    width: 100%;
+    background-color: rgb(41, 70, 88);
+    box-shadow: 0px 5px 20px rgb(49, 49, 49);
+    overflow: hidden;
+    transition: all 380ms;
+}
+
+.info-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 250px;
+    height: fit-content;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    .info-box > span {
+        color: rgb(190, 190, 190);
+        font-size: 14px;
+        font-weight: 300;
+        width: 100%;
+        margin: 3px 0px;
+    }
+
+.map-box {
+    width: 100%;
+    filter: grayscale(50%);
+}
+
+    .map-box>h2 {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        margin-left: -157px;
+        color: white;
+        font-size: 22px;
+        text-align: center;
+        z-index: 40;
+        text-shadow: 0px 3px 20px rgb(0, 0, 0);
+    }
+
+#googleMap {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+}
+
+#contactForm {
+    width: 90%;
+}
+/* contact form */
+.formStyles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 30;
+}
+
+#signUpForm {
     height: 0px;
     width: 100%;
     position: sticky;
@@ -16,15 +87,26 @@
     border-bottom: rgb(13, 23, 29);
     box-shadow: 0px 5px 20px rgb(49, 49, 49);
 }
-.formStyles>h2{
+
+.formStyles>h2 {
     color: whitesmoke;
-    margin-top: 10px;
+    margin: 20px;
+    font-size: 30px;
+    font-weight: 300;
 }
-.formStyles>input{
+
+.formStyles>span {
+    color: rgb(189, 189, 189);
+    margin-bottom: 10px;
+    text-align: center;
+    max-width: 400px;
+}
+
+.formStyles>input {
     height: 40px;
     width: 95%;
     max-width: 376px;
-    margin: 10px 5px;
+    margin: 8px 5px;
     border-radius: 4px;
     border: 2px solid rgb(52, 97, 134);
     background-color: whitesmoke;
@@ -32,7 +114,8 @@
     font-size: 14px;
     padding-left: 10px;
 }
-.formStyles>:last-child{
+
+.formStyles>:last-child {
     width: 100px;
     background-image: linear-gradient( rgb(151, 14, 42),crimson);
     border: 2px solid crimson;
@@ -41,19 +124,22 @@
     padding-left: 0px;
     margin-bottom: 20px;
 }
-#contactForm>#comments{
-    height: 300px;
-    margin-top: 10px;
+
+#contact-comments {
+    height: 100px;
+    margin: 8px 0px;
     border: 2px solid rgb(52, 97, 134);
     border-radius: 4px;
     font-size: 14px;
     width: 98%;
     max-width: 386px;
 }
-#comments::placeholder{
+
+.formStyles::placeholder {
     padding: 10px;
 }
-.formStyles>:last-child:hover{
+
+.formStyles > :last-child:hover {
     background-image: linear-gradient( crimson,rgb(88, 8, 24));
     transition: all 0.4s;
 }
@@ -102,4 +188,30 @@
     color: steelblue;
 }
 
+@media (min-width: 768px) {
+    .map-box > h2 {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        margin-left: -222px;
+        color: white;
+        font-size: 30px;
+        text-align: center;
+        z-index: 40;
+        text-shadow: 0px 3px 20px rgb(0, 0, 0);
+    }
 
+}
+@media (min-width: 992px) {
+    .info-box {
+        position: absolute;
+        top: 150px;
+        left: 18%;
+        margin-left: -125px;
+        z-index: 30;
+    }
+
+    #infoBox2 {
+        top: 300px;
+    }
+}

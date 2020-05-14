@@ -171,7 +171,8 @@
     padding-top: 20px;
 }
 
-#make-booking>input{
+#make-booking > input,
+#spaceDropDown {
     height: 40px;
     width: 100%;
     max-width: 376px;
@@ -386,8 +387,9 @@ footer{
         color: white;
         font-size: 22px;
     }
-    
-    #make-booking>input{
+
+    #make-booking > input,
+    #spaceDropDown {
         height: 40px;
         width: 95%;
         max-width: 376px;

@@ -4,7 +4,7 @@ const hamburger = document.getElementById('slideNavToggle');
 let slideNav = document.querySelector('.slide-nav');
 let loginSlide = document.getElementById('login');
 let loginBtns = document.querySelectorAll('.members-login');
-let contactForm = document.getElementById('contactForm');
+let contactForm = document.getElementById('contact-tab');
 let signUpForm = document.getElementById('signUpForm');
 const hamburgerLabel = document.querySelector('.navToggleLabel');
 let blackoutBG = document.querySelector(".blackout-bg");
@@ -13,7 +13,7 @@ hamburger.addEventListener('click', function () {
     if (hamburger.checked == true) {
         zeroOutHeights();
         slideNav.style.height = '380px';
-        addExitButton();
+        hamburger.checked = true
     } else {
         zeroOutHeights()
     }
@@ -38,6 +38,8 @@ function navHeight() {
 window.addEventListener('resize', () => {
     if (loginSlide.style.height > '0px') {
         navHeight();
+    } else if (contactForm.style.height > '0px') {
+        contactHeight();
     }
 });
 
@@ -60,22 +62,35 @@ function zeroOutHeights() {
         hamburger.parentElement.style.display = 'none';
     }
 }
+
+
 function addExitButton() {
+    var footertag = document.documentElement.scrollHeight;
     hamburger.parentElement.style.display = 'flex';
     hamburger.checked = true;
     blackoutBG.style.display = 'block';
+    blackoutBG.style.height = `${footertag}px`;
 }
 
 function contactToggle() {
-    var contactForm = document.getElementById('contactForm');
     if (contactForm.style.height > '0px') {
         zeroOutHeights()
     } else {
         zeroOutHeights();
-        contactForm.style.height = '600px';
+        contactHeight();
         addExitButton();
     }
 }
+function contactHeight() {
+    if (window.innerWidth <= 576) {
+        contactForm.style.height = '1050px';
+    } else if (window.innerWidth > 576 &&
+        window.innerWidth < 992) {
+        contactForm.style.height = '950px';
+    } else {
+        contactForm.style.height = '850px';
+    }
+};
 function signUpToggle() {
     if (signUpForm.style.height > '0px') {
         zeroOutHeights();
@@ -85,12 +100,27 @@ function signUpToggle() {
         addExitButton();
     }
 }
+function myMap() {
+    var mapProp = {
+        center: new google.maps.LatLng(-31.906252, 115.810570),
+        zoom: 16,
+    };
+    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(-31.906252, 115.810570),
+        animation: google.maps.Animation.BOUNCE,
+    });
+
+    marker.setMap(map);
+}
 
 
 let loginBtn = document.getElementById('loginMobileView');
 let fullNav = document.querySelector('.fullwidth-nav');
 let topLogin = document.querySelectorAll('.members-login')[0];
 let navLogo = document.querySelector('.nav-logo');
+
 
 
 window.onscroll = function() { scollFunc()};
