@@ -74,14 +74,7 @@
         <a onclick="contactToggle()">Contact</a>
     </ul>
 
-    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-    @model CoWork454.Models.ContactForm
-    @if (ViewData["SuccessMessage"] != null)
-    {
-        <span class="alert">@ViewData["SuccessMessage"]</span>
-    }
-
-    @Html.Partial("_ContactTabPartial")
+    @Html.Partial("_ContactPartial")
 
     <form id="signUpForm" class="formStyles" action="/Login/Register" method="POST">
         <h2>Sign Up</h2>

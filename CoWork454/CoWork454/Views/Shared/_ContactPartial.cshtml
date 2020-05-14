@@ -1,10 +1,12 @@
-﻿
-
-
+﻿@model CoWork454.Models.ContactForm
+@if (ViewData["SuccessMessage"] != null)
+{
+    <span class="alert">@ViewData["SuccessMessage"]</span>
+}
 
 <div id="contact-tab">
 
-    <form id="contactForm" class="formStyles" action="">
+    <form id="contactForm" class="formStyles" asp-action="SendEmail" asp-controller="ContactSMTP">
         <h2>Want to learn more?</h2>
         <span>We'd love to hear from you.</span>
         <span>Please fill out the form below. A member of our team will be in contact.</span>
@@ -14,7 +16,6 @@
         <textarea name="comments" id="contact-comments" cols="53" rows="10" placeholder="Comments"></textarea>
         <input type="submit" id="contact-submit" value="Enquire now">
     </form>
-
 
     <div class="info-box">
         <span>8am - 5pm</span>
