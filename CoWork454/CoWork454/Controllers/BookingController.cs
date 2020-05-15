@@ -37,21 +37,21 @@ namespace CoWork454.Models
                 ViewData["Bookings"] = existingOrder;
                 ViewData["Products"] = _CoWork454Context.Product.ToList();
             }
-            //return View();
-            return View("Members");
+            return View();
         }
 
         [HttpPost]
         public IActionResult Index(MakeBooking makeBooking)
         {
-            var BookingDate = DateTimeOffset.ParseExact($"{makeBooking.Date} ", "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+            var BookingTimeStart = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "yyyy-MM-dd hh:mm", CultureInfo.InvariantCulture);
+            var BookingTimeEnd = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeFinish}", "yyyy-MM-dd hh:mm", CultureInfo.InvariantCulture);
             var ordType = makeBooking.ProductClass;
-            var bookings = _CoWork454Context.Booking.Include(b => b.Product).Where(b => b.Product.ProductClass == ordType && b.Date_start.Date == BookingDate).OrderBy(b => b.Date_start);
+            var bookings = _CoWork454Context.Booking.Include(b => b.Product).Where(b => b.Product.ProductClass == ordType && b.Date_start.Date == BookingTimeStart.Date).OrderBy(b => b.Date_start);
             var ProductList = _CoWork454Context.Product.Where(p => p.ProductClass == ordType).ToList();
 
             
-            var BookingTimeStart = DateTimeOffset.ParseExact($"{makeBooking.TimeStart}", "hh:mm", CultureInfo.InvariantCulture);
-            var BookingTimeEnd = DateTimeOffset.ParseExact($"{makeBooking.TimeFinish}", "hh:mm", CultureInfo.InvariantCulture);
+            
             var isAvail = new Dictionary<int, bool>();
 
 
@@ -64,44 +64,42 @@ namespace CoWork454.Models
                 }
                 if (isAvail[Productid])
                 {
-                    if (order.Date_start.TimeOfDay.CompareTo(BookingTimeStart) == -1)//start time before requested start time
+                    if (order.Date_start.TimeOfDay.CompareTo(BookingTimeStart.TimeOfDay) == -1)//start time before requested start time
                     {
-                        if (order.Date_end.TimeOfDay.CompareTo(BookingTimeEnd) == 1)//booking end time after requested start time
+                        if (order.Date_end.TimeOfDay.CompareTo(BookingTimeEnd.TimeOfDay) == 1)//booking end time after requested start time
                         {
                             isAvail[Productid] = false; //set false because overlap
                         }
 
                     }
-                    else if (order.Date_start.TimeOfDay.CompareTo(BookingTimeStart) == 0)//start time same as requested start time
+                    else if (order.Date_start.TimeOfDay.CompareTo(BookingTimeStart.TimeOfDay) == 0)//start time same as requested start time
                     {
                         isAvail[Productid] = false; //set false because overlap
                     }
                     else //start time must be after requested start
                     {
-                        if(order.Date_start.TimeOfDay.CompareTo(BookingTimeEnd) == -1)
+                        if(order.Date_start.TimeOfDay.CompareTo(BookingTimeEnd.TimeOfDay) == -1)
                         {
                             isAvail[Productid] = false; //set false because overlap
                         }
                     }
                 }
 
-                foreach (var Product in isAvail)
-                {
-                    if (!Product.Value)
-                    {
-                        ProductList.Remove(ProductList.Single(p => p.Id == Product.Key));
-                    }
-                }
-
-                return new JsonResult(ProductList);
-
 
             }
 
+            foreach (var Product in isAvail)
+            {
+                if (!Product.Value)
+                {
+                    ProductList.Remove(ProductList.Single(p => p.Id == Product.Key));
+                }
+            }
 
-
+            ViewData["Products"] = ProductList;
 
             return View("Members", "Login");
+
         }
         [HttpPost]
         public IActionResult OldIndex(MakeBooking makeBooking)
@@ -110,19 +108,23 @@ namespace CoWork454.Models
 
             if (!ModelState.IsValid)
             {
-                // there is a model error
+                // if there is a model error
                 if (orderIdCookie == null)
                 {
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    var existingOrder = _CoWork454Context.Booking.SingleOrDefault(b => b.OrderId == Convert.ToInt32(orderIdCookie));
-                    ViewData["Bookings"] = existingOrder;
+                    var currentBookings = _CoWork454Context.Booking
+                        .Where(b => b.OrderId == Convert.ToInt32(orderIdCookie))
+                        .ToList();
+                    ViewData["Bookings"] = currentBookings;
                     ViewData["Products"] = _CoWork454Context.Product.ToList();
                 }
                 return View("Members", "Login");
             }
+
+            //create a booking from makebooking. Parse the date/time strings to a datetimeoffset. 
             Booking booking = new Booking()
             {
                 Date_start = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture),
@@ -193,8 +195,10 @@ namespace CoWork454.Models
 
 
                 //update viewdata
-                var existingOrder = _CoWork454Context.Booking.SingleOrDefault(b => b.OrderId == Convert.ToInt32(orderIdCookie));
-                ViewData["Bookings"] = existingOrder;
+                var currentBookings  = _CoWork454Context.Booking
+                    .Where(b => b.OrderId == Convert.ToInt32(orderIdCookie))
+                    .ToList();
+                ViewData["Bookings"] = currentBookings;
                 ViewData["Products"] = _CoWork454Context.Product.ToList();
             }
 

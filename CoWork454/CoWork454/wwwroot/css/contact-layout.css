@@ -115,7 +115,7 @@
     padding-left: 10px;
 }
 
-.formStyles>:last-child {
+#contact-submit {
     width: 100px;
     background-image: linear-gradient( rgb(151, 14, 42),crimson);
     border: 2px solid crimson;
@@ -139,7 +139,7 @@
     padding: 10px;
 }
 
-.formStyles > :last-child:hover {
+#contact-submit:hover {
     background-image: linear-gradient( crimson,rgb(88, 8, 24));
     transition: all 0.4s;
 }

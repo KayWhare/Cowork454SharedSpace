@@ -4,6 +4,7 @@
     ViewData["Title"] = "Members";
     var user = (User)ViewData["User"];
     var fullname = $"{user.FirstName} {user.LastName}";
+    var products = (List<Product>)ViewData["Products"];
     //var bookings = (List<Booking>)ViewData["Booking"]; will use this later to loop over current bookings section below
 }
 
@@ -16,38 +17,56 @@
 
 <div class="members-page">
 
-    <form id="make-booking" action="">
+    <form id="make-booking" method="post" action="/Booking/Index">
         <div class="members-details">
             <h3>Your Details</h3>
             <span><i>Name: </i><br>@fullname</span>
             @{ if (user.CompanyName != null)
                 {
-                <span><i>Company: </i><br>@user.CompanyName </span>
+                    <span><i>Company: </i><br>@user.CompanyName </span>
                 }
             }
-                <span><i>Mobile: </i><br>@user.Phone </span>
-                <span><i>E-mail: </i><br>@user.Email </span>
-            </div>
+            <span><i>Mobile: </i><br>@user.Phone </span>
+            <span><i>E-mail: </i><br>@user.Email </span>
+        </div>
         <h3>Make a booking</h3>
         <label>Space required:</label>
         <select id="spaceDropDown" name="ProductClass">
-            <option value = "0">Workstation</option>
-            <option value= "1">Office</option>
+            <option value="0">Workstation</option>
+            <option value="1">Office</option>
             <option value="2">Meeting Room</option>
             <option value="3">Board Room</option>
             <option value="4">Training Room</option>
             <option value="5">Quiet Room</option>
         </select>
         <label for="date">Date: </label>
-        <input type="date" id="date" name="booking-date" placeholder="Date" required>
+        <input type="date" id="date" name="Date" placeholder="Date" required>
         <label for="time-from">From: </label>
-        <input type="time" id="time-from" name="booking-from" placeholder="From am/pm" required>
+        <input type="time" id="time-from" name="TimeStart" placeholder="From am/pm" required>
         <label for="time-to">To: </label>
-        <input type="time" id="time-to" name="booking-to" placeholder="To am/pm" required>
+        <input type="time" id="time-to" name="TimeFinish" placeholder="To am/pm" required>
         <input type="submit" id="booking-submit" value="Confirm Booking">
     </form>
 
     <!-- <div class="members-booking"> -->
+
+    @if (products != null)
+    {
+        @foreach (var product in products)
+        {
+            <div class="booking-box">
+                <img src="/images/image_03.jpg" alt="space image">
+                <div class="booking-info">
+                    <span><strong>@product.Name</strong></span>
+                    <span><strong>Date: </strong>01/10/2021</span>
+
+                </div>
+                <a href="/Booking/OldIndex">Make Reservation</a>
+            </div>
+
+        }
+    }
+
     <div id="current-bookings">
         <h3>Current Bookings</h3>
 

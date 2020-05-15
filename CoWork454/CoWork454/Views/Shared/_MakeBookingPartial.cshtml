@@ -1,0 +1,27 @@
+﻿@using CoWork454.Models;
+
+@{
+    var products = (List<Product>)ViewData["Products"];
+
+}
+
+
+<div id="current-bookings">
+    <h3>Available Bookings</h3>
+
+    @foreach (var product in products)
+    {
+        <div class="booking-box">
+            <img src="/images/image_03.jpg" alt="space image">
+            <div class="booking-info">
+                <span><strong>@product.Name</strong></span>
+                <span><strong>Date: </strong>01/10/2021</span>
+
+            </div>
+            <a href="/Booking/OldIndex">Make Reservation</a>
+        </div>
+
+    }
+
+
+</div>

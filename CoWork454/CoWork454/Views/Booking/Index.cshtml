@@ -1,0 +1,56 @@
+﻿@using CoWork454.Models;
+
+@{
+    ViewData["Title"] = "Members";
+    var user = (User)ViewData["User"];
+    var fullname = $"{user.FirstName} {user.LastName}";
+    var products = (List<Product>)ViewData["Products"];
+
+}
+
+<div class="hero-members">
+    <div class="hero-members-inner">
+    </div>
+
+</div>
+<h1 id="members-header">Welcome, @user.FirstName </h1>
+
+<div class="members-page">
+
+    <form id="make-booking" action="">
+        <div class="members-details">
+            <h3>Your Details</h3>
+            <span><i>Name: </i><br>@fullname</span>
+            @{ if (user.CompanyName != null)
+                {
+                    <span><i>Company: </i><br>@user.CompanyName </span>
+                }
+            }
+            <span><i>Mobile: </i><br>@user.Phone </span>
+            <span><i>E-mail: </i><br>@user.Email </span>
+        </div>
+        <h3>Make a booking</h3>
+        <label>Space required:</label>
+        <select id="spaceDropDown" name="ProductClass">
+            <option value="0">Workstation</option>
+            <option value="1">Office</option>
+            <option value="2">Meeting Room</option>
+            <option value="3">Board Room</option>
+            <option value="4">Training Room</option>
+            <option value="5">Quiet Room</option>
+        </select>
+        <label for="date">Date: </label>
+        <input type="date" id="date" name="booking-date" placeholder="Date" required>
+        <label for="time-from">From: </label>
+        <input type="time" id="time-from" name="booking-from" placeholder="From am/pm" required>
+        <label for="time-to">To: </label>
+        <input type="time" id="time-to" name="booking-to" placeholder="To am/pm" required>
+        <input type="submit" id="booking-submit" value="Confirm Booking">
+    </form>
+
+
+    @Html.Partial("_MakeBookingPartial")
+
+
+</div>
+
