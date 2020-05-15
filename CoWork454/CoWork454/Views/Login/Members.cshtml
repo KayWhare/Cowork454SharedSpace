@@ -4,8 +4,8 @@
     ViewData["Title"] = "Members";
     var user = (User)ViewData["User"];
     var fullname = $"{user.FirstName} {user.LastName}";
+    var bookings = (List<Booking>)ViewData["Bookings"];
     var products = (List<Product>)ViewData["Products"];
-    //var bookings = (List<Booking>)ViewData["Booking"]; will use this later to loop over current bookings section below
 }
 
 <div class="hero-members">
@@ -48,72 +48,25 @@
         <input type="submit" id="booking-submit" value="Confirm Booking">
     </form>
 
-    <!-- <div class="members-booking"> -->
-
-    @if (products != null)
-    {
-        @foreach (var product in products)
-        {
-            <div class="booking-box">
-                <img src="/images/image_03.jpg" alt="space image">
-                <div class="booking-info">
-                    <span><strong>@product.Name</strong></span>
-                    <span><strong>Date: </strong>01/10/2021</span>
-
-                </div>
-                <a href="/Booking/OldIndex">Make Reservation</a>
-            </div>
-
-        }
-    }
 
     <div id="current-bookings">
         <h3>Current Bookings</h3>
 
-        <div class="booking-box">
-            <img src="/images/image_03.jpg" alt="space image">
-            <div class="booking-info">
-                <span>Board Room 3</span>
-                <span><strong>Date: </strong>01/10/2021</span>
-                <span><strong>From: </strong>10:00am</span>
-                <span><strong>To: </strong>12:00pm</span>
+        @foreach (var b in bookings)
+        {
+            <div class="booking-box">
+                <img src="/images/image_09.jpg" alt="space image">
+                <div class="booking-info">
+                    <span>@b.Product.Name</span>
+                    <span><strong>Date: </strong>01/10/2021</span>
+                    <span><strong>From: </strong>10:00am</span>
+                    <span><strong>To: </strong>12:00pm</span>
+                </div>
+                <a href="">Edit Booking</a>
             </div>
-            <a href="">Edit Booking</a>
-        </div>
+        }
 
-        <div class="booking-box">
-            <img src="/images/image_09.jpg" alt="space image">
-            <div class="booking-info">
-                <span>Dedicated Desk 19</span>
-                <span><strong>Date: </strong>01/10/2021</span>
-                <span><strong>From: </strong>10:00am</span>
-                <span><strong>To: </strong>12:00pm</span>
-            </div>
-            <a href="">Edit Booking</a>
-        </div>
-        <div class="booking-box">
-            <img src="/images/image_04.jpg" alt="space image">
-            <div class="booking-info">
-                <span>Dedicated Desk 20</span>
-                <span><strong>Date: </strong>01/10/2021</span>
-                <span><strong>From: </strong>10:00am</span>
-                <span><strong>To: </strong>12:00pm</span>
-            </div>
-            <a href="">Edit Booking</a>
-        </div>
-
-        <div class="booking-box">
-            <img src="/images/image_06.jpg" alt="space image">
-            <div class="booking-info">
-                <span>Meeting Room 3</span>
-                <span><strong>Date: </strong>01/10/2021</span>
-                <span><strong>From: </strong>10:00am</span>
-                <span><strong>To: </strong>12:00pm</span>
-            </div>
-            <a href="">Edit Booking</a>
-        </div>
     </div>
-
 
 </div>
 

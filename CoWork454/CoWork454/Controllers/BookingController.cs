@@ -43,62 +43,45 @@ namespace CoWork454.Models
         [HttpPost]
         public IActionResult Index(MakeBooking makeBooking)
         {
-
-            var BookingTimeStart = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "yyyy-MM-dd hh:mm", CultureInfo.InvariantCulture);
-            var BookingTimeEnd = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeFinish}", "yyyy-MM-dd hh:mm", CultureInfo.InvariantCulture);
-            var ordType = makeBooking.ProductClass;
-            var bookings = _CoWork454Context.Booking.Include(b => b.Product).Where(b => b.Product.ProductClass == ordType && b.Date_start.Date == BookingTimeStart.Date).OrderBy(b => b.Date_start);
-            var ProductList = _CoWork454Context.Product.Where(p => p.ProductClass == ordType).ToList();
-
-            
-            
-            var isAvail = new Dictionary<int, bool>();
-
-
-            foreach (var order in bookings){
-                var Productid = order.ProductId;
-                if (!isAvail.ContainsKey(Productid))
-                {
-                    isAvail.Add(Productid, true);
-
-                }
-                if (isAvail[Productid])
-                {
-                    if (order.Date_start.TimeOfDay.CompareTo(BookingTimeStart.TimeOfDay) == -1)//start time before requested start time
-                    {
-                        if (order.Date_end.TimeOfDay.CompareTo(BookingTimeEnd.TimeOfDay) == 1)//booking end time after requested start time
-                        {
-                            isAvail[Productid] = false; //set false because overlap
-                        }
-
-                    }
-                    else if (order.Date_start.TimeOfDay.CompareTo(BookingTimeStart.TimeOfDay) == 0)//start time same as requested start time
-                    {
-                        isAvail[Productid] = false; //set false because overlap
-                    }
-                    else //start time must be after requested start
-                    {
-                        if(order.Date_start.TimeOfDay.CompareTo(BookingTimeEnd.TimeOfDay) == -1)
-                        {
-                            isAvail[Productid] = false; //set false because overlap
-                        }
-                    }
-                }
-
-
-            }
-
-            foreach (var Product in isAvail)
+            //change makeBooking to Booking and convert to DateTimeOffset
+            Booking booking = new Booking()
             {
-                if (!Product.Value)
-                {
-                    ProductList.Remove(ProductList.Single(p => p.Id == Product.Key));
-                }
+                ProductId = makeBooking.ProductId,
+                Date_start = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "yyyy-MM-dd hh:mm", CultureInfo.InvariantCulture),
+                Date_end = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeFinish}", "yyyy-MM-dd hh:mm", CultureInfo.InvariantCulture)
+            };
+            //retrieve all bookings of the same productclass from DB
+            var currentBookings = _CoWork454Context.Booking
+                .Where(b => b.Product.ProductClass == makeBooking.ProductClass);
+
+            //retrieve all products of the same productClass that are Available
+            var availableProducts = _CoWork454Context.Product
+                .Where(p => p.ProductClass == makeBooking.ProductClass
+                && p.isAvailable == true).ToList();
+
+            //if not null, check the incoming times for overlaps with currentbookings
+            if(currentBookings != null)
+            {
+                foreach (var b in currentBookings)
+                {   //this is a beauty of an algorithm that checks for overlap, so simple :-)
+                    if (b.Date_start <= booking.Date_end && booking.Date_start <= b.Date_end)
+                    {
+                        //if overlap occurs, remove from available products list
+                        availableProducts.Remove(availableProducts.SingleOrDefault(p => p.Id == b.ProductId));
+                    }
+                };
+            };
+
+            var userIdCookie = GetEncryptedUserCookie("USER_ID");
+            if (userIdCookie != null)
+            {
+                var LogginUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));
+                ViewData["User"] = LogginUser;
             }
+            ViewData["BookingRequest"] = makeBooking;
+            ViewData["Products"] = availableProducts;
 
-            ViewData["Products"] = ProductList;
-
-            return View("Members", "Login");
+            return View();
 
         }
         [HttpPost]
@@ -106,30 +89,12 @@ namespace CoWork454.Models
         {
             var orderIdCookie = GetEncryptedUserCookie("ORDER_ID");
 
-            if (!ModelState.IsValid)
-            {
-                // if there is a model error
-                if (orderIdCookie == null)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    var currentBookings = _CoWork454Context.Booking
-                        .Where(b => b.OrderId == Convert.ToInt32(orderIdCookie))
-                        .ToList();
-                    ViewData["Bookings"] = currentBookings;
-                    ViewData["Products"] = _CoWork454Context.Product.ToList();
-                }
-                return View("Members", "Login");
-            }
-
             //create a booking from makebooking. Parse the date/time strings to a datetimeoffset. 
             Booking booking = new Booking()
             {
-                Date_start = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture),
-
-                Date_end = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeFinish}", "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture)
+                ProductId = makeBooking.ProductId,
+                Date_start = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "yyyy-MM-dd hh:mm", CultureInfo.InvariantCulture),
+                Date_end = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeFinish}", "yyyy-MM-dd hh:mm", CultureInfo.InvariantCulture)
             };
 
             if (orderIdCookie == null)
@@ -156,6 +121,10 @@ namespace CoWork454.Models
                 // we are going to show the user 
 
                 ViewData["Bookings"] = _CoWork454Context.Booking.Where(b => b.OrderId == Convert.ToInt32(orderIdCookie));
+                ViewData["Products"] = _CoWork454Context.Product.ToList();
+                ViewData["BookingRequest"] = makeBooking;
+                ViewData["User"] = _CoWork454Context.User
+                    .SingleOrDefault(u => u.Id == Convert.ToInt32(userId));
             }
             else
             {
@@ -200,9 +169,12 @@ namespace CoWork454.Models
                     .ToList();
                 ViewData["Bookings"] = currentBookings;
                 ViewData["Products"] = _CoWork454Context.Product.ToList();
+                ViewData["User"] = _CoWork454Context.User
+                    .SingleOrDefault(u => u.Id == order.UserId);
+
             }
 
-            return View("Members","Login");
+            return View("Index");
         }
 
 
