@@ -80,6 +80,7 @@ namespace CoWork454.Controllers
                 .Where(b => b.Order.UserId == existingUser.Id)
                 .ToList();
                 ViewData["Bookings"] = currentBookings;
+                ViewData["Products"] = _CoWork454Context.Product.ToList();
 
             }
 
