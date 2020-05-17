@@ -1,0 +1,393 @@
+
+.hero-bookings {
+    height: 900px;
+    background-image: url(/images/bgbanner2.jpeg);
+    background-size: cover;
+    background-position: center -100px;
+    background-attachment: fixed;
+}
+
+.hero-bookings-inner {
+    position: relative;
+    height: 900px;
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(0px);
+    width: 100%;
+    text-align: left;
+
+}
+
+.booking-container{
+    position: relative;
+    top: 50px;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 3px solid lightgray;
+    border-radius: 20px;
+    z-index: 50;
+}
+.booking-cover{
+    margin: 20px auto;
+    padding: 50px 0px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    top: -50px;
+    width: 90%;
+    background-color: rgba(41, 70, 88, 0.98);
+    border-radius: 10px;
+}
+.booking-cover>h2{
+    color: white;
+    text-align: center;
+    font-size: 36px;
+    font-family: Roboto Slab;
+    font-weight: 300;
+    padding: 0px 0px 20px 0px;
+    max-width: 300px;
+}
+.booking-cover>p{
+    width:80%;
+    margin: 0px auto;
+    color: rgb(201, 201, 201);
+    font-size: 15px;
+    font-weight: 300;
+    max-width: 300px;
+}
+#booking-form{
+    position: relative;
+    top: -25px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+}
+#booking-form>input{
+    border: 2px solid lightgray;
+    width: 100%;
+    padding: 15px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+}
+#spaceSelect{
+    border: 2px solid lightgray;
+    width: 100%;
+    height: 50px;
+    padding: 15px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 12px;
+}
+#booking-form>label{
+    width: 100%;
+    padding: 20px 0px 5px;
+    font-family: Oxygen;
+    font-size: 18px;
+    color: rgba(41, 70, 88, 0.9);
+}
+#booking-form>:last-child{
+    width: 100%;
+    border: 2px solid rgb(53, 90, 112);
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+    letter-spacing: 1.05px;
+    margin: 30px 0px;
+    font-family: Oxygen;
+    color: white;
+    background-color: rgb(56, 95, 119);
+}
+#booking-form>:last-child:hover{
+    background-color: rgb(46, 79, 99);
+}
+.half-box>input{
+    border: 2px solid lightgray;
+    width:38%;
+    padding: 16px 5%;
+    border-radius: 6px;
+    outline: none;
+    font-size: 13px;
+    max-height: 40px;
+}
+.half-box>label{
+    width: 49%;
+    padding: 20px 0px 5px;
+    font-family: Oxygen;
+    font-size: 18px;
+    color: rgba(41, 70, 88, 0.9);
+}
+.half-box{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+
+#available-bookings {
+    position:relative;
+    top: -80px;
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+    #available-bookings > h3 {
+        font-size: 32px;
+        font-family: Roboto Slab, sans-serif;
+        width: 100%;
+        margin: 10px 35px;
+        color: whitesmoke;
+        text-shadow: 0px 3px 10px black;
+        text-align: center;
+    }
+
+.a-booking-box {
+    display: flex;
+    max-width: 230px;
+    flex-wrap: wrap;
+    margin: 20px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px gray;
+    background: whitesmoke;
+    overflow: hidden;
+}
+
+    .a-booking-box:hover {
+        transform: scale(1.02);
+        transition: all 0.2s;
+        box-shadow: 0px 20px 35px gray;
+    }
+
+.a-booking-info {
+    position: relative;
+    top: -20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+}
+
+    .a-booking-info > :first-child > strong {
+        position: relative;
+        top: -20px;
+        font-family: Roboto Slab;
+        font-size: 20px;
+        font-weight: 400;
+        color: white;
+    }
+
+    .a-booking-info > span {
+        font-size: 14px;
+        width: 100%;
+        padding: 5px;
+    }
+
+        .a-booking-info > span > strong {
+            font-size: 12px;
+            color: grey;
+            width: 100%;
+            padding: 10px 0px 10px 0px;
+        }
+
+.a-booking-box > :last-child {
+    position: relative;
+    bottom: 0px;
+    text-decoration: none;
+    width: 100%;
+    background-image: linear-gradient(rgb(41, 70, 88, 0.98), rgb(67, 112, 141, 0.98));
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 20px 0px;
+}
+
+    .a-booking-box > :last-child:hover {
+        background-image: linear-gradient(rgb(41, 70, 88, 0.98), rgb(38, 72, 102));
+        transition: all 0.4s;
+    }
+
+.a-booking-box > img {
+    width: 100%;
+    max-height: 160px;
+    filter: grayscale(100%);
+    transition: all 0.07s;
+}
+
+.a-booking-box:hover > img {
+    transform: scale(1.05);
+    transition: all 0.3s;
+    filter: grayscale(0%);
+}
+
+
+
+
+
+@media (min-width: 576px) {
+    .booking-cover{
+        width: 80%;
+    }
+    #booking-form{
+        width: 80%;
+    }
+}
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+    .hero-bookings {
+        position: relative;
+        height: 670px;
+        background-image: url(/images/bgbanner2.jpeg);
+        background-size: cover;
+        background-position: center -100px;
+        background-attachment: fixed;
+    }
+    
+    .hero-bookings-inner {
+        position: relative;
+        height: 670px;
+        background-color: rgba(0, 0, 0, 0.35);
+        width: 100%;
+        text-align: left;
+    
+    }
+    .booking-container{
+        position: relative;
+        top: 100px;
+        width: 95%;
+        max-width: 1050px;
+        max-height: 450px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 3px solid lightgray;
+        border-radius: 20px;
+        z-index: 50;
+    }
+    .booking-cover{
+        margin: 20px auto;
+        padding: 150px 0px;
+        top: -58px;
+        left: -3%;
+        width: 40%; 
+        max-width: 400px;
+        border-radius: 10px;
+    }
+    .booking-cover>h2{
+        color: white;
+        text-align: center;
+        font-size: 36px;
+        font-family: Roboto Slab;
+        font-weight: 300;
+        padding-bottom: 20px;
+        max-width: 300px;
+    }
+    .booking-cover>p{
+        width:80%;
+        margin: 0px auto;
+        color: rgb(201, 201, 201);
+        font-size: 15px;
+        font-weight: 300;
+        max-width: 300px;
+    }
+    #booking-form{
+        top: -56px;
+        left: -4%;
+        width: 50%;
+    }
+    #booking-form>input{
+        border: 2px solid lightgray;
+        width: 100%;
+        padding: 15px;
+        border-radius: 6px;
+        outline: none;
+        font-size: 14px;
+    }
+    #spaceSelect{
+        border: 2px solid lightgray;
+        width: 100%;
+        height: 50px;
+        padding: 15px;
+        border-radius: 90px;
+        outline: none;
+        font-size: 12px;
+    }
+    #booking-form>label{
+        width: 100%;
+        padding: 20px 0px 5px;
+        font-family: Oxygen;
+        font-size: 18px;
+        color: rgba(41, 70, 88, 0.9);
+    }
+    #booking-form>:last-child{
+        width: 100%;
+        border: 2px solid rgb(53, 90, 112);
+        border-radius: 6px;
+        outline: none;
+        font-size: 16px;
+        letter-spacing: 1.05px;
+        margin: 30px 0px;
+        font-family: Oxygen;
+        color: white;
+        background-color: rgb(56, 95, 119);
+    }
+    #booking-form>:last-child:hover{
+        background-color: rgb(46, 79, 99);
+    }
+    .half-box>input{
+        border: 2px solid lightgray;
+        width:38%;
+        padding: 16px 5%;
+        border-radius: 6px;
+        outline: none;
+        font-size: 13px;
+        max-height: 40px;
+    }
+    .half-box>label{
+        width: 49%;
+        padding: 20px 0px 5px;
+        font-family: Oxygen;
+        font-size: 18px;
+        color: rgba(41, 70, 88, 0.9);
+    }
+    .half-box{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+
+   
+ 
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+
+
+}
+
+/*

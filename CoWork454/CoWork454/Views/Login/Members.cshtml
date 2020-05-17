@@ -55,12 +55,12 @@
         @foreach (var b in bookings)
         {
             <div class="booking-box">
-                <img src="/images/image_09.jpg" alt="space image">
+                <img src="@b.Product.ImagePath" alt="space image">
                 <div class="booking-info">
                     <span>@b.Product.Name</span>
-                    <span><strong>Date: </strong>01/10/2021</span>
-                    <span><strong>From: </strong>10:00am</span>
-                    <span><strong>To: </strong>12:00pm</span>
+                    <span><strong>Date: </strong>@b.Date_start.ToString("dd/MM/yyyy")</span>
+                    <span><strong>From: </strong>@b.Date_start.ToString("HH:mm")</span>
+                    <span><strong>To: </strong>@b.Date_end.ToString("HH:mm")</span>
                 </div>
                 <a href="">Edit Booking</a>
             </div>

@@ -3,26 +3,26 @@
 @{
     var products = (List<Product>)ViewData["Products"];
     var request = (MakeBooking)ViewData["BookingRequest"];
-
 }
 
 
-    <div id="current-bookings">
+    <div id="available-bookings">
 
 
         @{
             if (request != null)
             {
-                <h3>Available Bookings</h3>
+                <h3><i class="fas fa-angle-down"></i> Available Spaces <i class="fas fa-angle-down"></i></h3>
                 foreach (var product in products)
                 {
-                    <form method="post" action="/Booking/AddBooking" class="booking-box">
-                        <img src="/images/image_03.jpg" alt="space image">
-                        <div class="booking-info">
+                    <form method="post" action="/Booking/AddBooking" class="a-booking-box">
+                        <img src="@product.ImagePath " alt="space image">
+                        <div class="a-booking-info">
                             <span><strong>@product.Name</strong></span>
                             <span><strong>Date: </strong>@request.Date </span>
                             <span><strong>From: </strong>@request.TimeStart </span>
                             <span><strong>To: </strong>@request.TimeFinish </span>
+                            <span><strong>Details: </strong><br>@product.Details </span>
                             <input type="hidden" name="ProductId" value="@product.Id" />
                             <input type="hidden" name="TimeStart" value="@request.TimeStart" />
                             <input type="hidden" name="TimeFinish" value="@request.TimeFinish" />
@@ -35,8 +35,10 @@
             }
             else
             {
-                <h3>Check Availability >>>>>>>>>> </h3>
+                <h3><i class="fas fa-angle-up"></i> Find A Space <i class="fas fa-angle-up"></i></h3>
             }
+
+
         }
 
 

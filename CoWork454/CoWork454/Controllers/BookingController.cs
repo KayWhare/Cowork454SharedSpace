@@ -27,25 +27,16 @@ namespace CoWork454.Models
         public IActionResult Index()
         {
             var userIdCookie = GetEncryptedUserCookie("USER_ID");
-            var orderIdCookie = GetEncryptedUserCookie("ORDER_ID");
-            if (orderIdCookie == null)
-            {
-                if (userIdCookie != null)
-                {
-                    var LogginUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));
-                    ViewData["User"] = LogginUser;
-                    ViewData["Products"] = _CoWork454Context.Product.ToList();
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Admin");
-                }
-            }
 
+            if (userIdCookie == null)
+            {
+                //can't make a booking without login
+               return RedirectToAction("Index", "Home");
+            }
             else
             {
                 var currentBookings = _CoWork454Context.Booking.Include(b => b.Order)
-                    .Where(b => b.Order.UserId == Convert.ToInt32(orderIdCookie)).ToList();
+                    .Where(b => b.Order.UserId == Convert.ToInt32(userIdCookie)).ToList();
                 ViewData["Bookings"] = currentBookings;
                 ViewData["Products"] = _CoWork454Context.Product.ToList();
                 ViewData["User"] = _CoWork454Context.User.SingleOrDefault(u => u.Id == Convert.ToInt32(userIdCookie));

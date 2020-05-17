@@ -3,7 +3,7 @@
     height: 500px;
     background-image: url(/images/bgbanner3.jpeg);
     background-size: cover;
-    background-position: center -400px;
+    background-position: top;
     background-attachment: fixed;
 }
 
