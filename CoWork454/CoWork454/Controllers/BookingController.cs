@@ -26,16 +26,29 @@ namespace CoWork454.Models
         // GET: /<controller>/
         public IActionResult Index()
         {
+            var userIdCookie = GetEncryptedUserCookie("USER_ID");
             var orderIdCookie = GetEncryptedUserCookie("ORDER_ID");
             if (orderIdCookie == null)
             {
-                return RedirectToAction("Index", "Home");
+                if (userIdCookie != null)
+                {
+                    var LogginUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));
+                    ViewData["User"] = LogginUser;
+                    ViewData["Products"] = _CoWork454Context.Product.ToList();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
             }
+
             else
             {
-                var existingOrder = _CoWork454Context.Booking.SingleOrDefault(b => b.OrderId == Convert.ToInt32(orderIdCookie));
-                ViewData["Bookings"] = existingOrder;
+                var currentBookings = _CoWork454Context.Booking.Include(b => b.Order)
+                    .Where(b => b.Order.UserId == Convert.ToInt32(orderIdCookie)).ToList();
+                ViewData["Bookings"] = currentBookings;
                 ViewData["Products"] = _CoWork454Context.Product.ToList();
+                ViewData["User"] = _CoWork454Context.User.SingleOrDefault(u => u.Id == Convert.ToInt32(userIdCookie));
             }
             return View();
         }
@@ -59,11 +72,11 @@ namespace CoWork454.Models
                 .Where(p => p.ProductClass == makeBooking.ProductClass
                 && p.isAvailable == true).ToList();
 
-            //if not null, check the incoming times for overlaps with currentbookings
+            //if not null, check the incoming booking request times for overlaps with currentbookings
             if(currentBookings != null)
             {
                 foreach (var b in currentBookings)
-                {   //this is a beauty of an algorithm that checks for overlap, so simple :-)
+                {   //this is an algorithm that checks for overlap
                     if (b.Date_start <= booking.Date_end && booking.Date_start <= b.Date_end)
                     {
                         //if overlap occurs, remove from available products list
@@ -99,9 +112,11 @@ namespace CoWork454.Models
 
             if (orderIdCookie == null)
             {
+
                 // create new order
                 var order = new Order();
 
+                // create bookings list and add to new booking
                 order.Bookings = new List<Booking>();
                 order.Bookings.Add(booking);
 
@@ -120,7 +135,8 @@ namespace CoWork454.Models
 
                 // we are going to show the user
 
-                var currentBookings = order.Bookings.ToList();
+                var currentBookings = _CoWork454Context.Booking.Include(o => o.Order)
+                    .Where(o => o.Order.UserId == order.UserId).ToList();
                 ViewData["Bookings"] = currentBookings;
                 ViewData["Products"] = _CoWork454Context.Product.ToList();
                 ViewData["BookingRequest"] = makeBooking;
@@ -145,44 +161,45 @@ namespace CoWork454.Models
                 // get the existing order item/s with the same ProductID, if any
 
                 var existingBookings = _CoWork454Context.Booking
-                    .Where(b => b.ProductId == booking.ProductId &&
-                    booking.OrderId == orderId &&
-                    b.Date_start <= booking.Date_end && booking.Date_start <= b.Date_end).ToList();
+                    .SingleOrDefault(b => b.OrderId == orderId &&
+                    b.ProductId == booking.ProductId);
 
-                if (existingBookings.Count > 0)
+                if (existingBookings == null)
                 {
-                    //Find duplicates with Overlapping Times Algorithm
-                    foreach (var existingBooking in existingBookings)
-                    {
-                        if (existingBooking.Date_start <= booking.Date_end && booking.Date_start <= existingBooking.Date_end)
-                        {
-                            //overlap occurs, update existingbooking variable and replace oldBooking Times
-                            existingBooking.Date_start = booking.Date_start;
-                            existingBooking.Date_end = booking.Date_end;
-                            _CoWork454Context.Update(existingBooking);
-                        }
-                        else
-                        {
-                            existingBookings.Remove(existingBooking);
-                        }
-                    }
-                    if (existingBookings.Count > 0)
-                    {
-                        //no bookings were updated so add booking
-                        order.Bookings.Add(booking);
-                    }
+                    //no bookings of same product on the order so add booking
+                    order.Bookings.Add(booking);
+
+                    //update database
+                    _CoWork454Context.SaveChanges();
                 }
                 else
                 {
-                    //no existing bookings of the same productid 
-                    order.Bookings.Add(booking);
+                    //Already has booking of that product id so make new order
+                    var newOrder = new Order();
+
+                    // create bookings list and add to new booking
+                    newOrder.Bookings = new List<Booking>();
+                    newOrder.Bookings.Add(booking);
+
+                    var userId = GetEncryptedUserCookie("USER_ID");
+                    if (userId != null)
+                    {
+                        newOrder.UserId = Convert.ToInt32(userId);
+                    }
+
+                    // add the order to the context, save changes to update database
+                    _CoWork454Context.Add(newOrder);
+                    _CoWork454Context.SaveChanges();
+
+                    // set the orderId in a cookie
+                    SetEncryptedUserCookie("ORDER_ID", newOrder.Id.ToString());
+
                 }
 
-                //update database
-                _CoWork454Context.SaveChanges();
 
                 //update viewdata
-                var currentBookings = order.Bookings.ToList();
+                var currentBookings = _CoWork454Context.Booking.Include(o => o.Order)
+                    .Where(o => o.Order.UserId == order.UserId).ToList();
                 ViewData["Bookings"] = currentBookings;
                 ViewData["Products"] = _CoWork454Context.Product.ToList();
                 ViewData["User"] = _CoWork454Context.User

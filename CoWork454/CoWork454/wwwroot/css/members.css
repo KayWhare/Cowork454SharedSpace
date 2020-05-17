@@ -2,9 +2,9 @@
 .hero-members {
     position: relative;
     height: 300px;
-    background-image: url(/images/image_05.jpg);
+    background-image: url(/images/bgbanner1.jpeg);
     background-size: cover;
-    background-position: center -300px;
+    background-position: center -200px;
     background-attachment: fixed;
 }
 
@@ -12,7 +12,6 @@
     position: absolute;
     height: 300px;
     background-color: rgba(0, 0, 0, 0.40);
-    backdrop-filter: blur(2px);
     width: 100%;
     text-align: left;
 }

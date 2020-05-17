@@ -5,6 +5,8 @@
     var user = (User)ViewData["User"];
     var fullname = $"{user.FirstName} {user.LastName}";
     var products = (List<Product>)ViewData["Products"];
+    var request = (MakeBooking)ViewData["BookingRequest"];
+
 
 }
 
@@ -17,7 +19,7 @@
 
 <div class="members-page">
 
-    <form id="make-booking" action="">
+    <form id="make-booking" method="post" action="/Booking/Index">
         <div class="members-details">
             <h3>Your Details</h3>
             <span><i>Name: </i><br>@fullname</span>
@@ -40,11 +42,11 @@
             <option value="5">Quiet Room</option>
         </select>
         <label for="date">Date: </label>
-        <input type="date" id="date" name="booking-date" placeholder="Date" required>
+        <input type="date" id="date" name="Date" placeholder="Date" required>
         <label for="time-from">From: </label>
-        <input type="time" id="time-from" name="booking-from" placeholder="From am/pm" required>
+        <input type="time" id="time-from" name="TimeStart" placeholder="From am/pm" required>
         <label for="time-to">To: </label>
-        <input type="time" id="time-to" name="booking-to" placeholder="To am/pm" required>
+        <input type="time" id="time-to" name="TimeFinish" placeholder="To am/pm" required>
         <input type="submit" id="booking-submit" value="Confirm Booking">
     </form>
 

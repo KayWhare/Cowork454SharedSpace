@@ -7,27 +7,37 @@
 }
 
 
-<div id="current-bookings">
-    <h3>Available Bookings</h3>
-
-    @foreach (var product in products)
-    {
-        <form method="post" action="/Booking/AddBooking" class="booking-box">
-            <img src="/images/image_03.jpg" alt="space image">
-            <div class="booking-info">
-                <span><strong>@product.Name</strong></span>
-                <span><strong>Date: </strong>@request.Date </span>
-                <span><strong>From: </strong>@request.TimeStart </span>
-                <span><strong>To: </strong>@request.TimeFinish </span>
-                <input type="hidden" name="ProductId" value="@product.Id" />
-                <input type="hidden" name="TimeStart" value="@request.TimeStart" />
-                <input type="hidden" name="TimeFinish" value="@request.TimeFinish" />
-                <input type="hidden" name="Date" value="@request.Date" />
-            </div>
-            <button type="submit">Make Reservation</button> 
-        </form>
-
-    }
+    <div id="current-bookings">
 
 
-</div>
+        @{
+            if (request != null)
+            {
+                <h3>Available Bookings</h3>
+                foreach (var product in products)
+                {
+                    <form method="post" action="/Booking/AddBooking" class="booking-box">
+                        <img src="/images/image_03.jpg" alt="space image">
+                        <div class="booking-info">
+                            <span><strong>@product.Name</strong></span>
+                            <span><strong>Date: </strong>@request.Date </span>
+                            <span><strong>From: </strong>@request.TimeStart </span>
+                            <span><strong>To: </strong>@request.TimeFinish </span>
+                            <input type="hidden" name="ProductId" value="@product.Id" />
+                            <input type="hidden" name="TimeStart" value="@request.TimeStart" />
+                            <input type="hidden" name="TimeFinish" value="@request.TimeFinish" />
+                            <input type="hidden" name="Date" value="@request.Date" />
+                        </div>
+                        <button type="submit">Make Reservation</button>
+                    </form>
+
+                }
+            }
+            else
+            {
+                <h3>Check Availability >>>>>>>>>> </h3>
+            }
+        }
+
+
+    </div>

@@ -75,6 +75,7 @@ namespace CoWork454.Controllers
             else {
                 // if it matches, set a cookie with the userId
                 SetEncryptedUserCookie("USER_ID", existingUser.Id.ToString());
+
                 ViewData["User"] = existingUser;
                 var currentBookings = _CoWork454Context.Booking
                 .Where(b => b.Order.UserId == existingUser.Id)
