@@ -1,80 +1,170 @@
 
-.hero-members {
+.c-hero-bookings {
     position: relative;
-    height: 300px;
+    height: 1000px;
     background-image: url(/images/bgbanner1.jpeg);
     background-size: cover;
-    background-position: center -200px;
+    background-position: center -100px;
     background-attachment: fixed;
 }
 
-.hero-members-inner {
-    position: absolute;
-    height: 300px;
-    background-color: rgba(0, 0, 0, 0.40);
+.c-hero-bookings-inner {
+    position: relative;
+    height: 1000px;
+    background-color: rgba(0, 0, 0, 0.35);
     width: 100%;
     text-align: left;
 }
 
-.members-page{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    width: 100%;
-    justify-content: center;
 
-}
-.members-details {
-    color: white;
+
+.c-booking-container {
     position: relative;
-    text-align: right;
-    right: 0px;
+    top: 60px;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 3px solid lightgray;
+    border-radius: 20px;
+    z-index: 50;
 }
-.members-details>h3{
-    font-size: 20px;
-    color: mintcream;
-    text-align: right;
 
+.c-booking-cover {
+    margin: 20px auto;
+    padding: 30px 0px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    top: -470px;
+    width: 90%;
+    background-color: rgba(46, 73, 128, 0.97);
+    border-radius: 10px;
 }
-.members-details>span{
-    font-size: 16px;
-    margin-top: 5px;
+
+    .c-booking-cover > h2 {
+        color: white;
+        text-align: center;
+        font-size: 36px;
+        font-family: Roboto Slab;
+        font-weight: 300;
+        padding: 0px 0px 10px 0px;
+        max-width: 350px;
+        width: 90%;
+    }
+
+    .c-booking-cover > h3 {
+        color: rgb(52, 53, 109);
+        text-align: center;
+        font-size: 22px;
+        font-family: Roboto Slab;
+        font-weight: 300;
+        padding-bottom: 10px;
+        max-width: 350px;
+        width: 90%;
+    }
+
+    .c-booking-cover > span {
+        width: 80%;
+        margin: 0px auto;
+        color: rgb(177, 190, 226);
+        font-size: 16px;
+        font-weight: 300;
+        max-width: 300px;
+    }
+
+        .c-booking-cover > span > i {
+            width: 80%;
+            margin: 0px auto;
+            color: rgb(45, 46, 94);
+            font-size: 13px;
+            font-weight: 300;
+            max-width: 300px;
+        }
+
+#c-booking-form {
+    position: relative;
+    top: 345px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+}
+
+    #c-booking-form > input {
+        border: 2px solid lightgray;
+        width: 100%;
+        padding: 15px;
+        border-radius: 6px;
+        outline: none;
+        font-size: 14px;
+    }
+
+#spaceSelect {
+    border: 2px solid lightgray;
     width: 100%;
-}
-.members-details>span>i{
+    height: 50px;
+    padding: 15px;
+    border-radius: 6px;
+    outline: none;
     font-size: 12px;
-    color: mintcream;
-        margin-top: 10px;
-    width: 100%;
 }
-.members-booking {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-    width: 100%;
-    border-left: lightgray;
-}
-#current-bookings {
-    position: relative;
-    top: 530px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-}
-#current-bookings>h3{
-    font-size: 22px;
-    width: 80%;
-    margin: 10px 0px;
-    color: black;
-    text-align: center;
-    display: flex;
 
+#c-booking-form > label {
+    width: 100%;
+    padding: 20px 0px 5px;
+    font-family: Oxygen;
+    font-size: 18px;
+    color: rgba(41, 70, 88, 0.9);
 }
-.booking-box{
+
+#c-booking-form > :last-child {
+    width: 100%;
+    border: 2px solid rgb(53, 90, 112);
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+    letter-spacing: 1.05px;
+    margin: 30px 0px;
+    font-family: Oxygen;
+    color: white;
+    background-color: rgba(46, 73, 128, 0.9);
+}
+
+    #c-booking-form > :last-child:hover {
+        background-color: rgb(46, 79, 99);
+    }
+
+.half-box > input {
+    border: 2px solid lightgray;
+    width: 38%;
+    padding: 16px 5%;
+    border-radius: 6px;
+    outline: none;
+    font-size: 13px;
+    max-height: 40px;
+}
+
+.half-box > label {
+    width: 49%;
+    padding: 20px 0px 5px;
+    font-family: Oxygen;
+    font-size: 18px;
+    color: rgba(41, 70, 88, 0.9);
+}
+
+.half-box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.c-booking-box {
     display: flex;
     max-width: 230px;
     flex-wrap: wrap;
@@ -84,355 +174,275 @@
     background: whitesmoke;
     overflow: hidden;
 }
-.booking-box:hover{
-    transform: scale(1.03);
-    transition: all 0.3s;
-    box-shadow: 0px 20px 35px gray;
-}
-.booking-info {
+
+    .c-booking-box:hover {
+        transform: scale(1.02);
+        transition: all 0.2s;
+        box-shadow: 0px 20px 35px gray;
+    }
+
+.c-booking-info {
+    position: relative;
+    top: -20px;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     text-align: center;
 }
-.booking-info>:first-child{
-    position: relative;
-    top: -35px;
-    font-size: 20px;
-    font-weight: 700;
-    color: white;
-    text-shadow: 0px 3px 4px darkslategray;
-}
-.booking-info>span {
-    font-size: 18px;
-    width: 100%;
-    padding: 5px;
-    position: relative;
-    top: -22px;
-}
-.booking-info>span>strong {
-    font-size: 13px;
-    color: grey;
-    width: 100%;
-    padding: 10px 0px 10px 0px;
-}
-.booking-box>:last-child {
+
+    .c-booking-info > :first-child > strong {
+        position: relative;
+        top: -20px;
+        font-family: Roboto Slab;
+        font-size: 20px;
+        font-weight: 400;
+        color: white;
+    }
+
+    .c-booking-info > span {
+        font-size: 14px;
+        width: 100%;
+        padding: 5px;
+    }
+
+        .c-booking-info > span > strong {
+            font-size: 12px;
+            color: grey;
+            width: 100%;
+            padding: 10px 0px 10px 0px;
+        }
+
+.c-booking-box > :last-child {
     position: relative;
     bottom: 0px;
     text-decoration: none;
     width: 100%;
-    background-image: linear-gradient(steelblue, rgb(43, 81, 112));
-    font-weight: 700;
+    background-image: linear-gradient(rgba(46, 73, 128, 0.9), rgba(65, 110, 139, 0.98));
+    font-weight: 500;
+    font-size: 16px;
     color: white;
     text-align: center;
     padding: 20px 0px;
+    outline: none;
+    border: none;
+    background-color: rgba(46, 73, 128, 0.9);
+}
 
-}
-.booking-box>:last-child:hover{
-    background-image: linear-gradient(steelblue, rgb(21, 41, 58));
-    transition: all 0.4s;
-}
-.booking-box>img{
-    width:100%;
-    max-height: 160px;
-    opacity: 0.8;
-}
-.booking-box:hover>img{
-    transform: scale(1.05);
-    transition: all 0.3s;
-    opacity: 1;
-}
-.booking-info>span{
-    font-size: 18px;
+    .c-booking-box > :last-child:hover {
+        background-image: linear-gradient(rgba(36, 58, 102, 0.9), rgba(59, 99, 126, 0.98));
+        transition: all 0.4s;
+    }
+
+.c-booking-box > img {
     width: 100%;
-
+    max-height: 160px;
+    transition: all 0.07s;
 }
-#make-booking {
-    position: absolute;
-    top: 280px;
-    width: 75%;
-    max-width: 400px;
+
+.c-booking-box:hover > img {
+    transform: scale(1.05);
+    transition: all 0.3s;;
+}
+
+#current-bookings {
+    position: relative;
+    top: -80px;
+    width: 90%;
+    max-width: 1200px;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgba(41, 70, 88, 0.9);
-    padding: 30px;
-    border-radius: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: 20px auto;
 }
-#make-booking>h3{
-    width: 100%;
-    margin: 20px 0px;
-    color: white;
-    font-size: 22px;
-    text-align: center;
-    border-top: 1px solid rgb(50, 95, 129);
-    padding-top: 20px;
-}
 
-#make-booking > input,
-#spaceDropDown {
-    height: 40px;
-    width: 100%;
-    max-width: 376px;
-    margin: 10px 5px;
-    border-radius: 4px;
-    border: 2px solid rgb(52, 97, 134);
-    background-color: white;
-    color: rgb(71, 71, 71);
-    font-size: 14px;
-}
-#make-booking>input::placeholder{
-    padding: 0px 10px;
-}
-#make-booking>label{
-    font-size: 13px;
-    color: rgb(145, 145, 145);
-}
-
-#make-booking>:last-child{
-    width: 95.8%;
-    background-image: linear-gradient(steelblue, rgb(43, 81, 112));
-    border: 2px solid steelblue;
-    font-weight: 700;
-    color: white;
-    padding-left: 0px;
-    margin-top: 20px;
-}
-#members-header{
-    position: absolute;
-    top: 240px;
-    left: 40px;
-    color: whitesmoke;
-    font-family: Roboto Slab, sans-serif;
-    font-size: 26px;
-}
-#contactForm>#comments{
-    height: 300px;
-    margin-top: 10px;
-    border: 2px solid rgb(52, 97, 134);
-    border-radius: 4px;
-    font-size: 14px;
-    width: 98%;
-    max-width: 386px;
-}
-#comments::placeholder{
-    padding: 10px;
-}
-footer{
-    position: absolute;
-    bottom: 0px;
-}
+    #current-bookings > h3 {
+        font-size: 32px;
+        font-family: Roboto Slab, sans-serif;
+        width: 100%;
+        margin: 10px 35px;
+        color: whitesmoke;
+        text-shadow: 0px 3px 10px black;
+        text-align: center;
+    }
 
 
+@media (min-width: 576px) {
+    .booking-cover {
+        width: 80%;
+    }
+
+    #booking-form {
+        width: 80%;
+    }
+}
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
-    #make-booking{
-        width: 350px;
-    }
-    #current-bookings{
-        width: 70%;
-        margin: 20px;
-        justify-content: flex-start;
+    .c-hero-bookings {
+        position: relative;
+        height: 670px;
+        background-image: url(/images/bgbanner1.jpeg);
+        background-size: cover;
+        background-position: center -100px;
+        background-attachment: fixed;
     }
 
+    .c-hero-bookings-inner {
+        position: relative;
+        height: 670px;
+        background-color: rgba(0, 0, 0, 0.35);
+        width: 100%;
+        text-align: left;
+    }
+
+    .c-booking-container {
+        position: relative;
+        top: 100px;
+        width: 95%;
+        max-width: 1050px;
+        max-height: 450px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 3px solid lightgray;
+        border-radius: 20px;
+        z-index: 50;
+    }
+
+    .c-booking-cover {
+        margin: 20px auto;
+        padding: 75px 0px;
+        top: -58px;
+        left: 3%;
+        width: 40%;
+        max-width: 400px;
+        border-radius: 10px;
+    }
+
+        .c-booking-cover > h2 {
+            color: white;
+            text-align: center;
+            font-size: 36px;
+            font-family: Roboto Slab;
+            font-weight: 300;
+            padding-bottom: 20px;
+            max-width: 300px;
+            width: 90%;
+        }
+
+        .c-booking-cover > h3 {
+            color: rgb(52, 53, 109);
+            text-align: center;
+            font-size: 24px;
+            font-family: Roboto Slab;
+            font-weight: 300;
+            padding-bottom: 20px;
+            max-width: 300px;
+        }
+
+        .c-booking-cover > span {
+            width: 80%;
+            margin: 0px auto;
+            color: rgb(177, 190, 226);
+            font-size: 20px;
+            font-weight: 300;
+            max-width: 300px;
+        }
+
+            .c-booking-cover > span > i {
+                width: 80%;
+                margin: 0px auto;
+                color: rgb(45, 46, 94);
+                font-size: 15px;
+                font-weight: 300;
+                max-width: 300px;
+            }
+
+    #c-booking-form {
+        top: -56px;
+        left: 4%;
+        width: 50%;
+    }
+
+        #c-booking-form > input {
+            border: 2px solid lightgray;
+            width: 100%;
+            padding: 15px;
+            border-radius: 6px;
+            outline: none;
+            font-size: 14px;
+        }
+
+    #spaceSelect {
+        border: 2px solid lightgray;
+        width: 100%;
+        height: 50px;
+        padding: 15px;
+        border-radius: 90px;
+        outline: none;
+        font-size: 12px;
+    }
+
+    #c-booking-form > label {
+        width: 100%;
+        padding: 20px 0px 5px;
+        font-family: Oxygen;
+        font-size: 18px;
+        color: rgba(41, 70, 88, 0.9);
+    }
+
+    #c-booking-form > :last-child {
+        width: 100%;
+        border: 2px solid rgb(53, 90, 112);
+        border-radius: 6px;
+        outline: none;
+        font-size: 16px;
+        letter-spacing: 1.05px;
+        margin: 30px 0px;
+        font-family: Oxygen;
+        color: white;
+        background-color: rgba(46, 73, 128, 0.9);
+    }
+
+        #c-booking-form > :last-child:hover {
+            background-color: rgb(46, 79, 99);
+        }
+
+    .half-box > input {
+        border: 2px solid lightgray;
+        width: 38%;
+        padding: 16px 5%;
+        border-radius: 6px;
+        outline: none;
+        font-size: 13px;
+        max-height: 40px;
+    }
+
+    .half-box > label {
+        width: 49%;
+        padding: 20px 0px 5px;
+        font-family: Oxygen;
+        font-size: 18px;
+        color: rgba(41, 70, 88, 0.9);
+    }
+
+    .half-box {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
 
 @media (min-width: 992px) {
-    .members-page{
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 auto;
-        width: 100%;
-        justify-content: space-between;
-    
-    }
-    .members-details {
-        color: white;
-        position: relative;
-        text-align: right;
-        right: 0px;
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .members-details>h3{
-        font-size: 20px;
-        color: mintcream;
-        text-align: right;
-    
-    }
-    .members-details>span{
-        font-size: 16px;
-        margin-top: 5px;
-        width: 100%;
-    }
-    .members-details>span>i{
-        font-size: 12px;
-        color: mintcream;
-            margin-top: 10px;
-        width: 100%;
-    }
-    .members-booking {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 0 auto;
-        width: 100%;
-        border-left: lightgray;
-    }
-    #current-bookings {
-        position: absolute;
-        top: 400px;
-        display: flex;
-        flex-wrap: wrap;
-        margin: 20px auto;
-    }
-    #current-bookings>h3{
-        font-size: 22px;
-        width: 100%;
-        margin: 10px 35px;
-        color: whitesmoke;
-        text-shadow: 0px 3px 10px black;
-    }
-    .booking-box{
-        display: flex;
-        max-width: 230px;
-        flex-wrap: wrap;
-        margin: 20px 20px;
-        border-radius: 20px;
-        box-shadow: 0px 10px 20px gray;
-        background: whitesmoke;
-        overflow: hidden;
-    }
-    .booking-box:hover{
-        transform: scale(1.03);
-        transition: all 0.3s;
-        box-shadow: 0px 20px 35px gray;
-    }
-    .booking-info {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        text-align: center;
-    }
-    .booking-info>:first-child{
-        position: relative;
-        top: -35px;
-        font-size: 20px;
-        font-weight: 700;
-        color: white;
-        text-shadow: 0px 3px 4px darkslategray;
-    }
-    .booking-info>span {
-        font-size: 18px;
-        width: 100%;
-        padding: 5px;
-    }
-    .booking-info>span>strong {
-        font-size: 13px;
-        color: grey;
-        width: 100%;
-        padding: 10px 0px 10px 0px;
-    }
-    .booking-box>:last-child {
-        position: relative;
-        bottom: 0px;
-        text-decoration: none;
-        width: 100%;
-        background-image: linear-gradient(steelblue, rgb(43, 81, 112));
-        font-weight: 700;
-        color: white;
-        text-align: center;
-        padding: 20px 0px;
-    
-    }
-    .booking-box>:last-child:hover{
-        background-image: linear-gradient(steelblue, rgb(21, 41, 58));
-        transition: all 0.4s;
-    }
-    .booking-box>img{
-        width:100%;
-        max-height: 160px;
-        opacity: 0.8;
-    }
-    .booking-box:hover>img{
-        transform: scale(1.05);
-        transition: all 0.3s;
-        opacity: 1;
-    }
-    .booking-info>span{
-        font-size: 18px;
-        width: 100%;
-    
-    }
-    #make-booking {
-        position: absolute;
-        top: 230px;
-        right: 20px;
-        width: 90%;
-        max-width: 300px;
-        display: flex;
-        flex-direction: column;
-        background-color: rgba(41, 70, 88, 0.9);
-        padding: 30px;
-        border-radius: 5px;
-        margin-bottom: 20px;
-    }
-    #make-booking>h3{
-        width: 100%;
-        margin: 20px 0px;
-        color: white;
-        font-size: 22px;
-    }
-
-    #make-booking > input,
-    #spaceDropDown {
-        height: 40px;
-        width: 95%;
-        max-width: 376px;
-        margin: 10px 5px;
-        border-radius: 4px;
-        border: 2px solid rgb(52, 97, 134);
-        background-color: white;
-        color: rgb(71, 71, 71);
-        font-size: 14px;
-    }
-    #make-booking>input::placeholder{
-        padding: 0px 10px;
-    }
-    #make-booking>label{
-        font-size: 13px;
-        color: rgb(145, 145, 145);
-    }
-    #make-booking>:last-child{
-        width: 95.8%;
-        background-image: linear-gradient(steelblue, rgb(43, 81, 112));
-        border: 2px solid steelblue;
-        font-weight: 700;
-        color: white;
-        padding-left: 0px;
-        margin-top: 20px;
-    }
-    #members-header{
-        position: absolute;
-        top: 240px;
-        left: 40px;
-        color: whitesmoke;
-        font-family: Roboto Slab, sans-serif;
-        font-size: 40px;
-    }
-    
- 
-
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-
-
-
 }
 
 /*

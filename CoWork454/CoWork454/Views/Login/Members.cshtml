@@ -8,65 +8,74 @@
     var products = (List<Product>)ViewData["Products"];
 }
 
-<div class="hero-members">
-    <div class="hero-members-inner">
-    </div>
+<div class="c-hero-bookings">
+    <div class="c-hero-bookings-inner">
+        <div class="c-booking-container" id="">
 
-</div>
-<h1 id="members-header">Welcome, @user.FirstName </h1>
-
-<div class="members-page">
-
-    <form id="make-booking" method="post" action="/Booking/Index">
-        <div class="members-details">
-            <h3>Your Details</h3>
-            <span><i>Name: </i><br>@fullname</span>
-            @{ if (user.CompanyName != null)
-                {
-                    <span><i>Company: </i><br>@user.CompanyName </span>
-                }
-            }
-            <span><i>Mobile: </i><br>@user.Phone </span>
-            <span><i>E-mail: </i><br>@user.Email </span>
-        </div>
-        <h3>Make a booking</h3>
-        <label>Space required:</label>
-        <select id="spaceDropDown" name="ProductClass">
-            <option value="0">Workstation</option>
-            <option value="1">Office</option>
-            <option value="2">Meeting Room</option>
-            <option value="3">Board Room</option>
-            <option value="4">Training Room</option>
-            <option value="5">Quiet Room</option>
-        </select>
-        <label for="date">Date: </label>
-        <input type="date" id="date" name="Date" placeholder="Date" required>
-        <label for="time-from">From: </label>
-        <input type="time" id="time-from" name="TimeStart" placeholder="From am/pm" required>
-        <label for="time-to">To: </label>
-        <input type="time" id="time-to" name="TimeFinish" placeholder="To am/pm" required>
-        <input type="submit" id="booking-submit" value="Confirm Booking">
-    </form>
-
-
-    <div id="current-bookings">
-        <h3>Current Bookings</h3>
-
-        @foreach (var b in bookings)
-        {
-            <div class="booking-box">
-                <img src="@b.Product.ImagePath" alt="space image">
-                <div class="booking-info">
-                    <span>@b.Product.Name</span>
-                    <span><strong>Date: </strong>@b.Date_start.ToString("dd/MM/yyyy")</span>
-                    <span><strong>From: </strong>@b.Date_start.ToString("HH:mm")</span>
-                    <span><strong>To: </strong>@b.Date_end.ToString("HH:mm")</span>
+            <form id="c-booking-form" method="post" action="/Booking/Index">
+                <label>Space required:</label>
+                <select id="spaceSelect" name="ProductClass">
+                    <option value="0">Workstation</option>
+                    <option value="1">Office</option>
+                    <option value="2">Meeting Room</option>
+                    <option value="3">Board Room</option>
+                    <option value="4">Training Room</option>
+                    <option value="5">Quiet Room</option>
+                </select>
+                <label for="date">Date: </label>
+                <input type="date" id="date" name="Date" placeholder="Date" required>
+                <div class="half-box">
+                    <label class="sml-label" for="time-from">From: </label>
+                    <label class="sml-label" for="time-to">To: </label>
+                    <input class="sml-input" type="time" id="time-from" name="TimeStart" placeholder="From am/pm" required>
+                    <input class="sml-input" type="time" id="time-to" name="TimeFinish" placeholder="To am/pm" required>
                 </div>
-                <a href="">Edit Booking</a>
-            </div>
-        }
+                <input type="submit" id="booking-submit" value="Check Availability">
+            </form>
 
+            <div class="c-booking-cover">
+                <h2>Welcome, <br>@user.FirstName</h2>
+                <h3>Your Details</h3>
+                <span><i>Name: </i><br>@fullname</span>
+                @{
+                    if (user.CompanyName != null)
+                    {
+                        <span><i>Company: </i><br>@user.CompanyName </span>
+                    }
+                    else
+                    {
+                        <span><i>Company: </i><br>     -    </span>
+                    }
+                }
+                <span><i>Mobile: </i><br>@user.Phone </span>
+                <span><i>E-mail: </i><br>@user.Email </span>
+            </div>
+        </div>
     </div>
 
 </div>
+
+<div id="current-bookings">
+    <h3><i class="fas fa-angle-down"></i> Current Bookings <i class="fas fa-angle-down"></i></h3>
+
+    @foreach (var b in bookings)
+    {
+        <form method="post" action="/Booking/AddBooking" class="c-booking-box">
+            <img src="@b.Product.ImagePath" alt="space image">
+            <div class="c-booking-info">
+                <span><strong>@b.Product.Name</strong></span>
+                <span><strong>Date: </strong>@b.Date_start.ToString("dd/MM/yyyy")</span>
+                <span><strong>From: </strong>@b.Date_start.ToString("HH:mm")</span>
+                <span><strong>To: </strong>@b.Date_end.ToString("HH:mm")</span>
+                <input type="hidden" name="ProductId" value="@b.ProductId" />
+                <input type="hidden" name="OrderId" value="@b.OrderId" />
+                <input type="hidden" name="Date_start" value="@b.Date_start" />
+                <input type="hidden" name="Date_end" value="@b.Date_end" />
+            </div>
+            <button type="submit">Make Reservation</button>
+        </form>
+    }
+
+</div>
+
 

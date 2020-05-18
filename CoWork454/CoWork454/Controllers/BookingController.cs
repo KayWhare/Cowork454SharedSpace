@@ -197,7 +197,7 @@ namespace CoWork454.Models
                     .SingleOrDefault(u => u.Id == order.UserId);
             }
 
-            return View("members");
+            return View("Members");
         }
 
 

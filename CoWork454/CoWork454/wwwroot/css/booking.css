@@ -212,6 +212,8 @@
     color: white;
     text-align: center;
     padding: 20px 0px;
+    outline: none;
+    border: none;
 }
 
     .a-booking-box > :last-child:hover {
