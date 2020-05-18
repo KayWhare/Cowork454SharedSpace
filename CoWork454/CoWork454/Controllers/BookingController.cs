@@ -54,11 +54,11 @@ namespace CoWork454.Models
                 Date_start = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture),
                 Date_end = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeFinish}", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture)
             };
-            //retrieve all bookings of the same productclass from DB
+            //retrieve all bookings of the same productclass from DB if any
             var currentBookings = _CoWork454Context.Booking
                 .Where(b => b.Product.ProductClass == makeBooking.ProductClass);
 
-            //retrieve all products of the same productClass that are Available
+            //retrieve all products of the same productClass that isAvailable
             var availableProducts = _CoWork454Context.Product
                 .Where(p => p.ProductClass == makeBooking.ProductClass
                 && p.isAvailable == true).ToList();
@@ -91,8 +91,6 @@ namespace CoWork454.Models
         [HttpPost]
         public IActionResult AddBooking(MakeBooking makeBooking)
         {
-            var orderIdCookie = GetEncryptedUserCookie("ORDER_ID");
-
             //create a booking from makebooking. Parse the date/time strings to a datetimeoffset. 
             Booking booking = new Booking()
             {
@@ -100,6 +98,8 @@ namespace CoWork454.Models
                 Date_start = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture),
                 Date_end = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeFinish}", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture)
             };
+
+            var orderIdCookie = GetEncryptedUserCookie("ORDER_ID");
 
             if (orderIdCookie == null)
             {
@@ -136,7 +136,7 @@ namespace CoWork454.Models
             }
             else
             {
-                // already has a order so get from database
+                // already has an order
                 var orderId = Convert.ToInt32(orderIdCookie);
 
                 // get the order from the database
@@ -168,7 +168,7 @@ namespace CoWork454.Models
                     //Already has booking of that product id so make new order
                     var newOrder = new Order();
 
-                    // create bookings list and add to new booking
+                    // create bookings list and add booking
                     newOrder.Bookings = new List<Booking>();
                     newOrder.Bookings.Add(booking);
 
@@ -197,7 +197,7 @@ namespace CoWork454.Models
                     .SingleOrDefault(u => u.Id == order.UserId);
             }
 
-            return View("Members");
+            return View("members");
         }
 
 
