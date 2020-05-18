@@ -30,7 +30,7 @@
     background-color: rgba(255, 255, 255, 0.9);
     border: 3px solid lightgray;
     border-radius: 20px;
-    z-index: 50;
+    z-index: 29;
 }
 .booking-cover{
     margin: 20px auto;
@@ -279,7 +279,7 @@
         background-color: rgba(255, 255, 255, 0.8);
         border: 3px solid lightgray;
         border-radius: 20px;
-        z-index: 50;
+        z-index: 29;
     }
     .booking-cover{
         margin: 20px auto;
