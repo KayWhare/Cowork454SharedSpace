@@ -24,4 +24,7 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Admin\adminforms.cshtml" />
+  </ItemGroup>
 </Project>

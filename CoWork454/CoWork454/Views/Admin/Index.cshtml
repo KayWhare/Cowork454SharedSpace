@@ -7,6 +7,14 @@
     </style>
 </head>
 <body>
+
+    <aside>
+        <div>
+            <h2></h2>
+        </div>
+    </aside>
+
+
     <main>
         <div class="container" id="space-container">
             <div class="row">
@@ -34,7 +42,10 @@
                                 <td>Meeting Room</td>
                                 <td>Projector, Available for 1 hr bookings</td>
                                 <td>
-                                    <input type="checkbox" class="filled-in" checked="checked"/><span>Available</span>
+                                    <label for="checkBox">
+                                        <input type="checkbox" id="1checkBox" class="filled-in" name="avail" onclick="isChecked()">
+                                        <span id="1checkSpan">Available</span>
+                                    </label>
                                 </td>
                                 <td>
                                     <button data-user-id="1" class="waves-effect waves-light btn">Select</button>
@@ -98,24 +109,38 @@
                         const detailsCell = document.createElement('td');
                         const action1Cell = document.createElement('td');
                         const action2Cell = document.createElement('td');
+
                         spaceIdCell.innerText = product.id;
-                        console.log(spaceIdCell);
                         nameCell.innerText = product.name;
                         detailsCell.innerText = product.details;
-                        const updateBox = document.createElement('input');
+
+                        const inputBox = document.createElement('input');
+                        //const checkBoxLabel = document.createElement('label');
+
                         const selectBtn = document.createElement('button');
-                        updateBox.innerText = 'Available';
-                        updateBox.setAttribute('data-space-id', product.id);
-                        updateBox.className = 'filled-in';
-                        updateBox.setAttribute('type', checkbox);
-                        updateBox.addEventListener('click', onUpdate);
+
+
+                        inputBox.type = "checkbox";
+                        inputBox.id = product.id;
+                        inputBox.name = "Available";
+                        inputBox.className = "filled-in;
+                        //inputBox.addEventListener('click', onCheck);
+
+                        //checkBoxLabel.innerHTML = 'Available';
+
                         selectBtn.innerText = 'Select';
                         selectBtn.setAttribute('data-space-id', product.id);
                         selectBtn.className = 'waves-effect waves-light btn';
                         selectBtn.addEventListener('click', onSelect);
-                        action1Cell.appendChild(updateBox);
+
+                        action1Cell.appendChild(inputBox);
+                        //action1Cell.appendChild(checkBoxLabel);
+
                         action2Cell.appendChild(selectBtn);
                         const row = document.createElement('tr');
+
+                        console.log(action1Cell);
+
                         row.appendChild(spaceIdCell);
                         row.appendChild(nameCell);
                         row.appendChild(detailsCell);
