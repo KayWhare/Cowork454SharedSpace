@@ -1,228 +1,178 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewData["Title"] = "Admin";
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Test Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+
+    <script src="https://use.fontawesome.com/6b0d89f709.js"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            font-family: Roboto;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        header {
+            display: flex;
+            width: 100%;
+            min-width: 100vw;
+            flex-direction: row;
+            justify-content: space-between;
+            height: 20vh;
+            max-height: 200px;
+            padding: 10px 0 20px 10px;
+            margin-bottom: 5px;
+            box-shadow: 0 3px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            /* width: 100%; */
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logout-btn {
+            width: 150px;
+            height: 50px;
+            margin: auto 20px;
+            color: #fff;
+            background-color: rgb(43, 81, 112);
+            border-radius: 20px;
+        }
+
+            .logout-btn:hover {
+                background-image: linear-gradient(rgb(43, 81, 112), steelblue);
+                transition: all 0.4s;
+            }
+
+        main {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+        }
+
+        aside {
+            width: 20%;
+            min-width: 250px;
+            height: 100vh;
+            padding-left: 10px;
+            border-right: 2px solid groove black;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+        }
+
+            aside h2 {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            aside p {
+                text-decoration: underline;
+                font-weight: bold;
+            }
+
+            aside > ul {
+                list-style: none;
+                font-size: 1.3em;
+                padding-top: 10px;
+            }
+
+                aside > ul > li {
+                    display: block;
+                    padding: 5px 0;
+                }
+
+                    aside > ul > li > i {
+                        padding-right: 5px;
+                    }
+
+                    aside > ul > li > a {
+                        text-decoration: none;
+                        color: rgb(43, 81, 112);
+                    }
+
+                        aside > ul > li > a:hover {
+                            text-decoration: none;
+                            color: steelblue;
+                        }
+
+                        aside > ul > li > a:active {
+                            text-decoration: underline;
+                        }
+
+        .content {
+            height: 100%;
+            width: 100%;
+            padding-left: 15px;
+            text-align: center;
+            background-image: url(/images/image_01.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* background-color: blue; */
+        }
+
+            .content h2 {
+                color: rgb(43, 81, 112);
+            }
+
+            .content p {
+                font-size: 1.8em;
+            }
     </style>
 </head>
 <body>
+
+    <header>
+        <img class="logo" src="/images/CoWork454 Logo esign.png" alt="Cowork454 logo">
+        <button class="logout-btn">LOGOUT</button>
+    </header>
+
+
     <main>
-        <div class="container" id="space-container">
-            <div class="row">
-                <div class="col s12">
-                    <h3>CoWork Floor Space</h3>
-                    <p>....</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <h4>Floor Spaces</h4>
-                    <table class="striped" id="spaces-table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Space Name</th>
-                                <th>Details</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>0</td>
-                                <td>Meeting Room</td>
-                                <td>Projector, Available for 1 hr bookings</td>
-                                <td>
-                                    <input type="checkbox" class="filled-in" checked="checked"/><span>Available</span>
-                                </td>
-                                <td>
-                                    <button data-user-id="1" class="waves-effect waves-light btn">Select</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <h4>Add/Edit Spaces</h4>
-                <form class="col s12">
-                    <input type="hidden" name="Id" id="Id" />
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="Name" name="Name" id="Name" type="text">
-                        </div>
-                        <div class="input-field col s6">
-                            <input placeholder="Details" name="Details" id="Details" type="text">
-                        </div>
-                    </div>
-                    <button class="btn waves-effect waves-light" type="submit">Save</button>
-                    <button class="btn waves-effect" id="clearButton">Clear</button>
-                </form>
-            </div>
+        <aside>
+            <h2>
+                CoWork 454 Interface</h1>
+                <p>Select Options Below</p>
+                <ul id="menu">
+                    <li><i class="fa fa-caret-right"></i><a id="1" href="#">User Management</a></li>
+                    <li><i class="fa fa-caret-right"></i><a id="2" href="#">Floor Space Management</a></li>
+                    <li><i class="fa fa-caret-right"></i><a id="3" href="#">Bookings Management</a></li>
+                    <li><i class="fa fa-caret-right"></i><a id="4" href="#">Exit Admin Interface</a></li>
+                </ul>
+        </aside>
+
+        <!-- TODO::: ONLCLICK MENU ITEMS SWITCH TO THE PARTIAL VIEW IT LINKS TO
+    AND REPLACE THE BELOW DIV CLASS='CONTENT' AREA -->
+
+        <div class="content">
+            <h2>CoWork 454 Admin Interface</h2>
+            <p>Manage all your Floor Spaces, Bookings and Users right here</p>
         </div>
     </main>
 
-
-
     <script>
+        var listItem = document.querySelector('li');
 
-        const spacesData = document.querySelector('#spaces-table tbody');
-        const idElem = document.querySelector('input[name="Id"]');
-        const nameElem = document.querySelector('input[name="Name"]');
-        const detailsElem = document.querySelector('input[name="Details"]');
+        listItem.addEventListener('click', function () {
+            var id = document.querySelector('id');
 
-        const onDelete = (evt) => {
-
-        }
-
-        const onSelect = (evt) => {
-
-        }
-
-        const onSave = (evt) => {
-
-        }
-
-
-        const getAll = () => {
-            spacesData.innerHTML = '';
-
-            fetch('/api/Products')
-                .then(res => res.json())
-                .then(products => {
-
-                    products.forEach(product => {
-                        const spaceIdCell = document.createElement('td');
-                        const nameCell = document.createElement('td');
-                        const detailsCell = document.createElement('td');
-                        const action1Cell = document.createElement('td');
-                        const action2Cell = document.createElement('td');
-                        spaceIdCell.innerText = product.id;
-                        console.log(spaceIdCell);
-                        nameCell.innerText = product.name;
-                        detailsCell.innerText = product.details;
-                        const updateBox = document.createElement('input');
-                        const selectBtn = document.createElement('button');
-                        updateBox.innerText = 'Available';
-                        updateBox.setAttribute('data-space-id', product.id);
-                        updateBox.className = 'filled-in';
-                        updateBox.setAttribute('type', checkbox);
-                        updateBox.addEventListener('click', onUpdate);
-                        selectBtn.innerText = 'Select';
-                        selectBtn.setAttribute('data-space-id', product.id);
-                        selectBtn.className = 'waves-effect waves-light btn';
-                        selectBtn.addEventListener('click', onSelect);
-                        action1Cell.appendChild(updateBox);
-                        action2Cell.appendChild(selectBtn);
-                        const row = document.createElement('tr');
-                        row.appendChild(spaceIdCell);
-                        row.appendChild(nameCell);
-                        row.appendChild(detailsCell);
-                        row.appendChild(action1Cell);
-                        row.appendChild(action2Cell);
-                        spacesData.appendChild(row);
-                    })
-                })
-                .catch(err => {
-                    console.log("Error Loading Product table");
-                })
-        }
-
-        const getDetails = (prodId) => {
-            fetch('/api/Products/${prodId}')
-                .then(res => res.json())
-                .then(product => {
-                    console.log(product);
-                })
-                .catch(err => {
-
-                })
-
-        }
-
-        const addNew = (prodName,prodDetails) => {
-
-            const body = {
-                name: prodName,
-                details: prodDetails
-            }
-
-            const fetchOpt =
-            {
-                body: JSON.stringify(body),
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            };
-
-            fetch('/api/Products',fetchOpt)
-                .then(res => res.json())
-                .then(() => {
-                    console.log('Space added');
-                })
-                .catch(err => {
-
-                })
-
-        }
-
-        const updateExisting = (prodId,prodName,prodDetails) => {
-
-            const body = {
-                id: prodId,
-                name: prodName,
-                details: prodDetails
-            }
-
-            const fetchOpt =
-            {
-                body: JSON.stringify(body),
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            };
-
-            fetch('/api/Products/${id}', fetchOpt)
-                .then(res => res.json())
-                .then(() => {
-                    console.log('Spaces updated');
-                })
-                .catch(err => {
-
-                })
-
-        }
-
-        const deleteExisting = (id) => {
-
-            const fetchOpt =
-            {
-                method: 'DELETE'
-            };
-
-            fetch('/api/Products/${id}', fetchOpt)
-                .then(res => res.json())
-                .then(() => {
-                    console.log('Space deleted');
-                })
-                .catch(err => {
-
-                })
-        }
-
-        const clearForm = () => {
-            idElem = "";
-            nameElem = "";
-            detailsElem = "";
-        }
-
-        getAll();
-
+            console.log(id);
+        });
     </script>
 </body>
 </html>
-
 
