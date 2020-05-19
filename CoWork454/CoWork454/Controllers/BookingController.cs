@@ -26,56 +26,104 @@ namespace CoWork454.Models
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var orderIdCookie = GetEncryptedUserCookie("ORDER_ID");
-            if (orderIdCookie == null)
+            var userIdCookie = GetEncryptedUserCookie("USER_ID");
+
+            if (userIdCookie == null)
             {
-                return RedirectToAction("Index", "Home");
+                //can't make a booking without login
+               return RedirectToAction("Index", "Home");
             }
             else
             {
-                var existingOrder = _CoWork454Context.Booking.SingleOrDefault(b => b.OrderId == Convert.ToInt32(orderIdCookie));
-                ViewData["Bookings"] = existingOrder;
+                var currentBookings = _CoWork454Context.Booking.Include(b => b.Order)
+                    .Where(b => b.Order.UserId == Convert.ToInt32(userIdCookie)).ToList();
+                ViewData["Bookings"] = currentBookings;
                 ViewData["Products"] = _CoWork454Context.Product.ToList();
+                ViewData["User"] = _CoWork454Context.User.SingleOrDefault(u => u.Id == Convert.ToInt32(userIdCookie));
             }
-            //return View();
-            return View("Members");
+            return View();
         }
 
         [HttpPost]
         public IActionResult Index(MakeBooking makeBooking)
         {
-            var orderIdCookie = GetEncryptedUserCookie("ORDER_ID");
+            //change makeBooking to Booking and convert to DateTimeOffset
 
-            if (!ModelState.IsValid)
+            if(makeBooking.Date == null)
             {
-                // there is a model error
-                if (orderIdCookie == null)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    
-                    var existingOrder = _CoWork454Context.Booking.SingleOrDefault(b => b.OrderId == Convert.ToInt32(orderIdCookie));
-                    ViewData["Bookings"] = existingOrder;
-                    ViewData["Products"] = _CoWork454Context.Product.ToList();
-                }
-                return View("Members", "Login");
+                return PartialView("_MakeBookingPartial");
             }
             Booking booking = new Booking()
             {
-                Date_start = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture),
-
-                Date_end = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeFinish}", "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture)
-
-
+                ProductId = makeBooking.ProductId,
+                Date_start = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture),
+                Date_end = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeFinish}", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture)
             };
+            //retrieve all bookings of the same productclass from DB if any
+            var currentBookings = _CoWork454Context.Booking
+                .Where(b => b.Product.ProductClass == makeBooking.ProductClass);
+
+            //retrieve all products of the same productClass that isAvailable
+            var availableProducts = _CoWork454Context.Product
+                .Where(p => p.ProductClass == makeBooking.ProductClass
+                && p.isAvailable == true).ToList();
+
+            //if not null, check the incoming booking request times for overlaps with currentbookings
+            if(currentBookings != null)
+            {
+                foreach (var b in currentBookings)
+                {   //this is an algorithm that checks for overlap
+                    if (b.Date_start <= booking.Date_end && booking.Date_start <= b.Date_end)
+                    {
+                        //if overlap occurs, remove from available products list
+                        availableProducts.Remove(availableProducts.SingleOrDefault(p => p.Id == b.ProductId));
+                    }
+                };
+            };
+
+            var userIdCookie = GetEncryptedUserCookie("USER_ID");
+            if (userIdCookie != null)
+            {
+                var LogginUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));
+                ViewData["User"] = LogginUser;
+            }
+            ViewData["BookingRequest"] = makeBooking;
+            ViewData["Products"] = availableProducts;
+
+            var referer = Request.Headers.SingleOrDefault(h => h.Key == "Referer").Value.ToString();
+            var refererParts = referer.Split('/');
+
+
+            if (refererParts[3] == "Booking")
+            {
+                return PartialView("_MakeBookingPartial");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public IActionResult AddBooking(MakeBooking makeBooking)
+        {
+            //create a booking from makebooking. Parse the date/time strings to a datetimeoffset. 
+            Booking booking = new Booking()
+            {
+                ProductId = makeBooking.ProductId,
+                Date_start = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeStart}", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture),
+                Date_end = DateTimeOffset.ParseExact($"{makeBooking.Date} {makeBooking.TimeFinish}", "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture)
+            };
+
+            var orderIdCookie = GetEncryptedUserCookie("ORDER_ID");
 
             if (orderIdCookie == null)
             {
+
                 // create new order
                 var order = new Order();
 
+                // create bookings list and add to new booking
                 order.Bookings = new List<Booking>();
                 order.Bookings.Add(booking);
 
@@ -92,51 +140,80 @@ namespace CoWork454.Models
                 // set the orderId in a cookie
                 SetEncryptedUserCookie("ORDER_ID", order.Id.ToString());
 
-                // we are going to show the user 
+                // we are going to show the user
 
-                ViewData["Bookings"] = _CoWork454Context.Booking.Where(b => b.OrderId == Convert.ToInt32(orderIdCookie));
+                var currentBookings = _CoWork454Context.Booking.Include(o => o.Order)
+                    .Where(o => o.Order.UserId == order.UserId).ToList();
+                ViewData["Bookings"] = currentBookings;
+                ViewData["Products"] = _CoWork454Context.Product.ToList();
+                ViewData["BookingRequest"] = makeBooking;
+                ViewData["User"] = _CoWork454Context.User
+                    .SingleOrDefault(u => u.Id == order.UserId);
             }
             else
             {
-                // already has a order so get from database
+                // already has an order
                 var orderId = Convert.ToInt32(orderIdCookie);
 
                 // get the order from the database
-                var order = _CoWork454Context.Order
+                var order = _CoWork454Context.Order.
+                    Include(o => o.Bookings)
                     .SingleOrDefault(o => o.Id == orderId);
 
-                if (order == null)
+                if (order.Bookings == null)
                 {
                     return NotFound();
                 }
 
-                // get the existing order item, if any
-                var existingBooking = order.Bookings
-                    .SingleOrDefault(b => b.ProductId == booking.ProductId);
+                // get the existing order item/s with the same ProductID, if any
 
-                // add new booking to order or replace existing booking
-                if (existingBooking == null)
+                var existingBookings = _CoWork454Context.Booking
+                    .SingleOrDefault(b => b.OrderId == orderId &&
+                    b.ProductId == booking.ProductId);
+
+                if (existingBookings == null)
                 {
-                    // new item
+                    //no bookings of same product on the order so add booking
                     order.Bookings.Add(booking);
+
+                    //update database
+                    _CoWork454Context.SaveChanges();
                 }
                 else
                 {
-                    existingBooking.Date_start = booking.Date_start;
-                    existingBooking.Date_end = booking.Date_end;
-                    _CoWork454Context.Update(existingBooking);
-                }
+                    //Already has booking of that product id so make new order
+                    var newOrder = new Order();
 
-                _CoWork454Context.SaveChanges();
+                    // create bookings list and add booking
+                    newOrder.Bookings = new List<Booking>();
+                    newOrder.Bookings.Add(booking);
+
+                    var userId = GetEncryptedUserCookie("USER_ID");
+                    if (userId != null)
+                    {
+                        newOrder.UserId = Convert.ToInt32(userId);
+                    }
+
+                    // add the order to the context, save changes to update database
+                    _CoWork454Context.Add(newOrder);
+                    _CoWork454Context.SaveChanges();
+
+                    // set the orderId in a cookie
+                    SetEncryptedUserCookie("ORDER_ID", newOrder.Id.ToString());
+
+                }
 
 
                 //update viewdata
-                var existingOrder = _CoWork454Context.Booking.SingleOrDefault(b => b.OrderId == Convert.ToInt32(orderIdCookie));
-                ViewData["Bookings"] = existingOrder;
+                var currentBookings = _CoWork454Context.Booking.Include(o => o.Order)
+                    .Where(o => o.Order.UserId == order.UserId).ToList();
+                ViewData["Bookings"] = currentBookings;
                 ViewData["Products"] = _CoWork454Context.Product.ToList();
+                ViewData["User"] = _CoWork454Context.User
+                    .SingleOrDefault(u => u.Id == order.UserId);
             }
 
-            return View("Members","Login");
+            return View("Members");
         }
 
 

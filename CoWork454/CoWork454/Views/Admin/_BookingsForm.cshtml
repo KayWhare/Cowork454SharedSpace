@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ Layout = null;}
+
+<div id="Bookings" class="tabcontent">
+    <div class="row">
+        <div class="col s12">
+            <h3>CoWork Bookings</h3>
+            <p>....</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h4>Bookings</h4>
+            <table class="striped" id="Bookings-table">
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Product Id</th>
+                        <th>ImagePath</th>
+                        <th>Date_start</th>
+                        <th>Date_end</th>
+                        <th></th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <h4>Add Spaces</h4>
+        <form class="col s12">
+            <input type="hidden" name="Id" id="Id" />
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Name" name="Name" id="Name" type="text">
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Details" name="Details" id="Details" type="text">
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Image Path" name="ImagePath" id="ImagePath" type="text">
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">Save</button>
+            <button class="btn waves-effect" id="clearButton">Clear</button>
+        </form>
+    </div>
+</div>
+

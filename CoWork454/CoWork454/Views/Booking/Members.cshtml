@@ -4,20 +4,15 @@
     ViewData["Title"] = "Members";
     var user = (User)ViewData["User"];
     var fullname = $"{user.FirstName} {user.LastName}";
-<<<<<<< HEAD
-    var products = (List<Product>)ViewData["Products"];
-    //var bookings = (List<Booking>)ViewData["Booking"]; will use this later to loop over current bookings section below
-=======
     var bookings = (List<Booking>)ViewData["Bookings"];
     var products = (List<Product>)ViewData["Products"];
->>>>>>> 546859e7dea3568fe1656b48275a5a8d699042d4
 }
 
 <div class="c-hero-bookings">
     <div class="c-hero-bookings-inner">
         <div class="c-booking-container" id="">
 
-            <form id="c-booking-form" method="post" action="/Booking/Index">
+            <form id="c-booking-form" action="">
                 <label>Space required:</label>
                 <select id="spaceSelect" name="ProductClass">
                     <option value="0">Workstation</option>
@@ -35,7 +30,7 @@
                     <input class="sml-input" type="time" id="time-from" name="TimeStart" placeholder="From am/pm" required>
                     <input class="sml-input" type="time" id="time-to" name="TimeFinish" placeholder="To am/pm" required>
                 </div>
-                <input type="submit" id="booking-submit" value="Check Availability">
+                <input onclick="findFromAccount(event)" type="button" id="booking-submit" value="Check Availability">
             </form>
 
             <div class="c-booking-cover">
@@ -83,4 +78,5 @@
 
 </div>
 
+</div>
 

@@ -13,5 +13,7 @@ namespace CoWork454.Models
 
         public string TimeFinish { get; set; }
 
+        public  ProductClass ProductClass{ get; set; }
+
     }
 }

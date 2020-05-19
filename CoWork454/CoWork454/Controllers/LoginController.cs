@@ -35,7 +35,12 @@ namespace CoWork454.Controllers
                 var existingUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));
                 ViewData["User"] = existingUser;
             }
-            //return View();
+            var currentBookings = _CoWork454Context.Booking
+                    .Where(b => b.Order.UserId == Convert.ToInt32(userIdCookie))
+                    .ToList();
+            ViewData["Bookings"] = currentBookings;
+            ViewData["Products"] = _CoWork454Context.Product.ToList();
+
             return View("Members");
         }
 
@@ -70,11 +75,18 @@ namespace CoWork454.Controllers
             else {
                 // if it matches, set a cookie with the userId
                 SetEncryptedUserCookie("USER_ID", existingUser.Id.ToString());
+
                 ViewData["User"] = existingUser;
+                var currentBookings = _CoWork454Context.Booking
+                .Where(b => b.Order.UserId == existingUser.Id)
+                .ToList();
+                ViewData["Bookings"] = currentBookings;
+                ViewData["Products"] = _CoWork454Context.Product.ToList();
+
             }
 
-                // redirect to admin panel
-                return View("Members");
+            // redirect to admin panel
+            return View("Members");
 
         }
 

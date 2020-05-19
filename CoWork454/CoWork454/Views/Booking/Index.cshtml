@@ -1,0 +1,59 @@
+﻿@using CoWork454.Models
+
+@{
+    ViewData["Title"] = "Members";
+    var user = (User)ViewData["User"];
+    var fullname = $"{user.FirstName} {user.LastName}";
+    var products = (List<Product>)ViewData["Products"];
+    var request = (MakeBooking)ViewData["BookingRequest"];
+
+
+}
+
+    <div class="hero-bookings">
+        <div class="hero-bookings-inner">
+            <div class="booking-container" id="">
+                <div class="booking-cover">
+                    <h2>Make Your Reservation</h2>
+                    <p>
+                        For long-term space leasing, please contact us using the contact tab above
+                        or feel free to call or send through an email to us directly<br>
+                        <br>
+                        A member of our team will confirm your booking shortly.
+                    </p>
+
+                </div>
+                <form id="booking-form" method="post" action="/Booking/Index">
+                    <label>Space required:</label>
+                    <select id="spaceSelect" name="ProductClass">
+                        <option value="0">Workstation</option>
+                        <option value="1">Office</option>
+                        <option value="2">Meeting Room</option>
+                        <option value="3">Board Room</option>
+                        <option value="4">Training Room</option>
+                        <option value="5">Quiet Room</option>
+                    </select>
+                    <label for="date">Date: </label>
+                    <input type="date" id="date" name="Date" placeholder="Date" required>
+                    <div class="half-box">
+                        <label class="sml-label" for="time-from">From: </label>
+                        <label class="sml-label" for="time-to">To: </label>
+                        <input class="sml-input" type="time" id="time-from" name="TimeStart" placeholder="From am/pm" required>
+                        <input class="sml-input" type="time" id="time-to" name="TimeFinish" placeholder="To am/pm" required>
+                    </div>
+                    <input onclick="findAvailable(event)" type="button" id="booking-submit" value="Check Availability">
+                </form>
+            </div>
+        </div>
+
+    </div>
+    
+    <div id="make-booking-partial">
+
+        @Html.Partial("_MakeBookingPartial")
+
+    </div>
+
+
+
+
