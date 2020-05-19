@@ -42,24 +42,6 @@ namespace CoWork454.Controllers.api
             return user;
         }
 
-        [HttpGet("{email}")]
-        public async Task<ActionResult<User>> LoginUser(string email, string pass)
-        {
-            var user = await _context.User.FindAsync(email);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-            if (user.PasswordHash != pass)
-            {
-                return NotFound();
-            }
-
-            return user;
-        }
-
-
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

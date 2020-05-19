@@ -1,0 +1,204 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div id="Bookings" class="tabcontent">
+    <div class="row">
+        <div class="col s12">
+            <h3>CoWork Bookings</h3>
+            <p>....</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h4>Bookings</h4>
+            <table class="striped" id="Bookings-table">
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Product Id</th>
+                        <th>ImagePath</th>
+                        <th>Date_start</th>
+                        <th>Date_end</th>
+                        <th></th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <h4>Add Spaces</h4>
+        <form class="col s12">
+            <input type="hidden" name="Id" id="Id" />
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Name" name="Name" id="Name" type="text">
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Details" name="Details" id="Details" type="text">
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Image Path" name="ImagePath" id="ImagePath" type="text">
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">Save</button>
+            <button class="btn waves-effect" id="clearButton">Clear</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+
+
+
+        const bookingsData = document.querySelector('#Bookings-table tbody');
+        const idElem = document.querySelector('input[name="Id"]');
+        const nameElem = document.querySelector('#Name');
+        const detailsElem = document.querySelector('#Details');
+        const imgPath = document.querySelector('#ImagePath');
+        const isAvailable = document.querySelector('input[name="isAvailable"]');
+
+        //document.getElementById("someFormId").elements;
+
+
+        const onSave = evt => {
+            evt.preventDefault();
+
+            const Id = idElem.value;
+
+            const model = {
+                Name: nameElem.value,
+                Details: detailsElem.value,
+                ImagePath: imgPath.value,
+                isAvailable: true
+            }
+
+            let apiPath = '/api/Bookings';
+            let apiMethod = 'post';
+            if (!!Id) {
+                model.id = parseInt(Id);
+                apiPath = `/api/Bookings/${Id}`;
+                apiMethod = 'put';
+            }
+
+            fetch(apiPath, {
+                body: JSON.stringify(model),
+                method: apiMethod,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => {
+                refreshList();
+                clearList();
+            }).catch(err => {
+                alert('Submit failed');
+            });
+        };
+
+
+
+
+
+        
+
+
+        //delete function
+        const onDelete = evt => {
+            evt.preventDefault();
+
+            const deleteBtn = evt.currentTarget;
+            const Id = deleteBtn.getAttribute('data-id');
+
+            fetch(`/api/Bookings/${Id}`, { method: 'delete' })
+                .then(() => {
+                    refreshList();
+                });
+        }
+
+
+        const refreshList = () => {
+            bookingsData.innerHTML = '';
+
+            fetch('api/Bookings')
+                .then(res => res.json())
+                .then(products => {
+                    //console.log(products);
+                    products.forEach(product => {
+                        const nameCell = document.createElement('td');
+                        const detailsCell = document.createElement('td');
+                        const imgCell = document.createElement('td');
+                        const action1Cell = document.createElement('td');
+                        const action2Cell = document.createElement('td');
+                        //const action3Cell = document.createElement('td');
+
+                        nameCell.innerText = product.name;
+                        detailsCell.innerText = product.details;
+                        imgCell.innerText = product.imagePath;
+
+                        const deleteBtn = document.createElement('button');
+                        const selectBtn = document.createElement('button');
+                        //const isAvail = document.createElement('checkbox');
+
+                        deleteBtn.innerText = 'Delete';
+                        deleteBtn.setAttribute('data-id', product.id);
+                        deleteBtn.className = 'waves-effect waves-light btn';
+                        deleteBtn.addEventListener('click', onDelete);
+                        selectBtn.innerText = 'Select';
+                        selectBtn.setAttribute('data-id', product.id);
+                        selectBtn.className = 'waves-effect waves-light btn';
+                        selectBtn.addEventListener('click', onEdit);
+                        //isAvail.className = 'isAvailable';
+                        //isAvail.setAttribute('data-id', product.id);
+                        //isAvail.checked = product.isAvailable;
+                        //isAvail.addEventListener('change', toggleCheckbox(event));
+
+
+                        action1Cell.appendChild(deleteBtn);
+                        action2Cell.appendChild(selectBtn);
+                        //action3Cell.appendChild(isAvail);
+
+                        const row = document.createElement('tr');
+
+                        row.appendChild(nameCell);
+                        row.appendChild(detailsCell);
+                        row.appendChild(imgCell);
+                        row.appendChild(action1Cell);
+                        row.appendChild(action2Cell);
+                        //row.appendChild(action3Cell);
+                        row.className = `rowid${product.id}`;
+                        bookingsData.appendChild(row);
+                    });
+                })
+                .then(() => { })
+        }
+
+
+        const onEdit = evt => {
+            evt.preventDefault();
+
+            const selectBtn = evt.currentTarget;
+            const Id = selectBtn.getAttribute('data-id');
+
+            fetch(`api/Bookings/${Id}`)
+                .then(res => res.json())
+                .then(Product => {
+                    idElem.value = Product.id;
+                    nameElem.value = Product.name;
+                    detailsElem.value = Product.details;
+                    imgPasth.value = Product.imagePath;
+                    isAvailable.value = Product.isAvailable;
+                });
+        }
+
+        const saveButton = document.querySelector('button[type="submit"]');
+        saveButton.addEventListener('click', onSave);
+
+        refreshList();
+
+
+
+</script>
