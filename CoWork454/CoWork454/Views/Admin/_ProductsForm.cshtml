@@ -68,6 +68,7 @@
         const detailsElem = document.querySelector('#Details');
         const imgPath = document.querySelector('#ImagePath');
         const isAvailable = document.querySelector('input[name="isAvailable"]');
+        const table = document.getElementById("spaces-table");
 
         //document.getElementById("someFormId").elements;
 
@@ -99,13 +100,47 @@
                     'Content-Type': 'application/json'
                 }
             }).then(res => {
-                refreshList();
+                refreshBut();
                 clearList();
             }).catch(err => {
                 alert('Submit failed');
             });
         };
 
+        const onUpdate = evt => {
+            evt.preventDefault();
+
+            const updateBtn = evt.currentTarget;
+            const Id = updateBtn.getAttribute('data-id');
+
+            let rowchildren = document.getElementById(`rowid${Id}`).children;
+
+            const model = {
+                Id: parseInt(Id),
+                Name: rowchildren[0].children[0].value,
+                Details: rowchildren[1].children[0].value,
+                ImagePath: rowchildren[2].children[0].value,
+                isAvailable: true
+            }
+            //build model
+
+            apiPath = `/api/Products/${Id}`;
+            apiMethod = 'put';
+
+            fetch(apiPath, {
+                body: JSON.stringify(model),
+                method: apiMethod,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => {
+                //maybe refreshBtn
+                refreshList();
+            }).catch(err => {
+                alert('Submit Put Method failed');
+            });
+
+        }
       
 
 
@@ -118,7 +153,7 @@
 
             fetch(`/api/Products/${Id}`, { method: 'delete' })
                 .then(() => {
-                    refreshList();
+                    refreshBut();
                 });
         }
 
@@ -129,14 +164,12 @@
             fetch('api/Products')
                 .then(res => res.json())
                 .then(products => {
-                    //console.log(products);
                     products.forEach(product => {
                         const nameCell = document.createElement('td');
                         const detailsCell = document.createElement('td');
                         const imgCell = document.createElement('td');
                         const action1Cell = document.createElement('td');
                         const action2Cell = document.createElement('td');
-                        //const action3Cell = document.createElement('td');
 
                         nameCell.innerText = product.name;
                         detailsCell.innerText = product.details;
@@ -144,7 +177,6 @@
 
                         const deleteBtn = document.createElement('button');
                         const selectBtn = document.createElement('button');
-                        //const isAvail = document.createElement('checkbox');
 
                         deleteBtn.innerText = 'Delete';
                         deleteBtn.setAttribute('data-id', product.id);
@@ -154,15 +186,10 @@
                         selectBtn.setAttribute('data-id', product.id);
                         selectBtn.className = 'waves-effect waves-light btn';
                         selectBtn.addEventListener('click', onEdit);
-                        //isAvail.className = 'isAvailable';
-                        //isAvail.setAttribute('data-id', product.id);
-                        //isAvail.checked = product.isAvailable;
-                        //isAvail.addEventListener('change', toggleCheckbox(event));
        
 
                         action1Cell.appendChild(deleteBtn);
                         action2Cell.appendChild(selectBtn);
-                        //action3Cell.appendChild(isAvail);
 
                         const row = document.createElement('tr');
 
@@ -171,12 +198,16 @@
                         row.appendChild(imgCell);
                         row.appendChild(action1Cell);
                         row.appendChild(action2Cell);
-                        //row.appendChild(action3Cell);
-                        row.className = `rowid${product.id}`;
+                        row.setAttribute('id', `rowid${product.id}`);
                         spacesData.appendChild(row);
                     });
                 })
                 .then(() => { })
+        }
+
+        const refreshBut = evt => {
+            evt.preventDefault;
+            refreshList()
         }
 
 
@@ -186,15 +217,31 @@
             const selectBtn = evt.currentTarget;
             const Id = selectBtn.getAttribute('data-id');
 
-            fetch(`api/Products/${Id}`)
-                .then(res => res.json())
-                .then(Product => {
-                    idElem.value = Product.id;
-                    nameElem.value = Product.name;
-                    detailsElem.value = Product.details;
-                    imgPasth.value = Product.imagePath;
-                    isAvailable.value = Product.isAvailable;
-                });
+            let rowchildren = document.getElementById(`rowid${Id}`).children;
+            let temp;
+
+            for (var i = 0; i < 3; i++) {
+                temp = rowchildren[i].innerText;
+                rowchildren[i].innerHTML = `<input type="text" value="${temp}" />`;
+            };
+
+            const EditBtn = document.createElement('button');
+            const updateBtn = document.createElement('button');
+
+            EditBtn.innerText = 'Cancel';
+            EditBtn.className = 'waves-effect waves-light btn';
+            EditBtn.addEventListener('click', refreshBut);
+            updateBtn.innerText = 'Update';
+            updateBtn.setAttribute('data-id', Id);
+            updateBtn.className = 'waves-effect waves-light btn';
+            updateBtn.addEventListener('click', onUpdate);
+
+            rowchildren[3].innerHTML = '';
+            rowchildren[3].appendChild(EditBtn);
+            rowchildren[4].innerHTML = '';
+            rowchildren[4].appendChild(updateBtn);
+
+            
         }
 
         const saveButton = document.querySelector('button[type="submit"]');
