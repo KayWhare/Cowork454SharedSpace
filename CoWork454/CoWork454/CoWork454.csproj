@@ -25,4 +25,7 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="**/*" />
+  </ItemGroup>
 </Project>
