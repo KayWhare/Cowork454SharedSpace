@@ -48,6 +48,11 @@ namespace CoWork454.Models
         public IActionResult Index(MakeBooking makeBooking)
         {
             //change makeBooking to Booking and convert to DateTimeOffset
+
+            if(makeBooking.Date == null)
+            {
+                return PartialView("_MakeBookingPartial");
+            }
             Booking booking = new Booking()
             {
                 ProductId = makeBooking.ProductId,
@@ -85,9 +90,20 @@ namespace CoWork454.Models
             ViewData["BookingRequest"] = makeBooking;
             ViewData["Products"] = availableProducts;
 
-            return View();
+            var referer = Request.Headers.SingleOrDefault(h => h.Key == "Referer").Value.ToString();
+            var refererParts = referer.Split('/');
 
+
+            if (refererParts[3] == "Booking")
+            {
+                return PartialView("_MakeBookingPartial");
+            }
+            else
+            {
+                return View();
+            }
         }
+
         [HttpPost]
         public IActionResult AddBooking(MakeBooking makeBooking)
         {

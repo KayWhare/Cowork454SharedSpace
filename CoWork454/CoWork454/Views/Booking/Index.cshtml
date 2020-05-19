@@ -1,4 +1,4 @@
-﻿@using CoWork454.Models;
+﻿@using CoWork454.Models
 
 @{
     ViewData["Title"] = "Members";
@@ -41,14 +41,19 @@
                         <input class="sml-input" type="time" id="time-from" name="TimeStart" placeholder="From am/pm" required>
                         <input class="sml-input" type="time" id="time-to" name="TimeFinish" placeholder="To am/pm" required>
                     </div>
-                    <input type="submit" id="booking-submit" value="Check Availability">
+                    <input onclick="findAvailable(event)" type="button" id="booking-submit" value="Check Availability">
                 </form>
             </div>
         </div>
 
     </div>
+    
+    <div id="make-booking-partial">
 
-    @Html.Partial("_MakeBookingPartial")
+        @Html.Partial("_MakeBookingPartial")
+
+    </div>
+
 
 
 

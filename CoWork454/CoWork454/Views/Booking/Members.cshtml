@@ -30,7 +30,7 @@
                     <input class="sml-input" type="time" id="time-from" name="TimeStart" placeholder="From am/pm" required>
                     <input class="sml-input" type="time" id="time-to" name="TimeFinish" placeholder="To am/pm" required>
                 </div>
-                <input type="submit" id="booking-submit" value="Check Availability">
+                <input onclick="findFromAccount(event)" type="button" id="booking-submit" value="Check Availability">
             </form>
 
             <div class="c-booking-cover">
@@ -72,7 +72,7 @@
                 <input type="hidden" name="Date_start" value="@b.Date_start" />
                 <input type="hidden" name="Date_end" value="@b.Date_end" />
             </div>
-            <button type="submit">Make Reservation</button>
+            <button type="submit">Edit Booking</button>
         </form>
     }
 

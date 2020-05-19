@@ -132,11 +132,11 @@
     margin: 30px 0px;
     font-family: Oxygen;
     color: white;
-    background-color: rgba(46, 73, 128, 0.9);
+    background-color: rgba(46, 73, 128, 0.8);
 }
 
     #c-booking-form > :last-child:hover {
-        background-color: rgb(46, 79, 99);
+        background-color: rgba(46, 73, 128, 1);
     }
 
 .half-box > input {
@@ -258,6 +258,7 @@
     #current-bookings > h3 {
         font-size: 32px;
         font-family: Roboto Slab, sans-serif;
+        font-weight: 700;
         width: 100%;
         margin: 10px 35px;
         color: whitesmoke;
@@ -380,7 +381,7 @@
         width: 100%;
         height: 50px;
         padding: 15px;
-        border-radius: 90px;
+        border-radius: 6px;
         outline: none;
         font-size: 12px;
     }

@@ -146,6 +146,7 @@
     #available-bookings > h3 {
         font-size: 32px;
         font-family: Roboto Slab, sans-serif;
+        font-weight: 700;
         width: 100%;
         margin: 10px 35px;
         color: whitesmoke;
