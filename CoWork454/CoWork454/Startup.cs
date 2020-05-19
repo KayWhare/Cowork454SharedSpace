@@ -29,7 +29,8 @@ namespace CoWork454
 
             services.AddDbContext<CoWork454Context>(options =>
             //options.UseSqlite(Configuration.GetConnectionString("CoWork454Context")));
-            options.UseSqlServer(Configuration.GetConnectionString("CoWork454Context")));
+            options.UseSqlServer(Configuration.GetConnectionString("CoWork454Context"))
+            .EnableSensitiveDataLogging());
 
         }
 

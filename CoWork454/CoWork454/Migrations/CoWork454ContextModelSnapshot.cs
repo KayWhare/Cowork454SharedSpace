@@ -33,6 +33,9 @@ namespace CoWork454.Migrations
                     b.Property<DateTimeOffset>("Date_start")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
                     b.HasKey("OrderId", "ProductId");
 
                     b.HasIndex("ProductId");
