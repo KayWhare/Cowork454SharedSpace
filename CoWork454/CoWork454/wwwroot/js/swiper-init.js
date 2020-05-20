@@ -80,3 +80,16 @@ var galleryThumbs = new Swiper('.gallery-thumbs-one', {
       swiper: galleryThumbs,
     },
   });
+
+
+var swiper = new Swiper('.swiper-container-hero', {
+    autoplay: {
+        delay: 5000,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+
+    disableOnInteraction: false,
+});
