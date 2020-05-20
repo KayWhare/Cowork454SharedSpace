@@ -16,6 +16,11 @@ body {
     opacity: 1;
     transition: 0.5s opacity;
 }
+
+.swiper-container {
+    overflow-x: hidden;
+}
+
 .fade-out {
     opacity: 0;
     transition: none;

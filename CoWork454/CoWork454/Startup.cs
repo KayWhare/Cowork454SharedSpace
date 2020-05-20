@@ -32,6 +32,8 @@ namespace CoWork454
             options.UseSqlServer(Configuration.GetConnectionString("CoWork454Context"))
             .EnableSensitiveDataLogging());
 
+            services.AddSingleton(Configuration);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

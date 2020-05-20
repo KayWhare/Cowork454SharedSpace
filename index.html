@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Spaces</title>
     <link rel="stylesheet" href="contact-layout.css" class="style">
     <link rel="stylesheet" href="footer-layout.css" class="style">
     <link rel="stylesheet" href="head-layout.css" class="style">
-    <link rel="stylesheet" href="hero-layout.css" class="style">
     <link rel="stylesheet" href="nav-layout.css" class="style">
-    <link rel="stylesheet" href="ourspace-layout.css" class="style">
-    <link rel="stylesheet" href="packages-layout.css" class="style">
     <link rel="stylesheet" href="page-layout.css" class="style">
-    
+    <link rel="stylesheet" href="spaces-layout.css" class="style">
+    <link rel="stylesheet" href="/swiperJS/swiper.min.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
-
+    <script src="/swiperJS/swiper.min.js"></script>
     <title>CoWork 454</title>
 </head>
 
@@ -49,7 +46,7 @@
         <!-- <img class="nav-logo" src="/images/CoWork454 Logo esign.png"> -->
 
         <div id="loginMobileBtn" class="members-login">
-            <a onclick="loginToggle()" >Login</a>
+            <a onclick="loginToggle()">Login</a>
             <a onclick="signUpToggle()">Sign-up</a>
         </div>
 
@@ -69,43 +66,70 @@
         <input type="submit" value="Login" id='loginSubmit'>
     </form>
 
-        <ul class="slide-nav">
-            <a href="">Membership</a>
-            <a href="">Events</a>
-            <a href="">Spaces</a>
-            <a href="">Bookings</a>
-            <a href="">Blog</a>
-            <a onclick="contactToggle()">Contact</a>
-        </ul>
+    <ul class="slide-nav">
+        <a href="">Membership</a>
+        <a href="">Events</a>
+        <a href="">Spaces</a>
+        <a href="">Bookings</a>
+        <a href="">Blog</a>
+        <a onclick="contactToggle()">Contact</a>
+    </ul>
 
-        <form id="contactForm" class="formStyles"action="">
-            <h2>How can we help you?</h2>
-            <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
-            <input type="email" id="email" name="email" placeholder="E-mail" required>
-            <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>
-            <textarea name="comments" id="comments" cols="53" rows="10" placeholder="Comments"></textarea>            
-            <input type="submit" id="contact-submit" value="Enquire now">
-        </form>
+    <form id="contactForm" class="formStyles" action="">
+        <h2>How can we help you?</h2>
+        <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+        <input type="email" id="email" name="email" placeholder="E-mail" required>
+        <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>
+        <textarea name="comments" id="comments" cols="53" rows="10" placeholder="Comments"></textarea>
+        <input type="submit" id="contact-submit" value="Enquire now">
+    </form>
 
-        <form id="signUpForm" class="formStyles" action="">
-            <h2>Sign Up</h2>
-            <input type="text" id="fname" name="firstname" placeholder="First Name" required>
-            <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
-            <input type="text" id="company" name="company" placeholder="Company Name" optional>
-            <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>           
-            <input type="email" id="email" name="email" placeholder="E-mail" required>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-            <input type="submit" id="contact-submit" value="Join us">
-        </form>
+    <form id="signUpForm" class="formStyles" action="">
+        <h2>Sign Up</h2>
+        <input type="text" id="fname" name="firstname" placeholder="First Name" required>
+        <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
+        <input type="text" id="company" name="company" placeholder="Company Name" optional>
+        <input type="number" id="phone-number" name="phone-number" placeholder="Mobile" required>
+        <input type="email" id="email" name="email" placeholder="E-mail" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="submit" id="contact-submit" value="Join us">
+    </form>
 
 
 
-    <div class="hero-outer">
         <div class="hero">
-            <h1>Join the CoWork Community</h1>
-            <span>We're a Covid-Safe workspace</span>
+            <div class="swiper-container-hero">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-four hero-slide">
+                            <h1>Join the CoWork Community</h1>
+                            <span>We're a Covid-Safe workspace</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-one hero-slide">
+                            <h1>Think about the CoWork Community</h1>
+                            <span>Close to the beach</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-two hero-slide">
+                            <h1>Clean</h1>
+                            <span>We're a Covid-Safe workspace</span>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="slide-three hero-slide">
+                            <h1>Goood</h1>
+                            <span>We're a Covid-Safe workspace</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
-    </div>
 
     <div class="our-space">
 
@@ -141,9 +165,10 @@
         <div class="inner-left" id="teaser1">
             <div class="inner-content left-affect" id="inner-top">
                 <h3>Single Desk</h5>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis distinctio!
-                    Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
-                <a href=''>Enquire</a>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis
+                        distinctio!
+                        Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
+                    <a href=''>Enquire</a>
             </div>
             <h4>New dedicated desk only</h4>
         </div>
@@ -151,9 +176,10 @@
         <div class="inner-right" id="teaser2">
             <div class="inner-content right-affect" id="inner-mid">
                 <h3>Meeting Room</h5>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis distinctio!
-                    Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
-                <a href=''>Enquire</a>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis
+                        distinctio!
+                        Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
+                    <a href=''>Enquire</a>
             </div>
             <h4>Large single levelspace 2200M2</h4>
         </div>
@@ -161,18 +187,19 @@
         <div class="inner-left .sm-img.area" id="teaser3">
             <div class="inner-content left-affect" id="inner-bot">
                 <h3>Conference Room</h5>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis distinctio!
-                    Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
-                <a href=''>Enquire</a>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit iubsdi dsf df. Fugit, officiis
+                        distinctio!
+                        Temporefugit a laboriosam quod suscipit labore, porro reprehenderit eius....</p>
+                    <a href=''>Enquire</a>
             </div>
             <h4>Superb Value for teams and individuals</h4>
         </div>
 
     </div>
 
-    
-    
- 
+
+
+
 
 
     <footer>
@@ -224,6 +251,9 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script src="swiper-init.js"></script>
+<script src="script.js"></script>
+
 </body>
 
 </html>

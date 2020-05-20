@@ -8,6 +8,7 @@
     <Folder Include="Common\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Booking\" />
+    <Folder Include="Views\Blog\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.4.2" />
   </ItemGroup>
 
   <ItemGroup>

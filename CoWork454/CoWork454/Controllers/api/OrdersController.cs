@@ -25,7 +25,7 @@ namespace CoWork454.Controllers.api
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrder()
         {
-            return await _context.Order.ToListAsync();
+            return await _context.Order.Include(u => u.User).Include(ci => ci.Bookings).ThenInclude(b => b.Product).ToListAsync();
         }
 
         // GET: api/Orders/5
