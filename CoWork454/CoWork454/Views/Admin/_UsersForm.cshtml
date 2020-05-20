@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -64,3 +65,210 @@
     </div>
 </div>
 
+=======
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div id="UserManagment " class="tabcontent">
+    <div class="row">
+        <div class="col s12">
+            <h3>CoWork Users</h3>
+            <p>....</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h4>Users</h4>
+            <table class="striped" id="users-table">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>CompanyName</th>
+                        <th>Phone</th>
+                        <th>UserRole</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+
+    const UserData = document.querySelector('#users-table tbody');
+    const idElem = document.querySelector('input[name="Id"]');
+    const firstNameElem = document.querySelector('#FirstName');
+    const lastNameElem = document.querySelector('#LastName');
+    const emailElem = document.querySelector('#Email');
+    const phone = document.querySelector('#Phone');
+    const userRole = document.querySelector('#UserRole');
+    const table = document.getElementById("users-table");
+
+
+    const onUpdate = evt => {
+        evt.preventDefault();
+
+        const updateBtn = evt.currentTarget;
+        const Id = updateBtn.getAttribute('data-id');
+
+        let rowchildren = document.getElementById(`rowid${Id}`).children;
+
+
+        //Change this
+        const model = {
+            Id: parseInt(Id),
+            FirstName: rowchildren[0].children[0].value,
+            LastName: rowchildren[1].children[0].value,
+            Email: rowchildren[2].children[0].value,
+            CompanyName: rowchildren[3].children[0].value,
+            Phone: rowchildren[4].children[0].value,
+            UserRole: parseInt(rowchildren[5].children[0].value),
+        }
+        
+
+        apiPath = `api/Users/${Id}`;
+        apiMethod = 'put';
+
+        fetch(apiPath, {
+            body: JSON.stringify(model),
+            method: apiMethod,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(() => {
+            refreshList();
+        }).catch(err => {
+            alert('Submit Put Method failed');
+        });
+
+    }
+
+
+
+    //delete function
+    const onDelete = evt => {
+        evt.preventDefault();
+
+        const deleteBtn = evt.currentTarget;
+        const Id = deleteBtn.getAttribute('data-id');
+
+        fetch(`/api/Users/${Id}`, { method: 'delete' })
+            .then(() => {
+                refreshList();
+            });
+    }
+
+
+    const refreshList = () => {
+        UserData.innerHTML = '';
+
+        fetch('api/Users')
+            .then(res => res.json())
+            .then(users => {
+                //console.log(users);
+                users.forEach(user => {
+                    const firstNameCell = document.createElement('td');
+                    const lastNameCell = document.createElement('td');
+                    const emailCell = document.createElement('td');
+                    const phoneCell = document.createElement('td');
+                    const companyCell = document.createElement('td');
+                    const userRoleCell = document.createElement('td');
+
+                    const action1Cell = document.createElement('td');
+                    const action2Cell = document.createElement('td');
+                    //const action3Cell = document.createElement('td');
+
+                    firstNameCell.innerText = user.firstName;
+                    lastNameCell.innerText = user.lastName;
+                    emailCell.innerText = user.email;
+                    phoneCell.innerText = user.phone;
+                    companyCell.innerText = user.companyName;
+                    userRoleCell.innerText = user.userRole;
+
+                    const deleteBtn = document.createElement('button');
+                    const selectBtn = document.createElement('button');
+                    //const isAvail = document.createElement('checkbox');
+
+                    deleteBtn.innerText = 'Delete';
+                    deleteBtn.setAttribute('data-id', user.id);
+                    deleteBtn.className = 'waves-effect waves-light btn';
+                    deleteBtn.addEventListener('click', onDelete);
+                    selectBtn.innerText = 'Select';
+                    selectBtn.setAttribute('data-id', user.id);
+                    selectBtn.className = 'waves-effect waves-light btn';
+                    selectBtn.addEventListener('click', onEdit);
+
+
+                    action1Cell.appendChild(deleteBtn);
+                    action2Cell.appendChild(selectBtn);
+
+                    const row = document.createElement('tr');
+
+                    row.appendChild(firstNameCell);
+                    row.appendChild(lastNameCell);
+                    row.appendChild(emailCell);
+                    row.appendChild(companyCell);
+                    row.appendChild(phoneCell);
+                    row.appendChild(userRoleCell);
+                    row.appendChild(action1Cell);
+                    row.appendChild(action2Cell);
+                    row.setAttribute('id', `rowid${user.id}`);
+                    UserData.appendChild(row);
+                });
+            })
+            .then(() => { })
+    }
+
+    const refreshBut = evt => {
+        evt.preventDefault;
+        refreshList()
+    }
+
+
+    const onEdit = evt => {
+        evt.preventDefault();
+
+        const selectBtn = evt.currentTarget;
+        const Id = selectBtn.getAttribute('data-id');
+
+        let rowchildren = document.getElementById(`rowid${Id}`).children;
+        let temp;
+
+        for (var i = 0; i < 6; i++) {
+            temp = rowchildren[i].innerText;
+            rowchildren[i].innerHTML = `<input type="text" value="${temp}" />`;
+        };
+
+        const EditBtn = document.createElement('button');
+        const updateBtn = document.createElement('button');
+
+        EditBtn.innerText = 'Cancel';
+        EditBtn.className = 'waves-effect waves-light btn';
+        EditBtn.addEventListener('click', refreshBut);
+        updateBtn.innerText = 'Update';
+        updateBtn.setAttribute('data-id', Id);
+        updateBtn.className = 'waves-effect waves-light btn';
+        updateBtn.addEventListener('click', onUpdate);
+
+        rowchildren[6].innerHTML = '';
+        rowchildren[6].appendChild(EditBtn);
+        rowchildren[7].innerHTML = '';
+        rowchildren[7].appendChild(updateBtn);
+
+
+    }
+
+
+    refreshList();
+
+
+</script>
+>>>>>>> 30a0d22e20fb4cbcd92531e04dd589a6c39cde68
