@@ -149,6 +149,101 @@
 }
 
 
+
+
+
+
+body{
+    overflow-x: hidden;
+}
+
+.slide-one{
+    background-image: url(/images/image_01.jpg);
+}
+
+.slide-two{
+    background-image: url(/images/image_02.jpg);
+}
+
+.slide-three{
+    background-image: url(/images/image_03.jpg);
+}
+
+.slide-four{
+    background-image: url(/images/image_04.jpg);
+}
+
+.hero-slide{
+    height:300px;
+    display:flex;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(2px);
+}
+
+.hero-slide>h1,
+.hero-slide>span {
+    color: whitesmoke;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0px 1px 2px rgb(0, 0, 0);
+    font-family: 'Roboto Slab', serif;
+
+}
+
+.hero-slide>h1 {
+    font-size: 50px;
+    font-weight: 300;
+}
+
+.hero-slide>span {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.slide-one{
+    background-image: url(/images/image_01.jpg);
+}
+
+.slide-two{
+    background-image: url(/images/image_02.jpg);
+}
+
+.slide-three{
+    background-image: url(/images/image_03.jpg);
+}
+
+.slide-four{
+    background-image: url(/images/image_04.jpg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --------------------------------- */
 /* --------------------------------- */
 /*------------ OUR SPACE ------------*/
