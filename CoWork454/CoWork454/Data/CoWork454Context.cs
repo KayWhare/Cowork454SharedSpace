@@ -16,6 +16,7 @@ namespace CoWork454.Data
         public DbSet<Order> Order { get; set; }
         public DbSet<Booking> Booking { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<BlogPost> BlogPost { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -41,6 +42,11 @@ namespace CoWork454.Data
                 .HasMany(u => u.UserOrders)
                 .WithOne(o => o.User);
 
+            //Defining relatinship between blogpost and user
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.BlogPosts)
+                .WithOne(b => b.User);
+                
         }
     }
 }
