@@ -1,14 +1,8 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- <link rel="stylesheet" href="style.css"> -->
-
     <link rel="stylesheet" href="~/css/contact-layout.css" class="style">
     <link rel="stylesheet" href="~/css/footer-layout.css" class="style">
     <link rel="stylesheet" href="~/css/head-layout.css" class="style">
@@ -20,29 +14,21 @@
     <link rel="stylesheet" href="~/css/members.css" class="style">
     <link rel="stylesheet" href="~/css/booking.css" class="style">
     <link rel="stylesheet" href="~/css/blog.css" class="style">
-
-
     <script src="https://kit.fontawesome.com/ce8fd2f589.js" crossorigin="anonymous"></script>
-
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
-
     <title>CoWork 454</title>
+    <link rel="stylesheet" href="~/css/swiper.min.css">
 </head>
-
 <body>
     <script>document.body.classList.add('fade-out');</script>
-    <div class="swiper-container">
 
         <div class="header">
-
             <img class="logo" src="/images/CoWork454 Logo esign.png" alt="logo">
 
-
             @Html.Partial("_LoginView")
+
         </div>
-
-
         <div class="fullwidth-nav">
             <ul>
                 <a href="">Membership</a>
@@ -52,7 +38,6 @@
                 <a href="@Url.Action("Index", "Blog")">Blog</a>
                 <a onclick="contactToggle()">Contact</a>
             </ul>
-
             @Html.Partial("_LoginMobileView")
 
             <div id='hamburger'>
@@ -64,13 +49,11 @@
                 </label>
             </div>
         </div>
-
         <form id="login" action="/Login/Login" method="POST">
             <input type="email" name="Email" id="Email" placeholder="E-mail">
             <input type="password" name="Password" id="Password" placeholder="Password">
             <input type="submit" value="Login" id='loginSubmit'>
         </form>
-
         <ul class="slide-nav">
             <a href="">Membership</a>
             <a href="">Events</a>
@@ -79,7 +62,6 @@
             <a href="">Blog</a>
             <a onclick="contactToggle()">Contact</a>
         </ul>
-
         @Html.Partial("_ContactPartial")
 
         <form id="signUpForm" class="formStyles" action="/Login/Register" method="POST">
@@ -93,11 +75,8 @@
             <input type="password" id="password" name="password" placeholder="Password" required>
             <input type="submit" id="contact-submit" value="Join us">
         </form>
-
         <div class="blackout-bg"></div>
-
         @RenderBody()
-
         <footer>
             <div class="lg-footer">
                 <div class="about-footer">
@@ -106,7 +85,6 @@
                         454 Scarborough Beach rd, <br> Osborne Park, <br>
                         WA 6017
                     </p>
-
                     <span>
                         <a href="">
                             <p>TERMS AND CONDITIONS</p>
@@ -119,7 +97,6 @@
                         </a>
                     </span>
                 </div>
-
                 <div class="sitemap-footer">
                     <h6 class="foot-heading">Sitemap</h6>
                     <ul class="sitemap-footer-links">
@@ -131,11 +108,8 @@
                         <a href="">Blog</a>
                         <a href="">Contact</a>
                     </ul>
-
                 </div>
-
                 <div class="newsletter-footer">
-
                     <h6 class="foot-heading">Subscribe to our newsletter</h6>
                     <form action="">
                         <input type="text" name="firstName" class="newsletter-input" id="firstName"
@@ -144,16 +118,14 @@
                         <input type="email" name="Email" class="newsletter-input" id="Email" placeholder="Email">
                         <input type="submit" name="submit" id="submit">
                     </form>
-
                 </div>
             </div>
         </footer>
+
         <script src="~/js/script.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCMa4Fmut-ORXO-BjK_6Gz2pNDUscai-g&callback=myMap"></script>
-
-
         @RenderSection("Scripts", required: false)
-    </div>
-</body>
 
+   
+</body>
 </html>
