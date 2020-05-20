@@ -8,6 +8,7 @@
     <Folder Include="Common\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Booking\" />
+    <Folder Include="Views\Blog\" />
   </ItemGroup>
 
   <ItemGroup>
