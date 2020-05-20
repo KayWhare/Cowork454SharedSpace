@@ -4,13 +4,8 @@
     ViewData["Title"] = "Members";
     var user = (User)ViewData["User"];
     var fullname = $"{user.FirstName} {user.LastName}";
-<<<<<<< HEAD
-    var products = (List<Product>)ViewData["Products"];
-    //var bookings = (List<Booking>)ViewData["Booking"]; will use this later to loop over current bookings section below
-=======
     var bookings = (List<Booking>)ViewData["Bookings"];
     var products = (List<Product>)ViewData["Products"];
->>>>>>> 546859e7dea3568fe1656b48275a5a8d699042d4
 }
 
 <div class="c-hero-bookings">
