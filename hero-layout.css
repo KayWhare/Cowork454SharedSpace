@@ -8,9 +8,7 @@
 }
 
 .hero {
-    position: absolute;
     height: 500px;
-    background-color: rgba(0, 0, 0, 0.20);
     backdrop-filter: blur(2px);
     display: flex;
     flex-direction: column;
@@ -19,8 +17,8 @@
     width: 100%;
 }
 
-.hero>h1,
-.hero>span {
+.hero-slide>h1,
+.hero-slide>span {
     color: whitesmoke;
     text-align: center;
     margin-bottom: 30px;
@@ -29,12 +27,12 @@
 
 }
 
-.hero>h1 {
+.hero-slide>h1 {
     font-size: 50px;
     font-weight: 300;
 }
 
-.hero>span {
+.hero-slide>span {
     font-size: 24px;
     font-weight: 400;
 }
