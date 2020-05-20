@@ -14,10 +14,10 @@
             <table class="striped" id="Bookings-table">
                 <thead>
                     <tr>
-                        <th>Order Id</th>
-                        <th>Product Id</th>
-                        <th>Date_start</th>
-                        <th>Date_end</th>
+                        <th>Id</th>
+                        <th>Transaction Number</th>
+                        <th>User</th>
+                        <th>Products</th>
                         <th></th>
                         <th></th>
 
@@ -28,77 +28,20 @@
             </table>
         </div>
     </div>
-    <div class="row">
-        <h4>Add Spaces</h4>
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input placeholder="OrderID" name="OrderID" id="OrderID" type="text">
-                </div>
-                <div class="input-field col s6">
-                    <input placeholder="ProductID" name="ProductID" id="ProductID" type="text">
-                </div>
-                <div class="input-field col s6">
-                    <input placeholder="Date Start" name="DateStart" id="DateStart" type="text">
-                </div>
-                <div class="input-field col s6">
-                    <input placeholder="Date End" name="DateEnd" id="DateEnd" type="text">
-                </div>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit">Save</button>
-            <button class="btn waves-effect" id="clearButton">Clear</button>
-        </form>
-    </div>
+
 </div>
 
 
 <script>
 
-
-
-        const bookingsData = document.querySelector('#Bookings-table tbody');
-    const orderidElem = document.querySelector('#OrderID');
+    const bookingsData = document.querySelector('#Bookings-table tbody');
+    const userIdElem = document.querySelector('#UserId');
     const productIdElem = document.querySelector('#ProductID');
     const dateStartElem = document.querySelector('#DateStart');
     const dateEndElem = document.querySelector('#DateEnd');        
     const table = document.getElementById("Bookings-table");
 
         //document.getElementById("someFormId").elements;
-
-
-        const onSave = evt => {
-            evt.preventDefault();
-
-            const Id = idElem.value;
-
-            const model = {
-                OrderId: orderidElem.value,
-                ProductId: productIdElem.value,
-                Date_Start: dateStartElem.value,
-                Date_End: dateEndElem.value
-            }
-
-            let apiPath = '/api/Bookings';
-            let apiMethod = 'post';
-            if (!!Id) {
-                model.id = parseInt(Id);
-                apiPath = `/api/Bookings/${Id}`;
-                apiMethod = 'put';
-            }
-
-            fetch(apiPath, {
-                body: JSON.stringify(model),
-                method: apiMethod,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(res => {
-                refreshList();
-                clearList();
-            }).catch(err => {
-                alert('Submit failed');
-            });
-        };
 
 
     const onUpdate = evt => {
@@ -112,14 +55,15 @@
 
         //Change this
         const model = {
-            OrderId: parseInt(rowchildren[0].children[0].value),
-            ProductId: parseInt(rowchildren[1].children[0].value),
-            Date_Start: rowchildren[2].children[0].value,
+            Id: parseInt(rowchildren[0].children[0].value),
+            TransactionNumber: parseInt(rowchildren[1].children[0].value),
+            //find the user id from user
+            UserId: rowchildren[2].children[0].value,
             Date_End: rowchildren[3].children[0].value
         }
 
 
-        apiPath = `api/Bookings/${Id}`;
+        apiPath = `api/Orders/${Id}`;
         apiMethod = 'put';
 
         fetch(apiPath, {
@@ -136,10 +80,6 @@
 
     }
 
-
-        
-
-
         //delete function
         const onDelete = evt => {
             evt.preventDefault();
@@ -147,7 +87,7 @@
             const deleteBtn = evt.currentTarget;
             const Id = deleteBtn.getAttribute('data-id');
 
-            fetch(`/api/Bookings/${Id}`, { method: 'delete' })
+            fetch(`/api/Orders/${Id}`, { method: 'delete' })
                 .then(() => {
                     refreshList();
                 });
@@ -157,31 +97,40 @@
         const refreshList = () => {
             bookingsData.innerHTML = '';
 
-            fetch('api/Bookings')
+            fetch('api/Orders')
                 .then(res => res.json())
-                .then(bookings => {
-                    bookings.forEach(booking => {
-                        const OrderidCell = document.createElement('td');
-                        const ProductidCell = document.createElement('td');
-                        const dStartCell = document.createElement('td');
-                        const dEndCell = document.createElement('td');
+                .then(orders => {
+                    orders.forEach(order => {
+                        const idCell = document.createElement('td');
+                        const transactionNumCell = document.createElement('td');
+                        const userCell = document.createElement('td');
+                        const productsCell = document.createElement('td');
                         const action1Cell = document.createElement('td');
                         const action2Cell = document.createElement('td');
 
-                        OrderidCell.innerText = booking.orderId;
-                        ProductidCell.innerText = booking.productId;
-                        dStartCell.innerText = booking.date_start;
-                        dEndCell.innerText = booking.date_end;
+                        console.log(order);
+                        idCell.innerText = order.id;
+                        transactionNumCell.innerText = order.transactionNumber;
+                        userCell.innerText = order.user.firstName + " " + order.user.lastName;
+
+
+                        let productinner = "<ul>";
+                        order.bookings.forEach(product => {
+                            productinner += `<li>${product.product.name}</li>`
+                        })
+                        productinner += "</ul>";
+
+                        productsCell.innerHTML = productinner;
 
                         const deleteBtn = document.createElement('button');
                         const selectBtn = document.createElement('button');
 
                         deleteBtn.innerText = 'Delete';
-                        deleteBtn.setAttribute('data-id', `${booking.productId}${booking.orderId}`);
+                        deleteBtn.setAttribute('data-id', `${order.id}`);
                         deleteBtn.className = 'waves-effect waves-light btn';
                         deleteBtn.addEventListener('click', onDelete);
                         selectBtn.innerText = 'Select';
-                        selectBtn.setAttribute('data-id', `${booking.productId}${booking.orderId}`);
+                        selectBtn.setAttribute('data-id', `${order.id}`);
                         selectBtn.className = 'waves-effect waves-light btn';
                         selectBtn.addEventListener('click', onEdit);
 
@@ -191,14 +140,14 @@
 
                         const row = document.createElement('tr');
 
-                        row.appendChild(OrderidCell);
-                        row.appendChild(ProductidCell);
-                        row.appendChild(dStartCell);
-                        row.appendChild(dEndCell);
+                        row.appendChild(idCell);
+                        row.appendChild(transactionNumCell);
+                        row.appendChild(userCell);
+                        row.appendChild(productsCell);
                         row.appendChild(action1Cell);
                         row.appendChild(action2Cell);
                         
-                        row.setAttribute('id', `rowid${booking.productId}${booking.orderId}`);
+                        row.setAttribute('id', `rowid${order.id}`);
                         bookingsData.appendChild(row);
                     });
                 })
@@ -245,9 +194,6 @@
 
 
     }  
-
-        const saveButton = document.querySelector('button[type="submit"]');
-        saveButton.addEventListener('click', onSave);
 
         refreshList();
 

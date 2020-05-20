@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CoWork454.Models
@@ -20,6 +21,7 @@ namespace CoWork454.Models
 
         public UserRole UserRole { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Order> UserOrders { get; set; }
     }
 }
