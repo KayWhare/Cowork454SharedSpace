@@ -28,10 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
-    <Content Remove="Views\Admin\adminforms.cshtml" />
-=======
     <None Include="**/*" />
->>>>>>> Griffins-branch
   </ItemGroup>
 </Project>
