@@ -1,11 +1,13 @@
 /* ALERTS AND POPUP SPECIALS STYLES */
+/* SLogan and culture section styles */
 
 
 /* ALERT LINE STYLES */
 .alert-line {
-    width: 100%;
+    width: 100vw;
     height: 30px;
     background-color: steelblue;
+    overflow: hidden;
 }
 
 .alert-content {
@@ -16,29 +18,36 @@
     justify-content: center;
     align-content: center;
     text-align: center;
-
     animation: alerts 40s linear infinite;
 }
 
-.alert-content i {
-    color: red;
-    font-size: 1.4em;
-}
+    .alert-content i {
+        color: red;
+        font-size: 1.4em;
+    }
 
-.alert-content h3 {
-    padding: 0 5px;
-    min-width: 100px;
-}
+    .alert-content h3 {
+        padding: 0 5px;
+        min-width: 100px;
+    }
 
-.alert-content p {
-    line-height: 1.5em;
-    color: #fff;
-}
+    .alert-content p {
+        line-height: 1.5em;
+        color: #fff;
+    }
 
 @keyframes alerts {
-    0% {transform:translateX(80%)};
-    50% {transform:translateX(0%)}
-    100% {transform:translateX(-80%)};
+    0% {
+        transform: translateX(80%)
+    }
+
+    50% {
+        transform: translateX(0%)
+    }
+
+    100% {
+        transform: translateX(-80%)
+    }
 }
 
 /* Slogan section */
@@ -48,46 +57,44 @@
     /* background: linear-gradient(90deg,steelblue,#fff,steelblue); */
 }
 
-.slogan-section>div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-    width: 60vw;
-    height: 100%;
-    margin: auto auto;
-}
+    .slogan-section > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        width: 60vw;
+        height: 100%;
+        margin: auto auto;
+    }
 
-.slogan-section>div>div {
-    display: flex;
-    flex-direction: row;
-    margin: auto auto;
-    padding: 0;
-}
+        .slogan-section > div > div {
+            display: flex;
+            flex-direction: row;
+            margin: auto auto;
+            padding: 0;
+        }
 
-.slogan-section>div>div>i {
-    color: rgb(43, 81, 112);
-    font-size: 2em;
-    padding: 0 10px;
-}
+            .slogan-section > div > div > i {
+                color: rgb(43, 81, 112);
+                font-size: 2em;
+                padding: 0 10px;
+            }
 
-.slogan-section>div>div>p {
-    color: rgb(43, 81, 112);
-    font-size: 1.5em;
-    line-height: 1.5em;
-    margin: auto auto;
-}
+            .slogan-section > div > div > p {
+                color: rgb(43, 81, 112);
+                font-size: 1.5em;
+                line-height: 1.5em;
+                margin: auto auto;
+            }
 
 .tour-btn {
     color: #fff;
     font-size: 1em;
     background-color: rgb(43, 81, 112);
     padding: 10px 20px;
-
     margin: auto auto;
     margin-top: -20px;
-
     border-radius: 20px;
 }
 
@@ -105,41 +112,40 @@
     justify-content: center;
 }
 
-.culture-box div{
-    width: 90vw;
-    height: 50vh;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
+    .culture-box div {
+        width: 90vw;
+        height: 50vh;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
 
-.culture-box>div>div>img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+    .culture-box > div > div > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-.culture-box>div>div {
-    width: 50%;
-}
+    .culture-box > div > div {
+        width: 50%;
+    }
 
-.culture-box>div>div>.inner-text{
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    text-align: left;
-    margin: auto auto;
-}
+        .culture-box > div > div > .inner-text {
+            width: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            margin: auto auto;
+        }
 
-.culture-box>div>div>.inner-text>h3 {
-    color: rgb(43, 81, 112);
-    margin: auto 0 5% 0;
-    padding: 0;
-    font-weight: bold;
-    font-size: 1.8em;
-    line-height: 1em;
-}
+    .culture-box > .content-box > .text-box > .inner-text > h3 {
+        color: rgb(43, 81, 112);
+        margin: 0 0 5% 0;
+        padding: 0;
+        font-weight: bold;
+        font-size: 1.8em;
+        line-height: 1em;
+    }
 
 .p1 {
     color: steelblue;
@@ -159,43 +165,45 @@
 
 /* MEDIA QUERY */
 
-@media (max-width: 1280px){
-    .culture-box div{
-       height: 80vh;
+@media (max-width: 1280px) {
+    .culture-box div {
+        height: 80vh;
     }
 }
 
-@media (max-width: 920px){
-    .slogan-section>div {
+@media (max-width: 920px) {
+    .slogan-section > div {
         width: 90vw;
     }
 
-    .culture-box>div{
-      width: 100vw;
+    .culture-box > div {
+        width: 100vw;
     }
-    .culture-box>div>#img {
-       width: 40vw;
-    }
-    .culture-box>.content-box>.text-box{
+
+        .culture-box > div > #img {
+            width: 40vw;
+        }
+
+    .culture-box > .content-box > .text-box {
         width: 60vw;
     }
 
-    .culture-box>div>div>.inner-text {
+    .culture-box > div > div > .inner-text {
         overflow: scroll;
         height: 100%;
     }
-
 }
 
-@media (max-width: 770px){
-    .slogan-section>div>div>p {
+@media (max-width: 770px) {
+    .slogan-section > div > div > p {
         font-size: 1em;
     }
-    .slogan-section>div>div>i {
+
+    .slogan-section > div > div > i {
         font-size: 1.2em;
     }
 
-    .culture-box div{
+    .culture-box div {
         width: 100vw;
         height: 100vh;
         display: flex;
@@ -203,61 +211,17 @@
         flex-direction: column;
     }
 
-    .culture-box>div>#img {
+    .culture-box > div > #img {
         width: 100%;
         height: 50vh;
     }
-    
-    .culture-box>div>.text-box{
-        width: 100%;
-        height: 50vh;
-        padding: 0;
-    }
 
-    #content-box2 {
-        width: 100%;
-        height: 100vh;
-        padding: 0;
-
-        display: flex;
-        flex-direction: column-reverse;
-    } 
-
-    #content-box2 #img {
-        height: 50vh;
-    } 
-    #content-box2 #img>img{
-        height: 50vh;
-        object-fit: cover;
-    }
-
-    #content-box2>div{
-        height: 50vh;
-    }
-
-    #content-box2 .div1 {
-        height: 50vh;
-    }
-
-    
-    .culture-box>div>div>.inner-text {
-        width: 90%;
-        height: 100%;
+    .culture-box > .content-box > .text-box {
+        width: 100vw;
+        height: 30vh;
         justify-content: center;
-        margin: 0 auto;
+        align-content: center;
         text-align: center;
-    }
- 
-    .culture-box>div>div>.inner-text>h3 {
-        margin: 0;
-        padding: 10px 0;
-    }
-
-}
-
-@media (max-width:550px){
-
-    .text-box{
         margin: auto auto;
     }
 
@@ -265,21 +229,51 @@
         width: 100%;
         height: 100%;
         justify-content: center;
-        margin:0 auto;
+        align-content: center;
+        margin: 0 auto;
         text-align: center;
     }
 
+        .inner-text h3 {
+            padding-bottom: 30px;
+        }
+
+        .inner-text p {
+            color: steelblue;
+        }
+
+        .inner-text .p2 {
+            display: none;
+        }
+
+    #content-box2 {
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+        #content-box2 #img {
+            height: 50vh;
+        }
+
+            #content-box2 #img > img {
+                height: 50vh;
+                object-fit: cover;
+            }
+}
+
+@media (max-width:550px) {
+    .culture-box > .content-box > .text-box {
+        height: 30vh;
+    }
+
     .inner-text h3 {
-        padding-bottom: 30px;
+        font-size: 1em;
     }
 
     .inner-text p {
-        color: steelblue;
-    }
-
-    .inner-text .p2 {
-        display: none;
+        font-size: 1em;
     }
 }
-
-

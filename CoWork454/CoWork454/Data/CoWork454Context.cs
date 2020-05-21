@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CoWork454.Models;
-
-
+using System;
 
 namespace CoWork454.Data
 {
@@ -46,7 +45,13 @@ namespace CoWork454.Data
             modelBuilder.Entity<User>()
                 .HasMany(u => u.BlogPosts)
                 .WithOne(b => b.User);
-                
+
+
+
+
+
+            modelBuilder.Entity<Booking>().HasQueryFilter(b => b.Date_end <= DateTimeOffset.Now);
+
         }
     }
 }
