@@ -1,0 +1,254 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<div id="Blogs" class="tabcontent">
+    <div class="row">
+        <div class="col s12">
+            <h3>CoWork Blog Posts</h3>
+            <p>....</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h4>Posts</h4>
+            <table class="striped" id="blogs-table">
+                <thead>
+                    <tr>
+                        <th>Title </th>
+                        <th>Blurb </th>
+                        <th>Article </th>
+                        <th>ImageUrl</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <h4>Add Post</h4>
+        <form class="col s12">
+            <input type="hidden" name="Id" id="Id" />
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Title" name="Title" id="Title" type="text">
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Blurb" name="Blurb" id="Blurb" type="text">
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Article" name="Article" id="Article" type="text">
+                </div>
+                <div class="input-field col s6">
+                    <input name="ImagePath" type="file" placeholder="Upload Media" id="ImagePath" required>
+                </div>
+                <div class="input-field col s6">
+                    <label for="isFeatured">Is Featured:</label>
+                    <input type="checkbox" class="isFeatured" name="isFeatured" checked /><br />
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">Save</button>
+            <button class="btn waves-effect" id="clearButton">Clear</button>
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+
+
+
+        const spacesData = document.querySelector('#blogs-table tbody');
+        const idElem = document.querySelector('input[name="Id"]');
+    const titleElem = document.querySelector('#Title');
+    const blurbElem = document.querySelector('#Blurb');
+    const articleElem = document.querySelector('#Article');
+        const imgPath = document.querySelector('#ImagePath');
+    const isFeatured = document.querySelector('input[name="isFeatured"]');
+        const table = document.getElementById("blogs-table");
+
+        //document.getElementById("someFormId").elements;
+
+
+        const onSave = evt => {
+            evt.preventDefault();
+
+            const Id = idElem.value;
+
+            const model = {
+                Title: titleElem.value,
+                Blurb: blurbElem.value,
+                Article: articleElem.value,
+                ImagePath: imgPath.value,
+                isFeatured: false
+            }
+
+            fetch(apiPath, {
+                body: JSON.stringify(model),
+                method: apiMethod,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(() => {
+                refreshBut();
+            }).catch(err => {
+                alert('Submit failed');
+            });
+        };
+
+        const onUpdate = evt => {
+            evt.preventDefault();
+
+            const updateBtn = evt.currentTarget;
+            const Id = updateBtn.getAttribute('data-id');
+
+            let rowchildren = document.getElementById(`rowid${Id}`).children;
+
+            const model = {
+                Id: parseInt(Id),
+                Title: rowchildren[0].children[0].value,
+                Blurb: rowchildren[1].children[0].value,
+                Article: rowchildren[2].children[0].value,
+                ImagePath: rowchildren[3].children[0].value,
+                isAvailable: false
+            }
+            //build model
+
+            apiPath = `/api/Blogs/${Id}`;
+            apiMethod = 'put';
+
+            fetch(apiPath, {
+                body: JSON.stringify(model),
+                method: apiMethod,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(() => {
+                //maybe refreshBtn
+                refreshList();
+            }).catch(err => {
+                alert('Submit Put Method failed');
+            });
+
+        }
+
+
+
+        //delete function
+        const onDelete = evt => {
+            evt.preventDefault();
+
+            const deleteBtn = evt.currentTarget;
+            const Id = deleteBtn.getAttribute('data-id');
+
+            fetch(`/api/Blogs/${Id}`, { method: 'delete' })
+                .then(() => {
+                    refreshBut();
+                });
+        }
+
+
+        const refreshList = () => {
+            spacesData.innerHTML = '';
+
+            fetch('api/Blogs')
+                .then(res => res.json())
+                .then(blogs => {
+                    blogs.forEach(post => {
+                        const titleCell = document.createElement('td');
+                        const blurbCell = document.createElement('td');
+                        const articleCell = document.createElement('td');
+                        const imgCell = document.createElement('td');
+                        const action1Cell = document.createElement('td');
+                        const action2Cell = document.createElement('td');
+
+                        titleCell.innerText = post.title;
+                        blurbCell.innerText = post.blurb;
+                        articleCell.innerText = post.article;
+                        imgCell.innerText = post.imagePath;
+
+                        const deleteBtn = document.createElement('button');
+                        const selectBtn = document.createElement('button');
+
+                        deleteBtn.innerText = 'Delete';
+                        deleteBtn.setAttribute('data-id', post.id);
+                        deleteBtn.className = 'waves-effect waves-light btn';
+                        deleteBtn.addEventListener('click', onDelete);
+                        selectBtn.innerText = 'Select';
+                        selectBtn.setAttribute('data-id', post.id);
+                        selectBtn.className = 'waves-effect waves-light btn';
+                        selectBtn.addEventListener('click', onEdit);
+
+
+                        action1Cell.appendChild(deleteBtn);
+                        action2Cell.appendChild(selectBtn);
+
+                        const row = document.createElement('tr');
+
+                        row.appendChild(nameCell);
+                        row.appendChild(detailsCell);
+                        row.appendChild(imgCell);
+                        row.appendChild(action1Cell);
+                        row.appendChild(action2Cell);
+                        row.setAttribute('id', `rowid${post.id}`);
+                        spacesData.appendChild(row);
+                    });
+                })
+                .then(() => { })
+        }
+
+        const refreshBut = evt => {
+            evt.preventDefault;
+            refreshList()
+        }
+
+
+        const onEdit = evt => {
+            evt.preventDefault();
+
+            const selectBtn = evt.currentTarget;
+            const Id = selectBtn.getAttribute('data-id');
+
+            let rowchildren = document.getElementById(`rowid${Id}`).children;
+            let temp;
+
+            for (var i = 0; i < 4; i++) {
+                temp = rowchildren[i].innerText;
+                rowchildren[i].innerHTML = `<input type="text" value="${temp}" />`;
+            };
+
+            const EditBtn = document.createElement('button');
+            const updateBtn = document.createElement('button');
+
+            EditBtn.innerText = 'Cancel';
+            EditBtn.className = 'waves-effect waves-light btn';
+            EditBtn.addEventListener('click', refreshBut);
+            updateBtn.innerText = 'Update';
+            updateBtn.setAttribute('data-id', Id);
+            updateBtn.className = 'waves-effect waves-light btn';
+            updateBtn.addEventListener('click', onUpdate);
+
+            rowchildren[4].innerHTML = '';
+            rowchildren[4].appendChild(EditBtn);
+            rowchildren[5].innerHTML = '';
+            rowchildren[5].appendChild(updateBtn);
+
+
+        }
+
+        const saveButton = document.querySelector('button[type="submit"]');
+        saveButton.addEventListener('click', onSave);
+
+        refreshList();
+
+
+
+</script>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
