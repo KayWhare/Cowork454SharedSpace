@@ -87,6 +87,8 @@ namespace CoWork454.Models
                 var LogginUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));
                 ViewData["User"] = LogginUser;
             }
+
+
             ViewData["BookingRequest"] = makeBooking;
             ViewData["Products"] = availableProducts;
 
@@ -193,6 +195,7 @@ namespace CoWork454.Models
                     {
                         newOrder.UserId = Convert.ToInt32(userId);
                     }
+
 
                     // add the order to the context, save changes to update database
                     _CoWork454Context.Add(newOrder);
