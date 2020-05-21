@@ -23,6 +23,7 @@ namespace CoWork454.Models
 
         [JsonIgnore]
         public virtual ICollection<Order> UserOrders { get; set; }
+        [JsonIgnore]
         public virtual ICollection<BlogPost> BlogPosts { get; set; }
     }
 }

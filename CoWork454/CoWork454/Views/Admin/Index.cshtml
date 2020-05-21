@@ -1,5 +1,5 @@
 
-@{
+﻿@{
     ViewData["Title"] = "Admin";
     Layout = null;
 }
@@ -144,14 +144,14 @@
 
     <main>
         <aside>
-            <h2>
-                CoWork 454 Interface</h1>
+            <h2>CoWork 454 Interface</h2>
                 <p>Select Options Below</p>
                 <ul id="menu">
                     <li class="listItem" id="1"><i class="fa fa-caret-right"></i><a href="#0">User Management</a></li>
                     <li class="listItem" id="2"><i class="fa fa-caret-right"></i><a href="#1">Floor Space Management</a></li>
                     <li class="listItem" id="3"><i class="fa fa-caret-right"></i><a href="#2">Bookings Management</a></li>
-                    <li class="listItem" id="4"><i class="fa fa-caret-right"></i><a href="#3">Exit Admin Interface</a></li>
+                    <li class="listItem" id="4"><i class="fa fa-caret-right"></i><a href="#3">Blogs Managment</a></li>
+                    <li class="listItem" id="5"><i class="fa fa-caret-right"></i><a href="#3">Exit Admin Interface</a></li>
                 </ul>
         </aside>
 
@@ -185,7 +185,12 @@
                     bookingBtn();
                     console.log('Booking');
                 }
-                if(item.id==4){
+                if (item.id == 4) {
+                    content.innerHTML = `@Html.Partial("_BlogForms.cshtml")`;
+                    blogsBtn();
+                    console.log('Booking');
+                }
+                if(item.id==5){
                     console.log('exit');
                 }
             },false)
@@ -199,13 +204,17 @@
 
         function spaceBtn() {
 
-        const spacesData = document.querySelector('#spaces-table tbody');
-        const idElem = document.querySelector('input[name="Id"]');
-        const nameElem = document.querySelector('#Name');
-        const detailsElem = document.querySelector('#Details');
-        const imgPath = document.querySelector('#ImagePath');
-        const isAvailable = document.querySelector('input[name="isAvailable"]');
-        const table = document.getElementById("spaces-table");
+            const spacesData = document.querySelector('#spaces-table tbody');
+            const idElem = document.querySelector('input[name="Id"]');
+            const nameElem = document.querySelector('#Name');
+            const detailsElem = document.querySelector('#Details');
+            const imgPath = document.querySelector('#ImagePath');
+            const isAvailable = document.querySelector('input[name="isAvailable"]');
+
+            //document.getElementById("someFormId").elements;
+
+
+
 
         //document.getElementById("someFormId").elements;
 
@@ -278,7 +287,7 @@
             });
 
         }
-      
+
 
 
         //delete function
@@ -294,7 +303,7 @@
                 });
         }
 
-        
+
         const refreshList = () => {
             spacesData.innerHTML = '';
 
@@ -323,7 +332,7 @@
                         selectBtn.setAttribute('data-id', product.id);
                         selectBtn.className = 'waves-effect waves-light btn';
                         selectBtn.addEventListener('click', onEdit);
-       
+
 
                         action1Cell.appendChild(deleteBtn);
                         action2Cell.appendChild(selectBtn);
@@ -378,7 +387,7 @@
             rowchildren[4].innerHTML = '';
             rowchildren[4].appendChild(updateBtn);
 
-            
+
         }
 
         const saveButton = document.querySelector('button[type="submit"]');
@@ -395,18 +404,18 @@
         //BOOKINGS SCRIPTS
         //=====================================================
 
-    function bookingBtn() {
-        const bookingsData = document.querySelector('#Bookings-table tbody');
-        const userIdElem = document.querySelector('#UserId');
-        const productIdElem = document.querySelector('#ProductID');
-        const dateStartElem = document.querySelector('#DateStart');
-        const dateEndElem = document.querySelector('#DateEnd');        
-        const table = document.getElementById("Bookings-table");
+        function bookingBtn() {
+    const bookingsData = document.querySelector('#Bookings-table tbody');
+    const userIdElem = document.querySelector('#UserId');
+    const productIdElem = document.querySelector('#ProductID');
+    const dateStartElem = document.querySelector('#DateStart');
+    const dateEndElem = document.querySelector('#DateEnd');
+    const table = document.getElementById("Bookings-table");
 
         //document.getElementById("someFormId").elements;
 
 
-        const onUpdate = evt => {
+    const onUpdate = evt => {
         evt.preventDefault();
 
         const updateBtn = evt.currentTarget;
@@ -440,7 +449,7 @@
             alert('Submit Put Method failed');
         });
 
-        }
+    }
 
         //delete function
         const onDelete = evt => {
@@ -508,18 +517,18 @@
                         row.appendChild(productsCell);
                         row.appendChild(action1Cell);
                         row.appendChild(action2Cell);
-                        
+
                         row.setAttribute('id', `rowid${order.id}`);
                         bookingsData.appendChild(row);
                     });
                 })
                 .then(() => { })
-                }
+    }
 
-        const refreshBut = evt => {
-            evt.preventDefault;
-            refreshList()
-        }
+    const refreshBut = evt => {
+        evt.preventDefault;
+        refreshList()
+    }
 
 
 
@@ -555,7 +564,7 @@
             rowchildren[5].appendChild(updateBtn);
 
 
-        }  
+    }
 
         refreshList();
 
@@ -567,18 +576,10 @@
         //USERS SCRIPTS
         //=====================================================
 
-    function usersBtn() {
-        const UserData = document.querySelector('#users-table tbody');
-        const idElem = document.querySelector('input[name="Id"]');
-        const firstNameElem = document.querySelector('#FirstName');
-        const lastNameElem = document.querySelector('#LastName');
-        const emailElem = document.querySelector('#Email');
-        const phone = document.querySelector('#Phone');
-        const userRole = document.querySelector('#UserRole');
-        const table = document.getElementById("users-table");
+        function usersBtn() {
+    const UserData = document.querySelector('#users-table tbody');
 
-
-        const onUpdate = evt => {
+    const onUpdate = evt => {
         evt.preventDefault();
 
         const updateBtn = evt.currentTarget;
@@ -597,7 +598,7 @@
             Phone: rowchildren[4].children[0].value,
             UserRole: parseInt(rowchildren[5].children[0].value),
         }
-        
+
 
         apiPath = `api/Users/${Id}`;
         apiMethod = 'put';
@@ -614,7 +615,7 @@
             alert('Submit Put Method failed');
         });
 
-        }
+    }
 
 
 
@@ -735,6 +736,219 @@
     refreshList();
 
     }
+
+        //=====================================================
+        //Blogs SCRIPTS
+        //=====================================================
+    function blogsBtn() {
+
+
+
+        const spacesData = document.querySelector('#blogs-table tbody');
+        const idElem = document.querySelector('input[name="Id"]');
+        const titleElem = document.querySelector('#Title');
+        const blurbElem = document.querySelector('#Blurb');
+        const articleElem = document.querySelector('#Article');
+        const imgPath = document.querySelector('#ImagePath');
+        const userIdElem = document.querySelector('#UserId');
+        const isFeatured = document.querySelector('input[name="isFeatured"]');
+        const table = document.getElementById("blogs-table");
+
+        //document.getElementById("someFormId").elements;
+
+
+        const onSave = evt => {
+            evt.preventDefault();
+
+            const Id = idElem.value;
+
+            const model = {
+                Title: titleElem.value,
+                Blurb: blurbElem.value,
+                Article: articleElem.value,
+                ImagePath: imgPath.value,
+                UserId:pareseInt( userIdElem.value),
+                isFeatured: false
+            }
+            const data = new FormData();
+            data.append('Title', titleElem.value);
+            data.append('Blurb', blurbElem.value);
+            data.append('Article', articleElem.value);
+            data.append('ImagePath', imgPath.value);
+            data.append('UserId', pareseInt(userIdElem.value));
+            data.append('isFeatured', false);
+
+
+            apiPath = `/api/BlogPosts/`;
+            apiMethod = 'POST';
+
+            fetch(apiPath, {
+                body: data,
+                method: apiMethod,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(() => {
+                refreshBut();
+            }).catch(err => {
+                alert('Submit failed');
+            });
+        };
+
+        const onUpdate = evt => {
+            evt.preventDefault();
+
+            const updateBtn = evt.currentTarget;
+            const Id = updateBtn.getAttribute('data-id');
+
+            let rowchildren = document.getElementById(`rowid${Id}`).children;
+            
+
+            const data = new FormData();
+            data.append('Id', parseInt(Id));
+            data.append('Title', rowchildren[0].children[0].value);
+            data.append('Blurb', rowchildren[1].children[0].value);
+            data.append('Article', rowchildren[2].children[0].value);
+            data.append('File', rowchildren[3].children[1].value);
+            data.append('ImagePath', rowchildren[3].children[0].src);
+            data.append('UserId', parseInt(rowchildren[4].children[0].value));
+            data.append('isFeatured', false);
+            //build model
+
+            apiPath = `/api/BlogPosts/${Id}`;
+            apiMethod = 'put';
+
+            fetch(apiPath, {
+                body: data,
+                method: apiMethod,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(() => {
+                //maybe refreshBtn
+                refreshList();
+            }).catch(err => {
+                alert('Submit Put Method failed');
+            });
+
+        }
+
+
+
+        //delete function
+        const onDelete = evt => {
+            evt.preventDefault();
+
+            const deleteBtn = evt.currentTarget;
+            const Id = deleteBtn.getAttribute('data-id');
+
+            fetch(`/api/BlogPosts/${Id}`, { method: 'delete' })
+                .then(() => {
+                    refreshList();
+                });
+        }
+
+
+        const refreshList = () => {
+            spacesData.innerHTML = '';
+
+            fetch('api/BlogPosts')
+                .then(res => res.json())
+                .then(blogs => {
+                    blogs.forEach(post => {
+                        const titleCell = document.createElement('td');
+                        const blurbCell = document.createElement('td');
+                        const articleCell = document.createElement('td');
+                        const imgCell = document.createElement('td');
+                        const userIDCell = document.createElement('td');
+                        const action1Cell = document.createElement('td');
+                        const action2Cell = document.createElement('td');
+
+                        titleCell.innerText = post.title;
+                        blurbCell.innerText = post.blurb;
+                        articleCell.innerText = post.article;
+                        imgCell.innerHTML = `<img src="${post.imageUrl}" />`;
+                        userIDCell.innerText = post.userId;
+
+                        const deleteBtn = document.createElement('button');
+                        const selectBtn = document.createElement('button');
+
+                        deleteBtn.innerText = 'Delete';
+                        deleteBtn.setAttribute('data-id', post.id);
+                        deleteBtn.className = 'waves-effect waves-light btn';
+                        deleteBtn.addEventListener('click', onDelete);
+                        selectBtn.innerText = 'Select';
+                        selectBtn.setAttribute('data-id', post.id);
+                        selectBtn.className = 'waves-effect waves-light btn';
+                        selectBtn.addEventListener('click', onEdit);
+
+
+                        action1Cell.appendChild(deleteBtn);
+                        action2Cell.appendChild(selectBtn);
+
+                        const row = document.createElement('tr');
+
+                        row.appendChild(titleCell);
+                        row.appendChild(blurbCell);
+                        row.appendChild(articleCell);
+                        row.appendChild(imgCell);
+                        row.appendChild(userIDCell);
+                        row.appendChild(action1Cell);
+                        row.appendChild(action2Cell);
+                        row.setAttribute('id', `rowid${post.id}`);
+                        spacesData.appendChild(row);
+                    });
+                })
+                .then(() => { })
+        }
+
+        const refreshBut = evt => {
+            evt.preventDefault;
+            refreshList()
+        }
+
+
+        const onEdit = evt => {
+            evt.preventDefault();
+
+            const selectBtn = evt.currentTarget;
+            const Id = selectBtn.getAttribute('data-id');
+
+            let rowchildren = document.getElementById(`rowid${Id}`).children;
+            let temp;
+
+            for (var i = 0; i < 3; i++) {
+                temp = rowchildren[i].innerText;
+                rowchildren[i].innerHTML = `<input type="text" value="${temp}" />`;
+            };
+            rowchildren[3].innerHTML += `<input name="ImagePath" type="file" placeholder="Upload Media" id="ImagePath" required>`;
+
+            rowchildren[4].innerHTML = `<input type="text" value="${rowchildren[4].innerText}" />`;
+            const EditBtn = document.createElement('button');
+            const updateBtn = document.createElement('button');
+
+            EditBtn.innerText = 'Cancel';
+            EditBtn.className = 'waves-effect waves-light btn';
+            EditBtn.addEventListener('click', refreshBut);
+            updateBtn.innerText = 'Update';
+            updateBtn.setAttribute('data-id', Id);
+            updateBtn.className = 'waves-effect waves-light btn';
+            updateBtn.addEventListener('click', onUpdate);
+
+            rowchildren[5].innerHTML = '';
+            rowchildren[5].appendChild(EditBtn);
+            rowchildren[6].innerHTML = '';
+            rowchildren[6].appendChild(updateBtn);
+
+
+        }
+
+        const saveButton = document.querySelector('button[type="submit"]');
+        saveButton.addEventListener('click', onSave);
+
+        refreshList();
+    }
+
 
     </script>
 </body>

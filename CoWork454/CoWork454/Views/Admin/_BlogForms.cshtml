@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<div id="Blogs" class="tabcontent">
+    <div class="row">
+        <div class="col s12">
+            <h3>CoWork Blog Posts</h3>
+            <p>....</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h4>Posts</h4>
+            <table class="striped" id="blogs-table">
+                <thead>
+                    <tr>
+                        <th>Title </th>
+                        <th>Blurb </th>
+                        <th>Article </th>
+                        <th>ImageUrl</th>
+                        <th>User ID</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <h4>Add Post</h4>
+        <form class="col s12">
+            <input type="hidden" name="Id" id="Id" />
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Title" name="Title" id="Title" type="text">
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Blurb" name="Blurb" id="Blurb" type="text">
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Article" name="Article" id="Article" type="text">
+                </div>
+                <div class="input-field col s6">
+                    <input name="ImagePath" type="file" placeholder="Upload Media" id="ImagePath" required>
+                </div>
+                <div class="input-field col s6">
+                    <input name="UserId" type="text" placeholder="UserId" id="UserId" required>
+                </div>
+                <div class="input-field col s6">
+                    <label for="isFeatured">Is Featured:</label>
+                    <input type="checkbox" class="isFeatured" name="isFeatured" checked /><br />
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">Save</button>
+            <button class="btn waves-effect" id="clearButton">Clear</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
