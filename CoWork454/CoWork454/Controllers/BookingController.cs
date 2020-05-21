@@ -87,6 +87,8 @@ namespace CoWork454.Models
                 var LogginUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));
                 ViewData["User"] = LogginUser;
             }
+
+
             ViewData["BookingRequest"] = makeBooking;
             ViewData["Products"] = availableProducts;
 
@@ -132,9 +134,6 @@ namespace CoWork454.Models
                 {
                     order.UserId = Convert.ToInt32(userId);
                 }
-
-                //check for lapsed bookings and remove
-                _CoWork454Context.Booking.RemoveRange(_CoWork454Context.Booking.Where(b => b.Date_end <= DateTimeOffset.Now));
 
                 // add the order to the context, save changes to update database
                 _CoWork454Context.Add(order);
@@ -196,6 +195,7 @@ namespace CoWork454.Models
                     {
                         newOrder.UserId = Convert.ToInt32(userId);
                     }
+
 
                     // add the order to the context, save changes to update database
                     _CoWork454Context.Add(newOrder);
