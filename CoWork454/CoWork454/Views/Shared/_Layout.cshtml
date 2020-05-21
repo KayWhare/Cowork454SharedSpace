@@ -96,50 +96,8 @@
         </form>
         <div class="blackout-bg"></div>
         @RenderBody()
-        <footer>
-            <div class="lg-footer">
-                <div class="about-footer">
-                    <img src="/images/CoWork454 Logo esign.png" alt="">
-                    <p>
-                        454 Scarborough Beach rd, <br> Osborne Park, <br>
-                        WA 6017
-                    </p>
-                    <span>
-                        <a href="">
-                            <p>TERMS AND CONDITIONS</p>
-                        </a>
-                        <a href="">
-                            <p>OUR TEAM</p>
-                        </a>
-                        <a href="">
-                            <p>CONTACT US</p>
-                        </a>
-                    </span>
-                </div>
-                <div class="sitemap-footer">
-                    <h6 class="foot-heading">Sitemap</h6>
-                    <ul class="sitemap-footer-links">
-                        <a href="">Home</a>
-                        <a href="">Membership</a>
-                        <a href="">Events</a>
-                        <a href="">Spaces</a>
-                        <a href="">Bookings</a>
-                        <a href="">Blog</a>
-                        <a href="">Contact</a>
-                    </ul>
-                </div>
-                <div class="newsletter-footer">
-                    <h6 class="foot-heading">Subscribe to our newsletter</h6>
-                    <form action="">
-                        <input type="text" name="firstName" class="newsletter-input" id="firstName"
-                               placeholder="First Name">
-                        <input type="text" name="lastName" class="newsletter-input" id="LastName" placeholder="Last Name">
-                        <input type="email" name="Email" class="newsletter-input" id="Email" placeholder="Email">
-                        <input type="submit" name="submit" id="submit">
-                    </form>
-                </div>
-            </div>
-        </footer>
+
+        @Html.Partial("_FooterLayoutPartial")
 
         <script src="~/js/script.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCMa4Fmut-ORXO-BjK_6Gz2pNDUscai-g&callback=myMap"></script>
