@@ -26,7 +26,7 @@ namespace CoWork454.Controllers
             if (userIdCookie == null)
             {
                 //Add back when we have proper admin user
-                //return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
 
             }
             var existingUser = _CoWork454Context.User.SingleOrDefault(l => l.Id == Convert.ToInt32(userIdCookie));

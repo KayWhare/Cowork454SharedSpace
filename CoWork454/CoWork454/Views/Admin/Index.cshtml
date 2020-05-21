@@ -257,10 +257,13 @@
             };
 
             const onUpdate = evt => {
+
                 evt.preventDefault();
 
                 const updateBtn = evt.currentTarget;
                 const Id = updateBtn.getAttribute('data-id');
+                const Btn = document.getElementById(`Avalibility${Id}`);
+                const isAv = Btn.classList.contains("Available")
 
                 let rowchildren = document.getElementById(`rowid${Id}`).children;
 
@@ -269,7 +272,7 @@
                     Name: rowchildren[0].children[0].value,
                     Details: rowchildren[1].children[0].value,
                     ImagePath: rowchildren[2].children[0].value,
-                    isAvailable: true
+                    isAvailable: isAv
                 }
                 //build model
 
@@ -339,6 +342,7 @@
                                 AvailBtn.className = 'waves-effect waves-light btn Unavailable';
                             }
                             AvailBtn.setAttribute('data-id', product.id);
+                            AvailBtn.setAttribute('id', `Avalibility${product.id}`);
                             AvailBtn.addEventListener('click', changeAvail);
 
                             deleteBtn.innerText = 'Delete';
@@ -431,10 +435,10 @@
                 updateBtn.className = 'waves-effect waves-light btn';
                 updateBtn.addEventListener('click', onUpdate);
 
-                rowchildren[3].innerHTML = '';
-                rowchildren[3].appendChild(EditBtn);
                 rowchildren[4].innerHTML = '';
-                rowchildren[4].appendChild(updateBtn);
+                rowchildren[4].appendChild(EditBtn);
+                rowchildren[5].innerHTML = '';
+                rowchildren[5].appendChild(updateBtn);
 
 
             }
@@ -454,168 +458,167 @@
         //=====================================================
 
         function bookingBtn() {
-    const bookingsData = document.querySelector('#Bookings-table tbody');
-    const userIdElem = document.querySelector('#UserId');
-    const productIdElem = document.querySelector('#ProductID');
-    const dateStartElem = document.querySelector('#DateStart');
-    const dateEndElem = document.querySelector('#DateEnd');
-    const table = document.getElementById("Bookings-table");
+            const bookingsData = document.querySelector('#Bookings-table tbody');
 
-        //document.getElementById("someFormId").elements;
+                //document.getElementById("someFormId").elements;
 
 
-    const onUpdate = evt => {
-        evt.preventDefault();
+            const onUpdate = evt => {
+                evt.preventDefault();
 
-        const updateBtn = evt.currentTarget;
-        const Id = updateBtn.getAttribute('data-id');
+                const updateBtn = evt.currentTarget;
+                const Id = updateBtn.getAttribute('data-id');
 
-        let rowchildren = document.getElementById(`rowid${Id}`).children;
-
-
-        //Change this
-        const model = {
-            Id: parseInt(rowchildren[0].children[0].value),
-            TransactionNumber: parseInt(rowchildren[1].children[0].value),
-            //find the user id from user
-            UserId: rowchildren[2].children[0].value,
-            Date_End: rowchildren[3].children[0].value
-        }
+                let rowchildren = document.getElementById(`rowid${Id}`).children;
 
 
-        apiPath = `api/Orders/${Id}`;
-        apiMethod = 'put';
+                //Change this
+                const model = {
+                    Id: parseInt(rowchildren[0].children[0].value),
+                    TransactionNumber: parseInt(rowchildren[1].children[0].value),
+                    //find the user id from user
+                    UserId: rowchildren[2].children[0].value,
+                    Date_End: rowchildren[3].children[0].value
+                }
 
-        fetch(apiPath, {
-            body: JSON.stringify(model),
-            method: apiMethod,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(() => {
-            refreshList();
-        }).catch(err => {
-            alert('Submit Put Method failed');
-        });
 
-    }
+                apiPath = `api/Orders/${Id}`;
+                apiMethod = 'put';
 
-        //delete function
-        const onDelete = evt => {
-            evt.preventDefault();
-
-            const deleteBtn = evt.currentTarget;
-            const Id = deleteBtn.getAttribute('data-id');
-
-            fetch(`/api/Orders/${Id}`, { method: 'delete' })
-                .then(() => {
+                fetch(apiPath, {
+                    body: JSON.stringify(model),
+                    method: apiMethod,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(() => {
                     refreshList();
+                }).catch(err => {
+                    alert('Submit Put Method failed');
                 });
-        }
+
+            }
+
+                //delete function
+                const onDelete = evt => {
+                    evt.preventDefault();
+
+                    const deleteBtn = evt.currentTarget;
+                    const Id = deleteBtn.getAttribute('data-id');
+
+                    fetch(`/api/Orders/${Id}`, { method: 'delete' })
+                        .then(() => {
+                            refreshList();
+                        });
+                }
 
 
-        const refreshList = () => {
-            bookingsData.innerHTML = '';
+                const refreshList = () => {
+                    bookingsData.innerHTML = '';
 
-            fetch('api/Orders')
-                .then(res => res.json())
-                .then(orders => {
-                    orders.forEach(order => {
-                        const idCell = document.createElement('td');
-                        const transactionNumCell = document.createElement('td');
-                        const userCell = document.createElement('td');
-                        const productsCell = document.createElement('td');
-                        const action1Cell = document.createElement('td');
-                        const action2Cell = document.createElement('td');
+                    fetch('api/Orders')
+                        .then(res => res.json())
+                        .then(orders => {
+                            orders.forEach(order => {
 
-                        console.log(order);
-                        idCell.innerText = order.id;
-                        transactionNumCell.innerText = order.transactionNumber;
-                        userCell.innerText = order.user.firstName + " " + order.user.lastName;
+                                if (!order.bookings.length == 0) {
+
+                                    const idCell = document.createElement('td');
+                                    const transactionNumCell = document.createElement('td');
+                                    const userCell = document.createElement('td');
+                                    const productsCell = document.createElement('td');
+                                    const action1Cell = document.createElement('td');
+                                    const action2Cell = document.createElement('td');
 
 
-                        let productinner = "<ul>";
-                        order.bookings.forEach(product => {
-                            productinner += `<li>${product.product.name}</li>`
+                                    idCell.innerText = order.id;
+                                    transactionNumCell.innerText = order.transactionNumber;
+                                    userCell.innerText = order.user.firstName + " " + order.user.lastName;
+
+
+                                    let productinner = "<ul>";
+                                    order.bookings.forEach(product => {
+                                        productinner += `<li>${product.product.name}</li>`
+                                    })
+                                    productinner += "</ul>";
+
+                                    productsCell.innerHTML = productinner;
+
+                                    const deleteBtn = document.createElement('button');
+                                    const selectBtn = document.createElement('button');
+
+                                    deleteBtn.innerText = 'Delete';
+                                    deleteBtn.setAttribute('data-id', `${order.id}`);
+                                    deleteBtn.className = 'waves-effect waves-light btn';
+                                    deleteBtn.addEventListener('click', onDelete);
+                                    selectBtn.innerText = 'Select';
+                                    selectBtn.setAttribute('data-id', `${order.id}`);
+                                    selectBtn.className = 'waves-effect waves-light btn';
+                                    selectBtn.addEventListener('click', onEdit);
+
+
+                                    action1Cell.appendChild(deleteBtn);
+                                    action2Cell.appendChild(selectBtn);
+
+                                    const row = document.createElement('tr');
+
+                                    row.appendChild(idCell);
+                                    row.appendChild(transactionNumCell);
+                                    row.appendChild(userCell);
+                                    row.appendChild(productsCell);
+                                    row.appendChild(action1Cell);
+                                    row.appendChild(action2Cell);
+
+                                    row.setAttribute('id', `rowid${order.id}`);
+                                    bookingsData.appendChild(row);
+                                }
+                            });
                         })
-                        productinner += "</ul>";
+                        .then(() => { })
+            }
 
-                        productsCell.innerHTML = productinner;
-
-                        const deleteBtn = document.createElement('button');
-                        const selectBtn = document.createElement('button');
-
-                        deleteBtn.innerText = 'Delete';
-                        deleteBtn.setAttribute('data-id', `${order.id}`);
-                        deleteBtn.className = 'waves-effect waves-light btn';
-                        deleteBtn.addEventListener('click', onDelete);
-                        selectBtn.innerText = 'Select';
-                        selectBtn.setAttribute('data-id', `${order.id}`);
-                        selectBtn.className = 'waves-effect waves-light btn';
-                        selectBtn.addEventListener('click', onEdit);
-
-
-                        action1Cell.appendChild(deleteBtn);
-                        action2Cell.appendChild(selectBtn);
-
-                        const row = document.createElement('tr');
-
-                        row.appendChild(idCell);
-                        row.appendChild(transactionNumCell);
-                        row.appendChild(userCell);
-                        row.appendChild(productsCell);
-                        row.appendChild(action1Cell);
-                        row.appendChild(action2Cell);
-
-                        row.setAttribute('id', `rowid${order.id}`);
-                        bookingsData.appendChild(row);
-                    });
-                })
-                .then(() => { })
-    }
-
-    const refreshBut = evt => {
-        evt.preventDefault;
-        refreshList()
-    }
+            const refreshBut = evt => {
+                evt.preventDefault;
+                refreshList()
+            }
 
 
 
-        const onEdit = evt => {
+                const onEdit = evt => {
 
-            evt.preventDefault();
+                    evt.preventDefault();
 
-            const selectBtn = evt.currentTarget;
-            const Id = selectBtn.getAttribute('data-id');
+                    const selectBtn = evt.currentTarget;
+                    const Id = selectBtn.getAttribute('data-id');
 
-            let rowchildren = document.getElementById(`rowid${Id}`).children;
-            let temp;
+                    let rowchildren = document.getElementById(`rowid${Id}`).children;
+                    let temp;
 
-            for (var i = 0; i < 4; i++) {
-                temp = rowchildren[i].innerText;
-                rowchildren[i].innerHTML = `<input type="text" value="${temp}" />`;
-            };
+                    for (var i = 0; i < 4; i++) {
+                        temp = rowchildren[i].innerText;
+                        rowchildren[i].innerHTML = `<input type="text" value="${temp}" />`;
+                    };
 
-            const EditBtn = document.createElement('button');
-            const updateBtn = document.createElement('button');
+                    const EditBtn = document.createElement('button');
+                    const updateBtn = document.createElement('button');
 
-            EditBtn.innerText = 'Cancel';
-            EditBtn.className = 'waves-effect waves-light btn';
-            EditBtn.addEventListener('click', refreshBut);
-            updateBtn.innerText = 'Update';
-            updateBtn.setAttribute('data-id', Id);
-            updateBtn.className = 'waves-effect waves-light btn';
-            updateBtn.addEventListener('click', onUpdate);
+                    EditBtn.innerText = 'Cancel';
+                    EditBtn.className = 'waves-effect waves-light btn';
+                    EditBtn.addEventListener('click', refreshBut);
+                    updateBtn.innerText = 'Update';
+                    updateBtn.setAttribute('data-id', Id);
+                    updateBtn.className = 'waves-effect waves-light btn';
+                    updateBtn.addEventListener('click', onUpdate);
 
-            rowchildren[4].innerHTML = '';
-            rowchildren[4].appendChild(EditBtn);
-            rowchildren[5].innerHTML = '';
-            rowchildren[5].appendChild(updateBtn);
+                    rowchildren[4].innerHTML = '';
+                    rowchildren[4].appendChild(EditBtn);
+                    rowchildren[5].innerHTML = '';
+                    rowchildren[5].appendChild(updateBtn);
 
 
-    }
+            }
 
-        refreshList();
+                refreshList();
 
         }
 
@@ -626,7 +629,46 @@
         //=====================================================
 
         function usersBtn() {
-    const UserData = document.querySelector('#users-table tbody');
+            const UserData = document.querySelector('#users-table tbody');
+
+            
+            const FirstNameElem = document.querySelector('#FirstName');
+            const LastNameElem = document.querySelector('#LastName');
+            const EmailElem = document.querySelector('#Email');
+            const CompanyNameElem = document.querySelector('#CompanyName');
+            const PhoneElem = document.querySelector('#Phone');
+            const UserRoleElem = document.querySelector('#UserRole');
+            const PasswordElem = document.querySelector('#Password');
+
+            const onSave = evt => {
+                evt.preventDefault();
+
+
+                const model = {
+                    FirstName: FirstNameElem.value,
+                    LastName: LastNameElem.value,
+                    Email: EmailElem.value,
+                    CompanyName: CompanyNameElem.value,
+                    Phone: PhoneElem.value,
+                    UserRole: parseInt(UserRoleElem.value),
+                    PasswordHash: PasswordElem.value
+                }
+
+                let apiPath = '/api/Users';
+                let apiMethod = 'post';
+
+                fetch(apiPath, {
+                    body: JSON.stringify(model),
+                    method: apiMethod,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(() => {
+                    refreshList();
+                }).catch(() => {
+                    alert('Submit failed');
+                });
+            };
 
     const onUpdate = evt => {
         evt.preventDefault();
@@ -637,7 +679,7 @@
         let rowchildren = document.getElementById(`rowid${Id}`).children;
 
 
-        //Change this
+        
         const model = {
             Id: parseInt(Id),
             FirstName: rowchildren[0].children[0].value,
@@ -645,7 +687,7 @@
             Email: rowchildren[2].children[0].value,
             CompanyName: rowchildren[3].children[0].value,
             Phone: rowchildren[4].children[0].value,
-            UserRole: parseInt(rowchildren[5].children[0].value),
+            UserRole: parseInt(rowchildren[5].children[0].value)
         }
 
 
@@ -699,7 +741,6 @@
 
                     const action1Cell = document.createElement('td');
                     const action2Cell = document.createElement('td');
-                    //const action3Cell = document.createElement('td');
 
                     firstNameCell.innerText = user.firstName;
                     lastNameCell.innerText = user.lastName;
@@ -710,7 +751,6 @@
 
                     const deleteBtn = document.createElement('button');
                     const selectBtn = document.createElement('button');
-                    //const isAvail = document.createElement('checkbox');
 
                     deleteBtn.innerText = 'Delete';
                     deleteBtn.setAttribute('data-id', user.id);
@@ -781,6 +821,8 @@
 
     }
 
+            const saveButton = document.querySelector('button[type="submit"]');
+            saveButton.addEventListener('click', onSave);
 
     refreshList();
 

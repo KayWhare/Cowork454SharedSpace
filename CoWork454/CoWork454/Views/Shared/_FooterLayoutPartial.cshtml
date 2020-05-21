@@ -41,13 +41,7 @@
 
         <div class="newsletter-footer">
 
-            <form method="post" action="/newsletter/Index">
-                <h6 class="sub-form-header">Weekly Newsletter</h6>
-                <input type="text" name="fullname" id="firstName"
-                       placeholder="Name">
-                <input type="email" name="Email" id="Email" placeholder="Your Email">
-                <input type="submit" id="subscribe-btn" value="Subscribe">
-            </form>
+        @Html.Partial("_SubscribeConfirm")
 
         </div>
     </div>

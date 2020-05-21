@@ -16,6 +16,7 @@ namespace CoWork454.Data
         public DbSet<Booking> Booking { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<BlogPost> BlogPost { get; set; }
+        public DbSet<MailingList> MailingList { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -50,7 +51,7 @@ namespace CoWork454.Data
 
 
 
-            modelBuilder.Entity<Booking>().HasQueryFilter(b => b.Date_end <= DateTimeOffset.Now);
+           modelBuilder.Entity<Booking>().HasQueryFilter(b => b.Date_end >= DateTimeOffset.Now);
 
         }
     }
