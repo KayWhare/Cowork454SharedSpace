@@ -5,15 +5,18 @@
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Test Site</title>
+    <meta charset="UTF-8">
+    <title>CoWork454 Admin Interface</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
 
     <script src="https://use.fontawesome.com/6b0d89f709.js"></script>
     <style>
+
+
         * {
             margin: 0;
             padding: 0;
@@ -145,14 +148,14 @@
     <main>
         <aside>
             <h2>CoWork 454 Interface</h2>
-                <p>Select Options Below</p>
-                <ul id="menu">
-                    <li class="listItem" id="1"><i class="fa fa-caret-right"></i><a href="#0">User Management</a></li>
-                    <li class="listItem" id="2"><i class="fa fa-caret-right"></i><a href="#1">Floor Space Management</a></li>
-                    <li class="listItem" id="3"><i class="fa fa-caret-right"></i><a href="#2">Bookings Management</a></li>
-                    <li class="listItem" id="4"><i class="fa fa-caret-right"></i><a href="#3">Blogs Managment</a></li>
-                    <li class="listItem" id="5"><i class="fa fa-caret-right"></i><a href="#3">Exit Admin Interface</a></li>
-                </ul>
+            <p>Select Options Below</p>
+            <ul id="menu">
+                <li class="listItem" id="1"><i class="fa fa-caret-right"></i><a href="#0">User Management</a></li>
+                <li class="listItem" id="2"><i class="fa fa-caret-right"></i><a href="#1">Floor Space Management</a></li>
+                <li class="listItem" id="3"><i class="fa fa-caret-right"></i><a href="#2">Bookings Management</a></li>
+                <li class="listItem" id="4"><i class="fa fa-caret-right"></i><a href="#3">Blogs Managment</a></li>
+                <li class="listItem" id="5"><i class="fa fa-caret-right"></i><a href="#3">Exit Admin Interface</a></li>
+            </ul>
         </aside>
 
         <div class="content">
@@ -329,7 +332,7 @@
                             if (product.isAvailable) {
                                 AvailBtn.innerText = 'Available';
                                 AvailBtn.className = 'waves-effect waves-light btn Available';
-                             
+
 
                             } else {
                                 AvailBtn.innerText = 'Unavailable';
@@ -848,7 +851,7 @@
             const Id = updateBtn.getAttribute('data-id');
 
             let rowchildren = document.getElementById(`rowid${Id}`).children;
-            
+
 
             const data = new FormData();
             data.append('Id', parseInt(Id));
