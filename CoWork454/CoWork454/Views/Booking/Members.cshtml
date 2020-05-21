@@ -64,7 +64,7 @@
             <img src="@b.Product.ImagePath" alt="space image">
             <div class="c-booking-info">
                 <span><strong>@b.Product.Name</strong></span>
-                <span><strong>Date: </strong>@b.Date_start.ToString("dd/MM/yyyy")</span>
+                <span><strong>Date: </strong>@b.Date_start.ToString("ddd dd/MM/yy")</span>
                 <span><strong>From: </strong>@b.Date_start.ToString("HH:mm")</span>
                 <span><strong>To: </strong>@b.Date_end.ToString("HH:mm")</span>
                 <input type="hidden" name="ProductId" value="@b.ProductId" />

@@ -1,0 +1,54 @@
+﻿@{
+    var article = (BlogPost)ViewData["Article"];
+    var user = (User)ViewData["User"];
+    string fullname = $"{user.FirstName} {user.LastName}";
+}
+
+<div class="single-hero-blog" style="background-image: url('@article.ImageUrl');">
+    <h1 class="single-blog-header">CoWork Community Blog</h1>
+</div>
+
+
+<div class="single-blog-inner">
+    <span><i class="far fa-calendar-alt"></i>@article.PostDate.ToString("ddd dd MMMM yyyy")</span>
+    <h2>@article.Title</h2>
+    <span>@fullname</span>
+    <p>
+        @article.Article
+    </p>
+
+    <h5>Join the Discussion</h5>
+    <span>After you comment, click Post. If you're not already logged in you will need to log in or Sign up.</span>
+    <h4>0 comments</h4>
+    <form>
+        <textarea name="Comment" id="commentInput" placeholder="Leave a comment..."></textarea>
+        <button type="submit">Post</button>
+    </form>
+
+    <div class="comment-section">
+
+        <div class="comment-outer">
+            <img src="/images/avatar-placeholder.png" alt="avatar">
+            <div class="comment-inner">
+                <span>Joe Bloggs</span>
+                <p>
+                    I think that Jon's going broke with the amount of kitchen sink burgers you blokes
+                    are getting at Tastings! Well, either that or its petty cash to him cause he is a Billionaire.
+                </p>
+            </div>
+        </div>
+
+        <div class="comment-outer">
+            <img src="/images/avatar-placeholder.png" alt="avatar">
+            <div class="comment-inner">
+                <span>Joe Bloggs</span>
+                <p>
+                    I think that Jon's going broke with the amount of kitchen sink burgers you blokes
+                    are getting at Tastings! Well, either that or its petty cash to him because he is a Billionaire.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>

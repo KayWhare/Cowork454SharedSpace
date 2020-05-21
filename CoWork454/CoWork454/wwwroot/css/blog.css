@@ -95,6 +95,7 @@
     border-radius: 3px;
     font-size: 14px;
     font-weight: 700;
+    outline: none;
 }
 
     .hero-blog-inner > a:hover {
@@ -114,7 +115,7 @@
     display: flex;
     justify-content: center;
     position: relative;
-    background-image: url(/images/bgbanner2.jpeg);
+    background-image: url(/images/dollarsigns.jpeg);
     background-size: cover;
     background-position: center;
     margin: 100px auto 150px;
@@ -202,7 +203,7 @@
     width: 100%;
 }
 
-.blog-inner > a {
+.blog-inner > button {
     padding: 10px 20px;
     border: 2px solid slategray;
     text-decoration: none;
@@ -211,11 +212,16 @@
     border-radius: 3px;
     font-size: 14px;
     font-weight: 700;
+    outline: none;
 }
 
-    .blog-inner > a:hover {
-        color: black;
-        border-color: black;
+.blog-inner > button:hover {
+    color: black;
+    border-color: black;
+}
+    .blog-inner > button:focus {
+        color: crimson;
+        border-color: crimson;
     }
 
 

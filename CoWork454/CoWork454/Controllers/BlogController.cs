@@ -30,7 +30,9 @@ namespace CoWork454.Controllers
         {
             var userIdCookie = GetEncryptedUserCookie("USER_ID");
 
-            ViewData["BlogPosts"] = _CoWork454Context.BlogPost.ToList();
+            var blogs = _CoWork454Context.BlogPost.ToList();
+            ViewData["BlogPosts"] = _CoWork454Context.BlogPost.Where(b => b.IsFeatured == false).ToList();
+            ViewData["Featured"] = _CoWork454Context.BlogPost.Where(b => b.IsFeatured == true).ToList();
             ViewData["User"] = _CoWork454Context.User.SingleOrDefault(u => u.Id == Convert.ToInt32(userIdCookie));
 
             return View();
@@ -61,6 +63,24 @@ namespace CoWork454.Controllers
                 _CoWork454Context.SaveChanges();
 
                 return new JsonResult(post);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Article(BlogPost post)
+        {
+            if(post == null)
+            {
+                return RedirectToAction("Index", "Blog");
+            }
+            else
+            {
+                var article = _CoWork454Context.BlogPost.SingleOrDefault(b => b.Id == post.Id);
+                var user = _CoWork454Context.User.Single(u => u.Id == article.UserId);
+                ViewData["Article"] = article;
+                ViewData["User"] = user;
+
+                return View("Article");
             }
         }
 

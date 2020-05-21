@@ -1,8 +1,8 @@
 ﻿
-@using CoWork454.Data
 
 @{
     var blogs = (List<BlogPost>)ViewData["BlogPosts"];
+    var featured = (List<BlogPost>)ViewData["Featured"];
     var user = (User)ViewData["User"];
 }
 
@@ -29,12 +29,13 @@
     {
         <div class="blog-container" style="background-image: url('@blog.ImageUrl') ;">
             <div class="blog-box">
-                <div class="blog-inner">
-                    <span><i class="far fa-calendar-alt"></i>@blog.PostDate</span>
+                <form action="/Blog/Article" method="get" class="blog-inner">
+                    <span><i class="far fa-calendar-alt"></i>@blog.PostDate.ToString("dd/MM/yyyy") </span>
                     <h2>@blog.Title</h2>
                     <p>@blog.Blurb</p>
-                    <a href="">Read More..</a>
-                </div>
+                    <input name="Id" type="hidden" value="@blog.Id">
+                    <button type="submit">Read More..</button>
+                </form>
             </div>
         </div>
     }
