@@ -133,6 +133,9 @@ namespace CoWork454.Models
                     order.UserId = Convert.ToInt32(userId);
                 }
 
+                //check for lapsed bookings and remove
+                _CoWork454Context.Booking.RemoveRange(_CoWork454Context.Booking.Where(b => b.Date_end <= DateTimeOffset.Now));
+
                 // add the order to the context, save changes to update database
                 _CoWork454Context.Add(order);
                 _CoWork454Context.SaveChanges();
