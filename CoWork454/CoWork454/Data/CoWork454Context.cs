@@ -16,6 +16,7 @@ namespace CoWork454.Data
         public DbSet<Booking> Booking { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<BlogPost> BlogPost { get; set; }
+        public DbSet<MailingList> MailingList { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

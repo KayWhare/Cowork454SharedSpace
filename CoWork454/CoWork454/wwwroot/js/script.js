@@ -166,6 +166,23 @@ window.addEventListener('load', () => {
     document.body.classList.remove('fade-out');
 });
 
+var mailingSubForm = document.querySelector('.newsletter-footer');
+
+function mailSubscribe(e) {
+    e.preventDefault();
+    var form = e.currentTarget.closest('form');
+    var formData = new URLSearchParams(new FormData(form));
+    fetch('/Home/Index', {
+        body: formData,
+        method: "post",
+    }).then(res => {
+        return res.text();
+    }).then(res => {
+        mailingSubForm.innerHTML = res;
+    }).catch(err => {
+        console.warn('Something went wrong.', err);
+    });
+};
 
 window.onscroll = function() { scollFunc()};
 

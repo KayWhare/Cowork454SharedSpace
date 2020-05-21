@@ -36,20 +36,25 @@ namespace CoWork454.Controllers
             return View();
         }
 
-        public IActionResult Users()
+        [HttpPost]
+        public IActionResult Index(MailingList mail)
         {
-            return View();
+            var existingEmail = _CoWork454Context.MailingList.SingleOrDefault(m => m.Email == mail.Email);
+            if(existingEmail == null)
+            {
+                _CoWork454Context.MailingList.Add(mail);
+                _CoWork454Context.SaveChanges();
+
+                ViewData["Subscribe"] = "Thank you for subscribing.";
+            }
+            else
+            {
+                ViewData["Subscribe"] = "You've already subscribed. Thanks again";
+            }
+            return PartialView("_SubscribeConfirm");
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
 
-        public IActionResult Contact()
-        {
-            return View();
-        }
 
         protected string GetEncryptedUserCookie(string cookieKey)
         {

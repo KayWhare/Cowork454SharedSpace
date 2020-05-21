@@ -1,0 +1,24 @@
+﻿
+@{
+    var sub = ViewData["Subscribe"];
+}
+
+@{
+    if (sub == null)
+    {
+        <form method="post" action="/Home/Index">
+            <h6 class="sub-form-header">Weekly Newsletter</h6>
+            <input type="text" name="Name" id="firstName"
+                   placeholder="Name">
+            <input type="email" name="Email" id="Email" placeholder="Your Email">
+            <input type="button" id="subscribe-btn" value="Subscribe" onclick="mailSubscribe(event)">
+        </form>
+    }
+    else
+    {
+        <form method="post" action="/Home/Index">
+            <h6 class="sub-form-header">@sub</h6>
+        </form>
+
+    }
+}
