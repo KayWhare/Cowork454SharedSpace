@@ -121,6 +121,50 @@ let fullNav = document.querySelector('.fullwidth-nav');
 let topLogin = document.querySelectorAll('.members-login')[0];
 let navLogo = document.querySelector('.nav-logo');
 
+let bookingContainer = document.getElementById("make-booking-partial");
+
+
+function findAvailable(e){
+        e.preventDefault();
+        var form = e.currentTarget.closest('form');
+        var formData = new URLSearchParams(new FormData(form));
+        fetch('/Booking/Index', {
+            body: formData,
+            method: "post",
+            }).then(res => {
+                return res.text();
+            }).then(res => {
+                bookingContainer.innerHTML = res;
+                setTimeout(function () {
+                    location.href = "#make-booking-partial";
+                }, 50);
+            }).catch(err => {
+                console.warn('Something went wrong.', err);
+            });
+};
+
+function findFromAccount(e) {
+    e.preventDefault();
+    var form = e.currentTarget.closest('form');
+    var formData = new URLSearchParams(new FormData(form));
+    fetch('/Booking/Index', {
+        body: formData,
+        method: "post",
+    }).then(res => {
+        return res.text();
+    }).then(res => {
+        bookingContainer.innerHTML = res;
+        setTimeout(function () {
+            location.href = "#make-booking-partial";
+        }, 50);
+    }).catch(err => {
+        console.warn('Something went wrong.', err);
+    });
+};
+
+window.addEventListener('load', () => {
+    document.body.classList.remove('fade-out');
+});
 
 
 window.onscroll = function() { scollFunc()};

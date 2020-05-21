@@ -12,7 +12,7 @@
     <div class="c-hero-bookings-inner">
         <div class="c-booking-container" id="">
 
-            <form id="c-booking-form" method="post" action="/Booking/Index">
+            <form id="c-booking-form" action="">
                 <label>Space required:</label>
                 <select id="spaceSelect" name="ProductClass">
                     <option value="0">Workstation</option>
@@ -30,7 +30,7 @@
                     <input class="sml-input" type="time" id="time-from" name="TimeStart" placeholder="From am/pm" required>
                     <input class="sml-input" type="time" id="time-to" name="TimeFinish" placeholder="To am/pm" required>
                 </div>
-                <input type="submit" id="booking-submit" value="Check Availability">
+                <input onclick="findFromAccount(event)" type="button" id="booking-submit" value="Check Availability">
             </form>
 
             <div class="c-booking-cover">
@@ -78,4 +78,5 @@
 
 </div>
 
+</div>
 

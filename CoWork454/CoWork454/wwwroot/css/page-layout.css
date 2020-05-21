@@ -13,8 +13,18 @@ body {
     margin: 0 auto;
     background-color: whitesmoke;
     font-family: 'Oxygen', sans-serif;
+    opacity: 1;
+    transition: 0.5s opacity;
 }
 
+.swiper-container {
+    overflow-x: hidden;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: none;
+}
 .container{
     display: block;
     width: 90%;
