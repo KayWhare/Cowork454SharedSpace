@@ -50,7 +50,7 @@ namespace CoWork454.Data
 
 
 
-            modelBuilder.Entity<Booking>().HasQueryFilter(b => b.Date_end <= DateTimeOffset.Now);
+           modelBuilder.Entity<Booking>().HasQueryFilter(b => b.Date_end >= DateTimeOffset.Now);
 
         }
     }
