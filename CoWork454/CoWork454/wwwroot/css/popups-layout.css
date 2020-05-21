@@ -89,14 +89,20 @@
             }
 
 .tour-btn {
+    text-decoration: none;
     color: #fff;
     font-size: 1em;
-    background-color: rgb(43, 81, 112);
+    background-image: linear-gradient(steelblue, rgb(43, 81, 112));
     padding: 10px 20px;
     margin: auto auto;
     margin-top: -20px;
     border-radius: 20px;
 }
+
+    .tour-btn:hover {
+        cursor: pointer;
+        background-image: linear-gradient(rgb(43, 81, 112),steelblue);
+    }
 
 
 /* CULTURE BOX FRONT PAGE */
