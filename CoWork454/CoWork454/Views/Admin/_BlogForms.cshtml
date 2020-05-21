@@ -88,6 +88,9 @@
                 isFeatured: false
             }
 
+            apiPath = `/api/Blogs/`;
+            apiMethod = 'POST';
+
             fetch(apiPath, {
                 body: JSON.stringify(model),
                 method: apiMethod,
@@ -217,11 +220,11 @@
             let rowchildren = document.getElementById(`rowid${Id}`).children;
             let temp;
 
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < 3; i++) {
                 temp = rowchildren[i].innerText;
                 rowchildren[i].innerHTML = `<input type="text" value="${temp}" />`;
             };
-
+            rowchildren[3].innerHTML = '<input name="ImagePath" type="file" placeholder="Upload Media" id="ImagePath" required>'
             const EditBtn = document.createElement('button');
             const updateBtn = document.createElement('button');
 
