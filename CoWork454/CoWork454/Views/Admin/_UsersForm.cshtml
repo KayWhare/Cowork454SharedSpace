@@ -1,34 +1,65 @@
 ﻿﻿@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-<div id="UserManagment " class="tabcontent">
-    <div class="row">
-        <div class="col s12">
-            <h3>CoWork Users</h3>
-            <p>....</p>
+    <div id="UserManagment " class="tabcontent">
+        <div class="row">
+            <div class="col s12">
+                <h3>CoWork Users</h3>
+                <p>....</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <h4>Users</h4>
+                <table class="striped" id="users-table">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>CompanyName</th>
+                            <th>Phone</th>
+                            <th>UserRole</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <h4>Add User</h4>
+            <form class="col s12">
+                <input type="hidden" name="Id" id="Id" />
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="First Name" name="FirstName" id="FirstName" type="text">
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Last Name" name="LastName" id="LastName" type="text">
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Email" name="Email" id="Email" type="text">
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Company Name" name="CompanyName" id="CompanyName" type="text">
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Phone" name="Phone" id="Phone" type="text">
+                    </div>
+                    <div class="input-field col s6">
+                        <label for="UserRole">User Role:</label>
+                        <input placeholder="0" name="UserRole" id="UserRole" type="number">
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Password" name="Password" id="Password" type="text">
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">Save</button>
+                <button class="btn waves-effect" id="clearButton">Clear</button>
+            </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col s12">
-            <h4>Users</h4>
-            <table class="striped" id="users-table">
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>CompanyName</th>
-                        <th>Phone</th>
-                        <th>UserRole</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-</div>
 
