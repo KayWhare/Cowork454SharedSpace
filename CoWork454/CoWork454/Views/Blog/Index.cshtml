@@ -1,4 +1,11 @@
 ﻿
+@using CoWork454.Data
+
+@{
+    var blogs = (List<BlogPost>)ViewData["BlogPosts"];
+    var user = (User)ViewData["User"];
+}
+
 <div class="hero-blog">
     <h1 class="blog-header">CoWork Community Blog</h1>
 
@@ -16,107 +23,22 @@
 </div>
 
 <div class="blog-gallery">
-    <div class="blog-container">
 
-        <div class="blog-box">
 
-            <div class="blog-inner">
-                <span><i class="far fa-calendar-alt"></i>May 18, 2020</span>
-                <h2>Is Jon an undercover Billionaire trying to make a difference in the coding community?</h2>
-                <p>Who is the Man, the Myth, the Legend?? Come on a Journey with us to explore Jons shady past and what experiences turned him into the philanthropist he is today.</p>
-                <a href="">Read More..</a>
+    @foreach (var blog in blogs)
+    {
+        <div class="blog-container" style="background-image: url('@blog.ImageUrl') ;">
+            <div class="blog-box">
+                <div class="blog-inner">
+                    <span><i class="far fa-calendar-alt"></i>@blog.PostDate</span>
+                    <h2>@blog.Title</h2>
+                    <p>@blog.Blurb</p>
+                    <a href="">Read More..</a>
+                </div>
             </div>
         </div>
-    </div>
+    }
 
-    <div class="blog-container">
 
-        <div class="blog-box">
-
-            <div class="blog-inner">
-                <span><i class="far fa-calendar-alt"></i>May 18, 2020</span>
-                <h2>Is Jon an undercover Billionaire trying to make a difference in the coding community?</h2>
-                <p>Who is the Man, the Myth, the Legend?? Come on a Journey with us to explore Jons shady past and what experiences turned him into the philanthropist he is today.</p>
-                <a href="">Read More..</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="blog-container">
-
-        <div class="blog-box">
-
-            <div class="blog-inner">
-                <span><i class="far fa-calendar-alt"></i>May 18, 2020</span>
-                <h2>Is Jon an undercover Billionaire trying to make a difference in the coding community?</h2>
-                <p>Who is the Man, the Myth, the Legend?? Come on a Journey with us to explore Jons shady past and what experiences turned him into the philanthropist he is today.</p>
-                <a href="">Read More..</a>
-            </div>
-        </div>
-    </div>
-    <div class="blog-container">
-
-        <div class="blog-box">
-
-            <div class="blog-inner">
-                <span><i class="far fa-calendar-alt"></i>May 18, 2020</span>
-                <h2>Is Jon an undercover Billionaire trying to make a difference in the coding community?</h2>
-                <p>Who is the Man, the Myth, the Legend?? Come on a Journey with us to explore Jons shady past and what experiences turned him into the philanthropist he is today.</p>
-                <a href="">Read More..</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="blog-container">
-
-        <div class="blog-box">
-
-            <div class="blog-inner">
-                <span><i class="far fa-calendar-alt"></i>May 18, 2020</span>
-                <h2>Is Jon an undercover Billionaire trying to make a difference in the coding community?</h2>
-                <p>Who is the Man, the Myth, the Legend?? Come on a Journey with us to explore Jons shady past and what experiences turned him into the philanthropist he is today.</p>
-                <a href="">Read More..</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="blog-container">
-
-        <div class="blog-box">
-
-            <div class="blog-inner">
-                <span><i class="far fa-calendar-alt"></i>May 18, 2020</span>
-                <h2>Is Jon an undercover Billionaire trying to make a difference in the coding community?</h2>
-                <p>Who is the Man, the Myth, the Legend?? Come on a Journey with us to explore Jons shady past and what experiences turned him into the philanthropist he is today.</p>
-                <a href="">Read More..</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="blog-container">
-
-        <div class="blog-box">
-
-            <div class="blog-inner">
-                <span><i class="far fa-calendar-alt"></i>May 18, 2020</span>
-                <h2>Is Jon an undercover Billionaire trying to make a difference in the coding community?</h2>
-                <p>Who is the Man, the Myth, the Legend?? Come on a Journey with us to explore Jons shady past and what experiences turned him into the philanthropist he is today.</p>
-                <a href="">Read More..</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="blog-container">
-
-        <div class="blog-box">
-
-            <div class="blog-inner">
-                <span><i class="far fa-calendar-alt"></i>May 18, 2020</span>
-                <h2>Is Jon an undercover Billionaire trying to make a difference in the coding community?</h2>
-                <p>Who is the Man, the Myth, the Legend?? Come on a Journey with us to explore Jons shady past and what experiences turned him into the philanthropist he is today.</p>
-                <a href="">Read More..</a>
-            </div>
-        </div>
-    </div>
 
 </div>
