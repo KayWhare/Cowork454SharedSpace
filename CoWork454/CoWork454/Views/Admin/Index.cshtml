@@ -1,99 +1,4 @@
-<<<<<<< HEAD
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <style>
-    </style>
-</head>
-<body>
 
-    <aside>
-        <div>
-            <h2></h2>
-        </div>
-    </aside>
-
-
-    <main>
-        <div class="container" id="space-container">
-            <div class="row">
-                <div class="col s12">
-                    <h3>CoWork Floor Space</h3>
-                    <p>....</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <h4>Floor Spaces</h4>
-                    <table class="striped" id="spaces-table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Space Name</th>
-                                <th>Details</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>0</td>
-                                <td>Meeting Room</td>
-                                <td>Projector, Available for 1 hr bookings</td>
-                                <td>
-                                    <label for="checkBox">
-                                        <input type="checkbox" id="1checkBox" class="filled-in" name="avail" onclick="isChecked()">
-                                        <span id="1checkSpan">Available</span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <button data-user-id="1" class="waves-effect waves-light btn">Select</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <h4>Add/Edit Spaces</h4>
-                <form class="col s12">
-                    <input type="hidden" name="Id" id="Id" />
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="Name" name="Name" id="Name" type="text">
-                        </div>
-                        <div class="input-field col s6">
-                            <input placeholder="Details" name="Details" id="Details" type="text">
-                        </div>
-                    </div>
-                    <button class="btn waves-effect waves-light" type="submit">Save</button>
-                    <button class="btn waves-effect" id="clearButton">Clear</button>
-                </form>
-            </div>
-        </div>
-    </main>
-
-
-
-    <script>
-
-        const spacesData = document.querySelector('#spaces-table tbody');
-        const idElem = document.querySelector('input[name="Id"]');
-        const nameElem = document.querySelector('input[name="Name"]');
-        const detailsElem = document.querySelector('input[name="Details"]');
-
-        const onDelete = (evt) => {
-
-        }
-
-        const onSelect = (evt) => {
-
-        }
-
-        const onSave = (evt) => {
-=======
 ﻿@{
     ViewData["Title"] = "Admin";
     Layout = null;
@@ -293,7 +198,7 @@
         //=====================================================
 
         function spaceBtn() {
-<<<<<<< HEAD
+
             const spacesData = document.querySelector('#spaces-table tbody');
             const idElem = document.querySelector('input[name="Id"]');
             const nameElem = document.querySelector('#Name');
@@ -315,7 +220,7 @@
                     ImagePath: imgPath.value,
                     isAvailable: true
                 }
->>>>>>> Griffins-branch
+
 
                 let apiPath = '/api/Products';
                 let apiMethod = 'post';
@@ -339,7 +244,7 @@
                 });
             };
 
-<<<<<<< HEAD
+
         const getAll = () => {
             spacesData.innerHTML = '';
 
@@ -397,8 +302,7 @@
                     console.log("Error Loading Product table");
                 })
         }
-=======
->>>>>>> Griffins-branch
+
 
 
 
@@ -494,7 +398,7 @@
             saveButton.addEventListener('click', onSave);
 
             refreshList();
-=======
+
         const spacesData = document.querySelector('#spaces-table tbody');
         const idElem = document.querySelector('input[name="Id"]');
         const nameElem = document.querySelector('#Name');
@@ -502,7 +406,7 @@
         const imgPath = document.querySelector('#ImagePath');
         const isAvailable = document.querySelector('input[name="isAvailable"]');
         const table = document.getElementById("spaces-table");
->>>>>>> Griffins-branch
+
 
         //document.getElementById("someFormId").elements;
 
