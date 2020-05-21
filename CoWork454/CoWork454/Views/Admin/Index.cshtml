@@ -197,7 +197,6 @@
         //=====================================================
 
         function spaceBtn() {
-<<<<<<< HEAD
             const spacesData = document.querySelector('#spaces-table tbody');
             const idElem = document.querySelector('input[name="Id"]');
             const nameElem = document.querySelector('#Name');
@@ -219,7 +218,6 @@
                     ImagePath: imgPath.value,
                     isAvailable: true
                 }
->>>>>>> Griffins-branch
 
                 let apiPath = '/api/Products';
                 let apiMethod = 'post';
@@ -338,7 +336,6 @@
             saveButton.addEventListener('click', onSave);
 
             refreshList();
-=======
         const spacesData = document.querySelector('#spaces-table tbody');
         const idElem = document.querySelector('input[name="Id"]');
         const nameElem = document.querySelector('#Name');
@@ -346,7 +343,6 @@
         const imgPath = document.querySelector('#ImagePath');
         const isAvailable = document.querySelector('input[name="isAvailable"]');
         const table = document.getElementById("spaces-table");
->>>>>>> Griffins-branch
 
         //document.getElementById("someFormId").elements;
 
@@ -536,18 +532,18 @@
         //BOOKINGS SCRIPTS
         //=====================================================
 
-        function bookingBtn() {
-    const bookingsData = document.querySelector('#Bookings-table tbody');
-    const userIdElem = document.querySelector('#UserId');
-    const productIdElem = document.querySelector('#ProductID');
-    const dateStartElem = document.querySelector('#DateStart');
-    const dateEndElem = document.querySelector('#DateEnd');        
-    const table = document.getElementById("Bookings-table");
+    function bookingBtn() {
+        const bookingsData = document.querySelector('#Bookings-table tbody');
+        const userIdElem = document.querySelector('#UserId');
+        const productIdElem = document.querySelector('#ProductID');
+        const dateStartElem = document.querySelector('#DateStart');
+        const dateEndElem = document.querySelector('#DateEnd');        
+        const table = document.getElementById("Bookings-table");
 
         //document.getElementById("someFormId").elements;
 
 
-    const onUpdate = evt => {
+        const onUpdate = evt => {
         evt.preventDefault();
 
         const updateBtn = evt.currentTarget;
@@ -581,7 +577,7 @@
             alert('Submit Put Method failed');
         });
 
-    }
+        }
 
         //delete function
         const onDelete = evt => {
@@ -655,12 +651,12 @@
                     });
                 })
                 .then(() => { })
-    }
+                }
 
-    const refreshBut = evt => {
-        evt.preventDefault;
-        refreshList()
-    }
+        const refreshBut = evt => {
+            evt.preventDefault;
+            refreshList()
+        }
 
 
 
@@ -696,7 +692,7 @@
             rowchildren[5].appendChild(updateBtn);
 
 
-    }  
+        }  
 
         refreshList();
 
@@ -708,18 +704,18 @@
         //USERS SCRIPTS
         //=====================================================
 
-        function usersBtn() {
-    const UserData = document.querySelector('#users-table tbody');
-    const idElem = document.querySelector('input[name="Id"]');
-    const firstNameElem = document.querySelector('#FirstName');
-    const lastNameElem = document.querySelector('#LastName');
-    const emailElem = document.querySelector('#Email');
-    const phone = document.querySelector('#Phone');
-    const userRole = document.querySelector('#UserRole');
-    const table = document.getElementById("users-table");
+    function usersBtn() {
+        const UserData = document.querySelector('#users-table tbody');
+        const idElem = document.querySelector('input[name="Id"]');
+        const firstNameElem = document.querySelector('#FirstName');
+        const lastNameElem = document.querySelector('#LastName');
+        const emailElem = document.querySelector('#Email');
+        const phone = document.querySelector('#Phone');
+        const userRole = document.querySelector('#UserRole');
+        const table = document.getElementById("users-table");
 
 
-    const onUpdate = evt => {
+        const onUpdate = evt => {
         evt.preventDefault();
 
         const updateBtn = evt.currentTarget;
@@ -755,7 +751,7 @@
             alert('Submit Put Method failed');
         });
 
-    }
+        }
 
 
 
@@ -876,10 +872,6 @@
     refreshList();
 
     }
-
-
-
-
 
     </script>
 </body>
