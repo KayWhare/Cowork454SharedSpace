@@ -626,7 +626,46 @@
         //=====================================================
 
         function usersBtn() {
-    const UserData = document.querySelector('#users-table tbody');
+            const UserData = document.querySelector('#users-table tbody');
+
+            
+            const FirstNameElem = document.querySelector('#FirstName');
+            const LastNameElem = document.querySelector('#LastName');
+            const EmailElem = document.querySelector('#Email');
+            const CompanyNameElem = document.querySelector('#CompanyName');
+            const PhoneElem = document.querySelector('#Phone');
+            const UserRoleElem = document.querySelector('#UserRole');
+            const PasswordElem = document.querySelector('#Password');
+
+            const onSave = evt => {
+                evt.preventDefault();
+
+
+                const model = {
+                    FirstName: FirstNameElem.value,
+                    LastName: LastNameElem.value,
+                    Email: EmailElem.value,
+                    CompanyName: CompanyNameElem.value,
+                    Phone: PhoneElem.value,
+                    UserRole: parseInt(UserRoleElem.value),
+                    PasswordHash: PasswordElem.value
+                }
+
+                let apiPath = '/api/Users';
+                let apiMethod = 'post';
+
+                fetch(apiPath, {
+                    body: JSON.stringify(model),
+                    method: apiMethod,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(() => {
+                    refreshList();
+                }).catch(() => {
+                    alert('Submit failed');
+                });
+            };
 
     const onUpdate = evt => {
         evt.preventDefault();
@@ -637,7 +676,7 @@
         let rowchildren = document.getElementById(`rowid${Id}`).children;
 
 
-        //Change this
+        
         const model = {
             Id: parseInt(Id),
             FirstName: rowchildren[0].children[0].value,
@@ -645,7 +684,7 @@
             Email: rowchildren[2].children[0].value,
             CompanyName: rowchildren[3].children[0].value,
             Phone: rowchildren[4].children[0].value,
-            UserRole: parseInt(rowchildren[5].children[0].value),
+            UserRole: parseInt(rowchildren[5].children[0].value)
         }
 
 
@@ -699,7 +738,6 @@
 
                     const action1Cell = document.createElement('td');
                     const action2Cell = document.createElement('td');
-                    //const action3Cell = document.createElement('td');
 
                     firstNameCell.innerText = user.firstName;
                     lastNameCell.innerText = user.lastName;
@@ -710,7 +748,6 @@
 
                     const deleteBtn = document.createElement('button');
                     const selectBtn = document.createElement('button');
-                    //const isAvail = document.createElement('checkbox');
 
                     deleteBtn.innerText = 'Delete';
                     deleteBtn.setAttribute('data-id', user.id);
@@ -781,6 +818,8 @@
 
     }
 
+            const saveButton = document.querySelector('button[type="submit"]');
+            saveButton.addEventListener('click', onSave);
 
     refreshList();
 

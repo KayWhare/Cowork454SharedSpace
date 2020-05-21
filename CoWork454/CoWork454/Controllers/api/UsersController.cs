@@ -53,6 +53,8 @@ namespace CoWork454.Controllers.api
                 return BadRequest();
             }
 
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
+
             _context.Entry(user).State = EntityState.Modified;
 
             try
@@ -80,6 +82,7 @@ namespace CoWork454.Controllers.api
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
             _context.User.Add(user);
             await _context.SaveChangesAsync();
 
