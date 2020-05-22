@@ -35,6 +35,27 @@
     border-radius: 20px;
     overflow: hidden;
 }
+
+/* added teaser text in card */
+#teaser-text {
+    width: 100%;
+    height: 150px;
+    padding-left: 15px;
+    margin: auto 0;
+    font-size: 0.9em;
+    /* line-height: 1.5em; */
+}
+
+    #teaser-text > p {
+        padding-bottom: 5px;
+    }
+
+        #teaser-text > p > i {
+            color: steelblue;
+            padding-right: 5px;
+        }
+
+
 .inner-content>h3{
     text-align: center;
     font-size: 26px;
@@ -92,13 +113,7 @@
     background-image: url(/images/image_03.jpg);
 }
 
-/* #inner-top{
-}
-#inner-mid{
-    left:-300%;
-}
-#inner-bot{
-} */
+
 
 .left-affect{
     animation: slideLeft 1.5s forwards linear;
@@ -139,10 +154,27 @@
     font-size: 30px;
     padding: 20px 0px;
 }
-.inner-content>p{
-    font-size: 18px;
-    padding: 30px;
-}
+
+    /* added Teaser-text styles */
+    #teaser-text {
+        width: 100%;
+        height: 240px;
+        padding-left: 10px;
+        margin: auto 0;
+    }
+
+        #teaser-text > p {
+            font-size: 1.2em;
+            line-height: 1.5em;
+            padding-bottom: 5px;
+        }
+
+            #teaser-text > p > i {
+                color: steelblue;
+                padding-right: 5px;
+            }
+
+
 .inner-content>a{
     bottom: -22px;
     font-weight: 700;

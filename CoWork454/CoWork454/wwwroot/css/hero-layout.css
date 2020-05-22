@@ -41,6 +41,12 @@
     font-family: 'Roboto Slab', serif;
 }
 
+.swipercontent #hero-addr {
+    font-size: 40px;
+    font-weight: bold;
+    /* color: #C3202F; */
+}
+
 .swiper-pagination-bullet {
     width: 8px !important;
     height: 8px !important;
